@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Cascadia code';
-  src: url('../../public/CascadiaCode-Regular.otf') format('opentype');
+  src: url('https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@dbe24d4a1cee1ae3fa406e73ac3571853386d391/fonts/CascadiaCode-Regular.otf') format('opentype');
 }
 
 code[class*='language-'],
