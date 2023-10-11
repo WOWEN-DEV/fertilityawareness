@@ -496,7 +496,7 @@ a.primary:hover::before {
   height: 56px;
   top: -125%;
   left: -125%;
-  background-image: url('../../public/check-animation.svg');
+  background-image: url('https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@bc7d255745dc084a1a388cae0b9f0a1cd4dcc9f0/img/check-animation.svg');
   background-position: left;
   background-repeat: no-repeat;
   background-size: 3700%;
