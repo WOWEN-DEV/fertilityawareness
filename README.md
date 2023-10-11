@@ -10,5 +10,5 @@ This project is licensed under the MIT License.
 
 ---
 
-Copyright © [Year], [Your Company Name]. All rights reserved.
+Copyright © 2019-2023, WOWEN. All rights reserved.
 
