@@ -33,10 +33,57 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-NN49N88');</script>
 <!-- End Google Tag Manager -->
-
   
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    #left-side {
+      flex: 1;
+      background-color: white;
+      padding: 20px;
+    }
+    #right-side {
+      flex: 1;
+      background-color: #ffeb99;
+      padding: 20px;
+      text-align: right;
+    }
+    form, button {
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: none;
+    }
+    #login-button {
+      background-color: #007bff;
+      color: white;
+    }
+    #signup-button {
+      background-color: #28a745;
+      color: white;
+    }
+    #forgot-password {
+      background-color: #ffc107;
+      color: white;
+    }
+  </style>
+	
 </head>
 <body>
 
@@ -45,8 +92,8 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <h1>Välkommen till Fertility Awareness App</h1>
-
+ <!-- Vänster sida -->
+<div id="left-side">
   <!-- Inloggningsformulär -->
   <form id="login-form">
     <label for="email">E-post:</label>
@@ -55,14 +102,25 @@
     <label for="password">Lösenord:</label>
     <input type="password" id="password" required>
     
-    <button type="submit">Logga in</button>
+    <button type="submit" id="login-button">Logga in</button>
   </form>
-
-<!-- Länk till registreringssidan -->
-<button id="signup-button" onclick="window.location.href='/create-account'">Registrera</button>
-
+  <!-- Länk till registreringssidan -->
+  <button id="signup-button" onclick="window.location.href='/create-account'">Registrera</button>
   <!-- Glömt lösenord -->
   <button id="forgot-password">Glömt lösenord?</button>
+  <!-- Länkar -->
+  <div style="margin-top: 30px;">
+    <a href="/privacy-policy">Privacy Policy</a> | <a href="/sustainability">Sustainability</a>
+  </div>
+</div>
+
+<!-- Höger sida -->
+<div id="right-side">
+  <img src="https://wowen.tech/assets/img/logo-footer.svg" alt="Logotyp" style="width: 100px;">
+  <h1 style="margin-top: 20px;">Välkommen hit!</h1>
+  <img src="https://dashboard.leminnow.com/assets/images/login-bg-image.svg" alt="Illustration" style="width: 100%;">
+</div>
+
 
   <!-- JavaScript för inloggning och registrering -->
   <script>
