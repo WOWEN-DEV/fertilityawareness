@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
+<!DOCTYPE html><html lang="sv"><head>
 
-  <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-    <meta name="description" content="Din digitala fertilitetsförståelse-AI" />
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="description" content="Din digitala fertilitetsförståelse-AI">
     <title>FertilityAwarenessAI • Din digitala fertilitetsförståelse-AI</title>
     <meta content="Upptäck den första AI:n som specialiserat sig på att lära sig om fertilitet." name="description">
     <meta content="FertilityAwarenessAI • Din digitala fertilitetsförståelse-AI" property="og:title">
     <meta content="Upptäck den första AI:n som specialiserat sig på att lära sig om fertilitet." property="og:description">
-    <meta content="https://wowen.tech/assets/img/wowen-og.png" property="og:image">
+    <meta content="images/wowen-og.png" property="og:image">
     <meta content="FertilityAwarenessAI • Din digitala fertilitetsförståelse-AI" property="twitter:title">
     <meta content="Upptäck den första AI:n som specialiserat sig på att lära sig om fertilitet." property="twitter:description">
     <meta content="https://wowen.tech/assets/img/wowen-og.png" property="twitter:image">
     <meta property="og:type" content="website">
     <meta content="summary_large_image" name="twitter:card">
-    <link href="https://wowen.tech/assets/img/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="https://wowen.tech/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/main.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/prism.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet" />
+    <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css" /> -->
     
     <script defer data-domain="wowen.tech" src="https://plausible.io/js/script.js"></script>
     
-    <!-- Google Tag Manager -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -35,53 +31,191 @@
 <!-- End Google Tag Manager -->
   
   <!-- Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="js/netlify-identity-widget.js"></script>
 
   <style>
     body {
       margin: 0;
       padding: 0;
       display: flex;
+      overflow-y: hidden; 
     }
+    @font-face {
+  font-family: 'Cascadia code';
+  src: url('https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@dbe24d4a1cee1ae3fa406e73ac3571853386d391/fonts/CascadiaCode-Regular.otf') format('opentype');
+}
     #left-side {
       flex: 1;
-      background-color: white;
-      padding: 20px;
+      background-color: rgba(36, 183, 146, 0.371);
+      padding: 89px;
+      text-align: left;
+      min-height: 100vh;
     }
     #right-side {
       flex: 1;
-      background-color: #ffeb99;
-      padding: 20px;
-      text-align: right;
+      background-color: #ffffff;
+      padding: 96px;
+      min-height: 100vh;
+      margin-top: 3.8rem;
     }
     form, button {
-      font-family: Arial, sans-serif;
+      font-family: 'Work Sans';
       margin-bottom: 20px;
     }
     input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      border-radius: 12px;
-      border: none;
-    }
-    #login-button {
-      background-color: #007bff;
-      color: white;
-    }
+    width: 60%;
+    padding: 23px;
+    margin-bottom: 20px;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    font-family: 'Work Sans';
+    font-weight: 100;
+    font-size: 1.2rem;
+    color: #000000;
+}
+button {
+    padding: 19px 196px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+#login-button {
+    background-color: #10a37f;
+    color: white;
+    display: block;
+    font-size: 16px;
+}
     #signup-button {
       background-color: #28a745;
       color: white;
     }
-    #forgot-password {
-      background-color: #ffc107;
-      color: white;
+    h1 {
+      font-family: 'Work Sans';
+      font-size: 3.5rem;
     }
+    .logo {
+  width: 150px; 
+  margin-top: 18px;
+  margin-left: auto; 
+  margin-right: auto;
+}
+a#forgot-password {
+  color: #000000; 
+  text-decoration: underline; 
+  font-size: 1rem;  
+  font-family: 'Work Sans'; 
+  cursor: pointer; 
+  display: block;
+  padding-bottom: 29px;
+}
+a#signup-link {
+  color: #10a37f; 
+  text-decoration: none; 
+  font-size: 1rem; 
+  font-family: 'Work Sans'; 
+  cursor: pointer; 
+  text-decoration: underline;
+}
+#footer-links {
+  margin-top: auto;
+}
+#footer-links a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-family: 'Work Sans';
+  text-decoration: underline;
+  padding-right: 50px; 
+}
+#footern {
+  display: flex;
+  flex-direction: column;
+  min-height: 24vh;
+}
+/* Mobil */
+@media only screen and (max-width: 1197px) {
+  #left-side {
+    display: none;
+  }
+  #right-side {
+    flex: 1;
+    width: 100%;
+    padding: 41px;
+    margin-top: 7.800000000000001rem;
+    margin-right: 13px;
+  }
+  input {
+    width: 100%;
+    padding: 16px;
+  }
+  button {
+    padding: 17px 97px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  #footer-links a {
+    padding-right: 33px;
+}
+#footern {
+    min-height: 25vh;
+}
+form, button {
+    margin-right: 1rem;
+}
+}
+/* iPad */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  #left-side, #right-side {
+    padding: 40px;
+  }
+  input {
+    width: 80%;
+    padding: 15px;
+  }
+  button {
+    padding: 15px 100px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+}
+/* Smaller screens */
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  button {
+    padding: 19px 103px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1638px) {
+  button {
+    padding: 19px 135px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+}
+/* Gömmer logotypen som standard */
+#mobile-logo {
+  display: none;
+}
+/* Visar logotypen endast på mobil */
+@media only screen and (max-width: 1197px) {
+  #mobile-logo {
+    display: block;
+    position: fixed; 
+    top: 10px;
+    left: 10px;
+    z-index: 9999; 
+  }
+  #mobile-logo img {
+    width: 132px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+}
   </style>
 	
 </head>
@@ -92,33 +226,37 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
- <!-- Vänster sida -->
-<div id="left-side">
-  <!-- Inloggningsformulär -->
-  <form id="login-form">
-    <label for="email">E-post:</label>
-    <input type="email" id="email" required>
-    
-    <label for="password">Lösenord:</label>
-    <input type="password" id="password" required>
-    
-    <button type="submit" id="login-button">Logga in</button>
-  </form>
-  <!-- Länk till registreringssidan -->
-  <button id="signup-button" onclick="window.location.href='/create-account'">Registrera</button>
-  <!-- Glömt lösenord -->
-  <button id="forgot-password">Glömt lösenord?</button>
-  <!-- Länkar -->
-  <div style="margin-top: 30px;">
-    <a href="/privacy-policy">Privacy Policy</a> | <a href="/sustainability">Sustainability</a>
-  </div>
+ <!-- Höger sida -->
+ <div id="left-side">
+  <a href="https://wowen.tech/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@d30d18d39decaadd0a6b07da0043e5ceb4d06ff9/img/wowen-logo.svg" alt="Logotyp" class="logo">
+</a>
+  <h1>FertilityAwarenessAI</h1>
+  <img src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@982d26f3ff366e2936c5c0b8df21e839eae6c8bb/img/fertilityawareness-illustration.svg" alt="Fertilitetsförståelse">
 </div>
-
-<!-- Höger sida -->
+  <!-- Logotyp synlig endast på mobil -->
+<div id="mobile-logo">
+  <a href="https://wowen.tech/" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@d30d18d39decaadd0a6b07da0043e5ceb4d06ff9/img/wowen-logo.svg" alt="Logotyp">
+  </a>  
+</div>
+<!-- Vänster sida -->
 <div id="right-side">
-  <img src="https://wowen.tech/assets/img/logo-footer.svg" alt="Logotyp" style="width: 100px;">
-  <h1 style="margin-top: 20px;">Välkommen hit!</h1>
-  <img src="https://dashboard.leminnow.com/assets/images/login-bg-image.svg" alt="Illustration" style="width: 100%;">
+  <!-- Inloggningsformulär -->
+  <h1>Logga in</h1>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="E-post" required>
+    <input type="password" id="password" placeholder="Lösenord" required>
+    <a href="#" id="forgot-password">Glömt ditt lösenord?</a>
+    <button type="submit" id="login-button">Logga in</button>
+    <span>Har du inget konto? <a href="/create-account" id="signup-link">Registrera dig</a></span>
+  </form>
+ <div id="footern">
+<div id="footer-links">
+<a href="https://wowen.tech/sv/integritetspolicy/" target="_blank">Integritetspolicy</a>
+<a href="https://www.websitecarbon.com/website/wowen-tech/" target="_blank">Hållbar utveckling</a>
+</div>
+</div>
 </div>
 
   <!-- JavaScript för inloggning och registrering -->
@@ -162,5 +300,4 @@
     });
   </script>
 
-</body>
-</html>
+</body></html>
