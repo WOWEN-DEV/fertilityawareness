@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Inloggning</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <h1>Välkommen till Fertility Awareness App</h1>
+
+  <!-- Knappar för inloggning och registrering -->
+  <button onclick="netlifyIdentity.open('login')">Logga in</button>
+  <button onclick="netlifyIdentity.open('signup')">Registrera</button>
+
+  <!-- Initiera Netlify Identity Widget -->
+  <script>
+    netlifyIdentity.on('init', user => {
+      if (!user) {
+        netlifyIdentity.on('login', () => {
+          document.location.href = "/"; // Omdirigera till index.html efter inloggning
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
