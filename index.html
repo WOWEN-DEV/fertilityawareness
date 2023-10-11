@@ -2,6 +2,7 @@
 <html lang="sv">
   <head>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   
     <script async src="https://tally.so/widgets/embed.js"></script>
 
@@ -115,7 +116,16 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN49N88"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-      
+
+<script>
+  if (netlifyIdentity && netlifyIdentity.currentUser()) {
+    // Användaren är inloggad, visa webbplatsen
+  } else {
+    // Användaren är inte inloggad, omdirigera till inloggningssida
+    window.location.href = "/login.html";
+  }
+</script>
+
     <div class="menu-s">
       <div class="menu-content-s">
         <a href="#info"><h3 class="menu-link-s">Vad är det här?</h3></a>
