@@ -99,6 +99,9 @@ button {
   margin-left: auto; 
   margin-right: auto;
 }
+#forgot-password {
+  cursor: pointer;
+}
 a#forgot-password {
   color: #000000; 
   text-decoration: underline; 
@@ -226,7 +229,7 @@ form, button {
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
- <!-- Höger sida -->
+<!-- Vänster sida -->
  <div id="left-side">
   <a href="https://wowen.tech/" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@d30d18d39decaadd0a6b07da0043e5ceb4d06ff9/img/wowen-logo.svg" alt="Logotyp" class="logo">
@@ -240,14 +243,14 @@ form, button {
     <img src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@d30d18d39decaadd0a6b07da0043e5ceb4d06ff9/img/wowen-logo.svg" alt="Logotyp">
   </a>  
 </div>
-<!-- Vänster sida -->
+ <!-- Höger sida -->
 <div id="right-side">
   <!-- Inloggningsformulär -->
   <h1>Logga in</h1>
   <form id="login-form">
     <input type="email" id="email" placeholder="E-post" required>
     <input type="password" id="password" placeholder="Lösenord" required>
-    <a href="#" id="forgot-password">Glömt ditt lösenord?</a>
+    <a href="/forgot-password" id="forgot-password">Glömt ditt lösenord?</a>
     <button type="submit" id="login-button">Logga in</button>
     <span>Har du inget konto? <a href="/create-account" id="signup-link">Registrera dig</a></span>
   </form>
@@ -259,46 +262,36 @@ form, button {
 </div>
 </div>
 
-  <!-- JavaScript för inloggning och registrering -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Inloggning
-      const loginForm = document.getElementById("login-form");
-      loginForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        
-        netlifyIdentity.login({
-          email: email,
-          password: password,
-        })
-        .then((user) => {
-          window.location.href = "/"; // Omdirigera till index.html
-        })
-        .catch((err) => alert("Felaktig inloggning"));
-      });
-
-      // Registrering
-      const signupButton = document.getElementById("signup-button");
-      signupButton.addEventListener("click", function() {
-        netlifyIdentity.open('signup');
-      });
-
-      // Glömt lösenord
-      const forgotPasswordButton = document.getElementById("forgot-password");
-      forgotPasswordButton.addEventListener("click", function() {
-        const email = prompt("Ange din e-postadress:");
-        if (email) {
-          netlifyIdentity.requestPasswordRecovery(email)
-          .then(() => {
-            alert("Ett e-postmeddelande har skickats för lösenordsåterställning.");
-          })
-          .catch((err) => alert("Något gick fel"));
-        }
-      });
+<!-- JavaScript för inloggning och registrering -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Inloggning
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      
+      netlifyIdentity.login({
+        email: email,
+        password: password,
+      })
+      .then((user) => {
+        window.location.href = "/"; // Omdirigera till index.html
+      })
+      .catch((err) => alert("Felaktig inloggning"));
     });
-  </script>
+
+    // Registrering
+    const signupButton = document.getElementById("signup-button");
+    signupButton.addEventListener("click", function() {
+      netlifyIdentity.open('signup');
+    });
+
+    // Glömt lösenord-delen har tagits bort eftersom det nu hanteras på en separat sida
+  });
+</script>
+
 
 
 </body></html>
