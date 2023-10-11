@@ -3,24 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Inloggning</title>
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
   <h1>Välkommen till Fertility Awareness App</h1>
 
-  <!-- Knappar för inloggning och registrering -->
-  <button onclick="netlifyIdentity.open('login')">Logga in</button>
-  <button onclick="netlifyIdentity.open('signup')">Registrera</button>
+  <!-- Inloggningsformulär -->
+  <form id="login-form">
+    <label for="email">E-post:</label>
+    <input type="email" id="email" required>
+    
+    <label for="password">Lösenord:</label>
+    <input type="password" id="password" required>
+    
+    <button type="submit">Logga in</button>
+  </form>
 
-  <!-- Initiera Netlify Identity Widget -->
+  <!-- Registreringsknapp -->
+  <button id="signup-button">Registrera</button>
+
+  <!-- Glömt lösenord -->
+  <button id="forgot-password">Glömt lösenord?</button>
+
+  <!-- JavaScript för inloggning och registrering -->
   <script>
-    netlifyIdentity.on('init', user => {
-      if (!user) {
-        netlifyIdentity.on('login', () => {
-          document.location.href = "/"; // Omdirigera till index.html efter inloggning
-        });
-      }
+    document.addEventListener("DOMContentLoaded", function() {
+      // Inloggning
+      const loginForm = document.getElementById("login-form");
+      loginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        
+        netlifyIdentity.login({
+          email: email,
+          password: password,
+        })
+        .then((user) => {
+          window.location.href = "/"; // Omdirigera till index.html
+        })
+        .catch((err) => alert("Felaktig inloggning"));
+      });
+
+      // Registrering
+      const signupButton = document.getElementById("signup-button");
+      signupButton.addEventListener("click", function() {
+        netlifyIdentity.open('signup');
+      });
+
+      // Glömt lösenord
+      const forgotPasswordButton = document.getElementById("forgot-password");
+      forgotPasswordButton.addEventListener("click", function() {
+        const email = prompt("Ange din e-postadress:");
+        if (email) {
+          netlifyIdentity.requestPasswordRecovery(email)
+          .then(() => {
+            alert("Ett e-postmeddelande har skickats för lösenordsåterställning.");
+          })
+          .catch((err) => alert("Något gick fel"));
+        }
+      });
     });
   </script>
 
