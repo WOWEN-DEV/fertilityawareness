@@ -339,12 +339,14 @@ input[type="checkbox"] {
       netlifyIdentity.gotrue.signup(email, password)
       .then((user) => {
         alert("Registrering lyckad, logga in för att fortsätta.");
+        localStorage.setItem('registeredEmail', email); // Spara e-postadressen i localStorage
         window.location.href = "/registration-success"; // Omdirigera till registration-success sidan
       })
       .catch((err) => alert("Registrering misslyckades"));
     });
   });
 </script>
+
 
 
 
