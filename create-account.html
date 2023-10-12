@@ -322,24 +322,29 @@ input[type="checkbox"] {
 </div>
 </div>
 
-  <!-- JavaScript för registrering -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Registrering
-      const signupForm = document.getElementById("signup-form");
-      signupForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const email = document.getElementById("signup-email").value;
-        const password = document.getElementById("signup-password").value;
-        
-        netlifyIdentity.signup(email, password)
-        .then((user) => {
-          alert("Registrering lyckad, logga in för att fortsätta.");
-        })
-        .catch((err) => alert("Registrering misslyckades"));
-      });
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialisera Netlify Identity
+    if (typeof netlifyIdentity !== "undefined") {
+      netlifyIdentity.init();
+    }
+
+    // Registrering
+    const signupForm = document.getElementById("signup-form");
+    signupForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      
+      netlifyIdentity.gotrue.signup(email, password)
+      .then((user) => {
+        alert("Registrering lyckad, logga in för att fortsätta.");
+      })
+      .catch((err) => alert("Registrering misslyckades"));
     });
-  </script>
+  });
+</script>
+
 
 </body>
 </html>
