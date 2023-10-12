@@ -74,7 +74,7 @@
     color: #000000;
 }
 button {
-    padding: 19px 196px;
+    padding: 19px 181px;
     border: none;
     cursor: pointer;
     border-radius: 3px;
@@ -89,6 +89,13 @@ button {
       background-color: #28a745;
       color: white;
     }
+    #create-account-button {
+    background-color: #10a37f;
+    color: white;
+    display: block;
+    font-size: 16px;
+}
+
     h1 {
       font-family: 'Work Sans';
       font-size: 3.5rem;
@@ -135,6 +142,41 @@ a#signup-link {
   flex-direction: column;
   min-height: 24vh;
 }
+#no-account-text {
+  font-size: 1rem; 
+  font-family: 'Work Sans'; 
+}
+#back-to-login {
+  display: flex;
+  align-items: center;
+  color: #10a37f;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: 'Work Sans';
+}
+#back-to-login svg {
+  margin-right: 8px;
+  fill: #10a37f;
+}
+label a {
+  color: #10a37f;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: 'Work Sans';
+  cursor: pointer;
+  text-decoration: underline;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+label {
+vertical-align: super;
+}
+
 /* Mobil */
 @media only screen and (max-width: 1197px) {
   #left-side {
@@ -183,7 +225,7 @@ form, button {
     font-size: 3rem;
   }
 }
-/* Smaller screens */
+/* Mindre skärmar */
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   button {
     padding: 19px 103px;
@@ -245,25 +287,24 @@ form, button {
 </div>
  <!-- Höger sida -->
 <div id="right-side">
+    <a href="/login" id="back-to-login">
+        <svg width="20" height="20" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.15 30.9992C0.283334 31.6992 0.6 32.2826 1.1 32.7492L29.8 59.9492L34.5 54.4492L12.6 33.7492L79.95 33.7492L79.95 26.2992L12.6 26.2992L34.5 5.49922L29.8 -0.000781658L1.1 27.2492C0.6 27.7492 0.283334 28.3159 0.15 28.9492C-0.0499996 29.6492 -0.0499996 30.3326 0.15 30.9992Z" fill="#10a37f"/>
+            </svg>
+        Gå tillbaka till inloggningssidan
+      </a>
 <!-- Registreringsformulär -->
  <h1>Skapa konto</h1>
-  <form id="signup-form">
-    <label for="signup-email">E-post:</label>
-    <input type="email" id="signup-email" required>
-    
-    <label for="signup-password">Lösenord:</label>
-    <input type="password" id="signup-password" required>
-    
-    <button type="submit">Skapa konto</button>
+ <form id="signup-form">
+    <input type="email" id="signup-email" placeholder="E-post" required>
+    <input type="password" id="signup-password" placeholder="Lösenord" required> 
+    <button type="submit" id="create-account-button">Skapa konto</button>
+    <div>
+        <input type="checkbox" id="privacy-policy" required>
+        <label for="privacy-policy">Jag godkänner <a href="https://wowen.tech/sv/integritetspolicy/" target="_blank">integritetspolicyn</a>.</label>
+      </div>
   </form>
-	
-  <form id="login-form">
-    <input type="email" id="email" placeholder="E-post" required>
-    <input type="password" id="password" placeholder="Lösenord" required>
-    <a href="/forgot-password" id="forgot-password">Glömt ditt lösenord?</a>
-    <button type="submit" id="login-button">Logga in</button>
-    <span>Har du inget konto? <a href="/create-account" id="signup-link">Registrera dig</a></span>
-  </form>
+
  <div id="footern">
 <div id="footer-links">
 <a href="https://wowen.tech/sv/integritetspolicy/" target="_blank">Integritetspolicy</a>
