@@ -265,6 +265,11 @@ form, button {
 <!-- JavaScript för inloggning och registrering -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    // Initialisera Netlify Identity
+    if (typeof netlifyIdentity !== "undefined") {
+      netlifyIdentity.init();
+    }
+    
     // Inloggning
     const loginForm = document.getElementById("login-form");
     loginForm.addEventListener("submit", function(event) {
@@ -281,9 +286,9 @@ form, button {
       })
       .catch((err) => alert("Felaktig inloggning"));
     });
-    // Glömt lösenord-delen har tagits bort eftersom det nu hanteras på en separat sida
   });
 </script>
+
 
 
 
