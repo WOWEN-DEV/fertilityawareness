@@ -281,13 +281,6 @@ form, button {
       })
       .catch((err) => alert("Felaktig inloggning"));
     });
-
-    // Registrering
-    const signupButton = document.getElementById("signup-button");
-    signupButton.addEventListener("click", function() {
-      netlifyIdentity.open('signup');
-    });
-
     // Glömt lösenord-delen har tagits bort eftersom det nu hanteras på en separat sida
   });
 </script>
