@@ -153,17 +153,14 @@
   // Hantera klick på "Logga ut"-knappen
   document.addEventListener('DOMContentLoaded', function() {
     const logoutButton = document.querySelector('[data-logout="true"]');
-    logoutButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      logoutUser();
-    });
+    if (logoutButton) {
+      logoutButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        logoutUser();
+      });
+    }
   });
 </script>
-
-
-
-
-
 
 
 
