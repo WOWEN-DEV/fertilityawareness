@@ -118,13 +118,24 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-  if (netlifyIdentity && netlifyIdentity.currentUser()) {
-    // Användaren är inloggad, visa webbplatsen
-  } else {
-    // Användaren är inte inloggad, omdirigera till inloggningssida
-    window.location.href = "/login";
-  }
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialisera Netlify Identity
+    if (typeof netlifyIdentity !== "undefined") {
+      netlifyIdentity.init();
+    }
+
+    // Kontrollera om användaren är inloggad
+    if (netlifyIdentity && netlifyIdentity.currentUser()) {
+      // Användaren är inloggad, visa webbplatsen
+      console.log("Användaren är inloggad"); // För felsökning
+    } else {
+      // Användaren är inte inloggad, omdirigera till inloggningssida
+      console.log("Användaren är inte inloggad, omdirigerar"); // För felsökning
+      window.location.href = "/login";
+    }
+  });
 </script>
+
 
     <div class="menu-s">
       <div class="menu-content-s">
