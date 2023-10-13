@@ -453,7 +453,7 @@ a.primary:hover::before {
 }
 
 .hero-content {
-  max-width: var(--width-4);
+  max-width: 1039px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
