@@ -162,11 +162,13 @@ window.onload = function() {
   }
 
   netlifyIdentity.on('ready', () => {
+    const user = netlifyIdentity.currentUser();
     console.log("Netlify Identity är redo");
-    handleUserStatus(netlifyIdentity.currentUser());
+    handleUserStatus(user);
+    if (user) {
+      resetLogoutTimer();
+    }
   });
-
-  netlifyIdentity.on('init', handleUserStatus);
 
   netlifyIdentity.on('login', (user) => {
     localStorage.removeItem('hasRedirected');
