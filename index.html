@@ -147,7 +147,7 @@ function handleUserStatus(user) {
 // Lyssna på 'ready' händelsen från Netlify Identity
 netlifyIdentity.on('ready', () => {
   console.log("Netlify Identity är redo");
-  handleUserStatus(netlifyIdentity.currentUser());
+  setTimeout(() => handleUserStatus(netlifyIdentity.currentUser()), 500);
 });
 
 // Lyssna på 'init' händelsen från Netlify Identity
