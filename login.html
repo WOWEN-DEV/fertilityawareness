@@ -285,17 +285,11 @@ form, button {
         })
         .catch((err) => {
           alert("Ogiltig mejladress eller lösenord.");
-          // Fallback-metod: Visa en knapp för manuell omdirigering
-          const fallbackButton = document.createElement("button");
-          fallbackButton.innerHTML = "Gå till startsidan";
-          fallbackButton.onclick = function() {
-            window.location.href = "https://app.fertilityawareness.wowen.tech/";
-          };
-          document.body.appendChild(fallbackButton);
         });
     });
   });
 </script>
+
 
 
 
