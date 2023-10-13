@@ -297,18 +297,20 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-      <script>
-    // Din JavaScript-kod här
-    window.onload = function() {
-      if (typeof netlifyIdentity !== "undefined") {
-        netlifyIdentity.init();
+<script>
+  window.addEventListener('load', function() {
+    if (typeof netlifyIdentity !== "undefined") {
+      netlifyIdentity.on('ready', function() {
         netlifyIdentity.logout();
         console.log("Användaren har loggats ut från Netlify Identity");
-      } else {
-        console.log("Netlify Identity är inte definierad");
-      }
-    };
-  </script>
+      });
+      netlifyIdentity.init();
+    } else {
+      console.log("Netlify Identity är inte definierad");
+    }
+  });
+</script>
+
   
   <!-- Vänster sida -->
    <div id="left-side">
