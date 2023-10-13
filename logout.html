@@ -299,21 +299,12 @@
 
 <script>
 window.addEventListener('load', function() {
-  setTimeout(function() {
-    if (typeof netlifyIdentity !== "undefined") {
-      netlifyIdentity.on('init', function(user) {
-        if (user) {
-          netlifyIdentity.logout();
-          console.log("Användaren har loggats ut från Netlify Identity");
-        } else {
-          console.log("Ingen användare är inloggad");
-        }
-      });
-      netlifyIdentity.init();
-    } else {
-      console.log("Netlify Identity är inte definierad");
-    }
-  }, 2000); // Fördröjning på 2 sekunder
+  if (typeof netlifyIdentity !== "undefined") {
+    netlifyIdentity.logout();
+    console.log("Användaren har loggats ut från Netlify Identity");
+  } else {
+    console.log("Netlify Identity är inte definierad");
+  }
 });
 </script>
 
