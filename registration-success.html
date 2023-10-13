@@ -425,7 +425,7 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const verificationToken = urlParams.get("confirmation_token");
                 if (verificationToken) {
-                    netlifyIdentity
+                    netlifyIdentity.gotrue
                         .confirm(verificationToken)
                         .then(() => {
                             window.location.href = "/login";
