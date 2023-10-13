@@ -380,8 +380,12 @@ a.primary:hover::before {
   width: 100%;
 }
 
+.button.menu-link-s {
+  margin-top: 0!important;
+}
+
 .menu-link-s {
-  margin-bottom: var(--spacing-1);
+  margin-bottom: 0!important;
 }
 
 .menu-footer-s {
