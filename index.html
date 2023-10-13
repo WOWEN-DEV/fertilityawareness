@@ -128,11 +128,19 @@ if (typeof netlifyIdentity !== "undefined") {
 
 // Ensam funktion för att hantera användarstatus
 function handleUserStatus(user) {
+  const currentPath = window.location.pathname;
   if (user) {
     console.log("Användaren är inloggad");
+    if (currentPath === "/login") {
+      // Omdirigera till huvudsidan om användaren är inloggad och är på inloggningssidan
+      window.location.href = "https://app.fertilityawareness.wowen.tech/";
+    }
   } else {
     console.log("Användaren är inte inloggad, omdirigerar");
-    window.location.href = "/login";
+    if (currentPath !== "/login") {
+      // Omdirigera endast om användaren inte redan är på inloggningssidan
+      window.location.href = "/login";
+    }
   }
 }
 
