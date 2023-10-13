@@ -667,6 +667,7 @@ a.primary:hover::before {
 @media only screen and (max-width: 1065px) {
   .values {
     display: block;
+    margin-top: -80px!important;
   }
 
   .card {
