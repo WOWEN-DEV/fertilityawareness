@@ -119,7 +119,6 @@
 
 <script>
 window.onload = function() {
-  // Kontrollera om Netlify Identity är definierad
   if (typeof netlifyIdentity !== "undefined") {
     console.log("Initialiserar Netlify Identity");
     netlifyIdentity.init();
@@ -127,12 +126,9 @@ window.onload = function() {
     console.log("Netlify Identity är inte definierad");
   }
 
-  // Ensam funktion för att hantera användarstatus
   function handleUserStatus(user) {
     const currentPath = window.location.pathname;
     const hasRedirected = localStorage.getItem('hasRedirected');
-
-    console.log(`Aktuell sökväg: ${currentPath}, har omdirigerats: ${hasRedirected}`);
 
     if (user) {
       console.log("Användaren är inloggad");
@@ -149,61 +145,26 @@ window.onload = function() {
     }
   }
 
-  // Lyssna på 'ready' händelsen från Netlify Identity
   netlifyIdentity.on('ready', () => {
     console.log("Netlify Identity är redo");
     handleUserStatus(netlifyIdentity.currentUser());
   });
 
-  // Lyssna på 'init' händelsen från Netlify Identity
   netlifyIdentity.on('init', handleUserStatus);
 
-  // Lyssna på 'login' händelsen från Netlify Identity
   netlifyIdentity.on('login', (user) => {
     localStorage.removeItem('hasRedirected');
     console.log("Användaren har loggats in");
     handleUserStatus(user);
   });
 
-  // Lyssna på 'logout' händelsen från Netlify Identity
   netlifyIdentity.on('logout', () => {
     localStorage.removeItem('hasRedirected');
     console.log("Användaren har loggats ut, omdirigerar");
     window.location.href = "/logout";
   });
-
-  // Funktion för att logga ut användaren
-  function logoutUser() {
-    console.log("Försöker logga ut användaren");
-    netlifyIdentity.logout();
-    window.location.href = "/logout";
-  }
-
-  // Hantera klick på "Logga ut"-knappen
-  const logoutButton = document.querySelector('[data-logout="true"]');
-  console.log("Logga ut-knappen:", logoutButton);
-  
-  if (logoutButton) {
-    console.log("Försöker lägga till event listener på Logga ut-knappen");
-    logoutButton.addEventListener('click', function(event) {
-      console.log("Logga ut-knappen klickad");
-      event.preventDefault();
-      logoutUser();
-    });
-  } else {
-    console.log("Logga ut-knappen hittades inte");
-  }
-
-  // Ny funktion för att hantera inaktivitet
-  let timeout;
-  document.onmousemove = function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      console.log("Användaren har varit inaktiv för länge, loggar ut");
-      logoutUser();
-    }, 600000); // 10 minuter
-  };
 };
+
 
 </script>
 
@@ -213,7 +174,8 @@ window.onload = function() {
       <div class="menu-content-s">
         <a href="#info"><h3 class="menu-link-s">Vad är det här?</h3></a>
         <a href="#integritetspolicy"><h3 class="menu-link-s">Integritetspolicy</h3></a>
-<button id="logoutButton">Logga ut</button>
+<a class="button menu-link-s" href="/logout">
+          <p>Logga ut</p>
           <div class="arrow-container-parent">
             <div class="arrow-container-child">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -251,20 +213,21 @@ window.onload = function() {
         <div class="flex-container" id="large-menu">
           <a class="menu-link primary" href="#info"><p>Vad är det här?</p></a>
           <a class="menu-link primary" href="#integritetspolicy"><p>Integritetspolicy</p></a>
-<button id="logoutButton">Logga ut</button>
-            <div class="arrow-container-parent">
-              <div class="arrow-container-child">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 8L13 8" stroke="black" stroke-linecap="round" />
-                  <path d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 8L13 8" stroke="black" stroke-linecap="round" />
-                  <path d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </div>
+<a class="button menu-link-s" href="/logout">
+          <p>Logga ut</p>
+          <div class="arrow-container-parent">
+            <div class="arrow-container-child">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 8L13 8" stroke="black" stroke-linecap="round" />
+                <path d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 8L13 8" stroke="black" stroke-linecap="round" />
+                <path d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
-          </a>
+          </div>
+        </a>
         </div>
         <div class="brgr-icon-wrapper">
           <div class="brgr-icon">
