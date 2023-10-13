@@ -118,48 +118,55 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-  // Initialisera Netlify Identity
-  if (typeof netlifyIdentity !== "undefined") {
-    console.log("Initialiserar Netlify Identity");
-    netlifyIdentity.init();
+// Kontrollera om Netlify Identity är definierad
+if (typeof netlifyIdentity !== "undefined") {
+  console.log("Initialiserar Netlify Identity");
+  netlifyIdentity.init();
+} else {
+  console.log("Netlify Identity är inte definierad");
+}
+
+// Ensam funktion för att hantera användarstatus
+function handleUserStatus(user) {
+  if (user) {
+    console.log("Användaren är inloggad");
+  } else {
+    console.log("Användaren är inte inloggad, omdirigerar");
+    window.location.href = "/login";
   }
+}
 
-  // Lyssna på 'ready' händelsen från Netlify Identity
-  netlifyIdentity.on('ready', () => {
-    console.log("Netlify Identity är redo");
-    
-    // Lyssna på 'init' händelsen från Netlify Identity
-    netlifyIdentity.on('init', user => {
-      if (user) {
-        // Användaren är inloggad, visa webbplatsen
-        console.log("Användaren är inloggad");
-      } else {
-        // Användaren är inte inloggad, omdirigera till inloggningssida
-        console.log("Användaren är inte inloggad, omdirigerar");
-        window.location.href = "/login";
-      }
-    });
-  });
+// Lyssna på 'ready' händelsen från Netlify Identity
+netlifyIdentity.on('ready', () => {
+  console.log("Netlify Identity är redo");
+  handleUserStatus(netlifyIdentity.currentUser());
+});
 
-  // Funktion för att logga ut användaren
-  function logoutUser() {
-    netlifyIdentity.logout();
-    netlifyIdentity.on('logout', () => {
-      console.log("Användaren har loggats ut, omdirigerar");
-      window.location.href = "/logout";
+// Lyssna på 'init' händelsen från Netlify Identity
+netlifyIdentity.on('init', handleUserStatus);
+
+// Lyssna på 'logout' händelsen från Netlify Identity
+netlifyIdentity.on('logout', () => {
+  console.log("Användaren har loggats ut, omdirigerar");
+  window.location.href = "/logout";
+});
+
+// Funktion för att logga ut användaren
+function logoutUser() {
+  netlifyIdentity.logout();
+}
+
+// Hantera klick på "Logga ut"-knappen
+document.addEventListener('DOMContentLoaded', function() {
+  const logoutButton = document.querySelector('[data-logout="true"]');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      logoutUser();
     });
   }
+});
 
-  // Hantera klick på "Logga ut"-knappen
-  document.addEventListener('DOMContentLoaded', function() {
-    const logoutButton = document.querySelector('[data-logout="true"]');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        logoutUser();
-      });
-    }
-  });
 </script>
 
 
