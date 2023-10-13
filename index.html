@@ -118,9 +118,6 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-// Global variabel för att förhindra oönskade omdirigeringar
-let hasRedirected = false;
-
 // Kontrollera om Netlify Identity är definierad
 if (typeof netlifyIdentity !== "undefined") {
   console.log("Initialiserar Netlify Identity");
@@ -131,19 +128,21 @@ if (typeof netlifyIdentity !== "undefined") {
 
 // Ensam funktion för att hantera användarstatus
 function handleUserStatus(user) {
-  if (hasRedirected) return; // Avbryt om en omdirigering redan har skett
-
   const currentPath = window.location.pathname;
+  const hasRedirected = localStorage.getItem('hasRedirected');
+
+  console.log(`Aktuell sökväg: ${currentPath}, har omdirigerats: ${hasRedirected}`);
+
   if (user) {
     console.log("Användaren är inloggad");
-    if (currentPath === "/login") {
-      hasRedirected = true; // Sätt hasRedirected till true för att förhindra ytterligare omdirigeringar
+    if (currentPath === "/login" && !hasRedirected) {
+      localStorage.setItem('hasRedirected', 'true');
       window.location.href = "https://app.fertilityawareness.wowen.tech/";
     }
   } else {
     console.log("Användaren är inte inloggad, omdirigerar");
-    if (currentPath !== "/login") {
-      hasRedirected = true; // Sätt hasRedirected till true för att förhindra ytterligare omdirigeringar
+    if (currentPath !== "/login" && !hasRedirected) {
+      localStorage.setItem('hasRedirected', 'true');
       window.location.href = "/login";
     }
   }
@@ -160,12 +159,14 @@ netlifyIdentity.on('init', handleUserStatus);
 
 // Lyssna på 'login' händelsen från Netlify Identity
 netlifyIdentity.on('login', (user) => {
+  localStorage.removeItem('hasRedirected');
   console.log("Användaren har loggats in");
   handleUserStatus(user);
 });
 
 // Lyssna på 'logout' händelsen från Netlify Identity
 netlifyIdentity.on('logout', () => {
+  localStorage.removeItem('hasRedirected');
   console.log("Användaren har loggats ut, omdirigerar");
   window.location.href = "/logout";
 });
