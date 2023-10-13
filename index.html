@@ -193,7 +193,18 @@ window.onload = function() {
   } else {
     console.log("Logga ut-knappen hittades inte");
   }
+
+  // Ny funktion för att hantera inaktivitet
+  let timeout;
+  document.onmousemove = function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      console.log("Användaren har varit inaktiv för länge, loggar ut");
+      logoutUser();
+    }, 600000); // 10 minuter
+  };
 };
+
 </script>
 
 
@@ -202,8 +213,7 @@ window.onload = function() {
       <div class="menu-content-s">
         <a href="#info"><h3 class="menu-link-s">Vad är det här?</h3></a>
         <a href="#integritetspolicy"><h3 class="menu-link-s">Integritetspolicy</h3></a>
-        <a class="button" data-logout="true">
-  <p>Logga ut</p>
+<button id="logoutButton">Logga ut</button>
           <div class="arrow-container-parent">
             <div class="arrow-container-child">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,8 +251,7 @@ window.onload = function() {
         <div class="flex-container" id="large-menu">
           <a class="menu-link primary" href="#info"><p>Vad är det här?</p></a>
           <a class="menu-link primary" href="#integritetspolicy"><p>Integritetspolicy</p></a>
-     <a class="button" data-logout="true">
-  <p>Logga ut</p>
+<button id="logoutButton">Logga ut</button>
             <div class="arrow-container-parent">
               <div class="arrow-container-child">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
