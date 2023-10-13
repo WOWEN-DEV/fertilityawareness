@@ -118,6 +118,9 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
+// Global variabel för att förhindra oönskade omdirigeringar
+let hasRedirected = false;
+
 // Kontrollera om Netlify Identity är definierad
 if (typeof netlifyIdentity !== "undefined") {
   console.log("Initialiserar Netlify Identity");
@@ -128,17 +131,19 @@ if (typeof netlifyIdentity !== "undefined") {
 
 // Ensam funktion för att hantera användarstatus
 function handleUserStatus(user) {
+  if (hasRedirected) return; // Avbryt om en omdirigering redan har skett
+
   const currentPath = window.location.pathname;
   if (user) {
     console.log("Användaren är inloggad");
     if (currentPath === "/login") {
-      // Omdirigera till huvudsidan om användaren är inloggad och är på inloggningssidan
+      hasRedirected = true; // Sätt hasRedirected till true för att förhindra ytterligare omdirigeringar
       window.location.href = "https://app.fertilityawareness.wowen.tech/";
     }
   } else {
     console.log("Användaren är inte inloggad, omdirigerar");
     if (currentPath !== "/login") {
-      // Omdirigera endast om användaren inte redan är på inloggningssidan
+      hasRedirected = true; // Sätt hasRedirected till true för att förhindra ytterligare omdirigeringar
       window.location.href = "/login";
     }
   }
