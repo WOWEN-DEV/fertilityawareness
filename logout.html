@@ -298,17 +298,24 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <script>
-  window.addEventListener('load', function() {
-    if (typeof netlifyIdentity !== "undefined") {
-      netlifyIdentity.on('ready', function() {
-        netlifyIdentity.logout();
-        console.log("Användaren har loggats ut från Netlify Identity");
-      });
-      netlifyIdentity.init();
-    } else {
-      console.log("Netlify Identity är inte definierad");
-    }
-  });
+window.addEventListener('load', function() {
+  if (typeof netlifyIdentity !== "undefined") {
+    netlifyIdentity.on('init', function(user) {
+      if (user) {
+        netlifyIdentity.logout().then(() => {
+          console.log("Användaren har loggats ut från Netlify Identity");
+        }).catch((err) => {
+          console.log("Fel vid utloggning: ", err);
+        });
+      } else {
+        console.log("Ingen användare är inloggad");
+      }
+    });
+    netlifyIdentity.init();
+  } else {
+    console.log("Netlify Identity är inte definierad");
+  }
+});
 </script>
 
   
