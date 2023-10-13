@@ -152,7 +152,7 @@
 
   // Hantera klick på "Logga ut"-knappen
   document.addEventListener('DOMContentLoaded', function() {
-    const logoutButton = document.getElementById('logoutButton');
+    const logoutButton = document.querySelector('[data-logout="true"]');
     logoutButton.addEventListener('click', function(event) {
       event.preventDefault();
       logoutUser();
@@ -166,12 +166,13 @@
 
 
 
+
     <div class="menu-s">
       <div class="menu-content-s">
         <a href="#info"><h3 class="menu-link-s">Vad är det här?</h3></a>
         <a href="#integritetspolicy"><h3 class="menu-link-s">Integritetspolicy</h3></a>
-        <a class="button menu-link-s" href="https://github.com/WOWEN-DEV" target="_blank" rel="noopener">
-          <p>Visa källa</p>
+        <a class="button" data-logout="true" href="#">
+  <p>Logga ut</p>
           <div class="arrow-container-parent">
             <div class="arrow-container-child">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +210,7 @@
         <div class="flex-container" id="large-menu">
           <a class="menu-link primary" href="#info"><p>Vad är det här?</p></a>
           <a class="menu-link primary" href="#integritetspolicy"><p>Integritetspolicy</p></a>
-      <a class="button" data-logout="true" href="https://github.com/WOWEN-DEV/fertilityawareness" target="_blank" rel="noopener">
+      <a class="button" data-logout="true" href="#">
   <p>Logga ut</p>
             <div class="arrow-container-parent">
               <div class="arrow-container-child">
