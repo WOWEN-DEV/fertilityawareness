@@ -173,7 +173,9 @@ netlifyIdentity.on('logout', () => {
 
 // Funktion för att logga ut användaren
 function logoutUser() {
+  console.log("Försöker logga ut användaren");
   netlifyIdentity.logout();
+  window.location.href = "/logout";
 }
 
 // Hantera klick på "Logga ut"-knappen
