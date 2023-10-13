@@ -120,21 +120,29 @@
 <script>
   // Initialisera Netlify Identity
   if (typeof netlifyIdentity !== "undefined") {
+    console.log("Initialiserar Netlify Identity");
     netlifyIdentity.init();
   }
 
-  // Lyssna på 'init' händelsen från Netlify Identity
-  netlifyIdentity.on('init', user => {
-    if (user) {
-      // Användaren är inloggad, visa webbplatsen
-      console.log("Användaren är inloggad"); // För felsökning
-    } else {
-      // Användaren är inte inloggad, omdirigera till inloggningssida
-      console.log("Användaren är inte inloggad, omdirigerar"); // För felsökning
-      window.location.href = "/login";
-    }
+  // Lyssna på 'ready' händelsen från Netlify Identity
+  netlifyIdentity.on('ready', () => {
+    console.log("Netlify Identity är redo");
+    
+    // Lyssna på 'init' händelsen från Netlify Identity
+    netlifyIdentity.on('init', user => {
+      if (user) {
+        // Användaren är inloggad, visa webbplatsen
+        console.log("Användaren är inloggad");
+      } else {
+        // Användaren är inte inloggad, omdirigera till inloggningssida
+        console.log("Användaren är inte inloggad, omdirigerar");
+        window.location.href = "/login";
+      }
+    });
   });
 </script>
+
+
 
 
 
