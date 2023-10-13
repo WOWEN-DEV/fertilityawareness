@@ -280,7 +280,7 @@ form, button {
       netlifyIdentity.gotrue.login(email, password)
         .then((user) => {
           console.log("Före omdirigering"); // Felsökningslogg
-          window.location.href = "/index.html"; // Absolut URL
+          window.location.href = "/"; // Ren URL
           console.log("Efter omdirigering"); // Felsökningslogg
         })
         .catch((err) => {
