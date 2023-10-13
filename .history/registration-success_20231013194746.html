@@ -420,10 +420,8 @@
                     netlifyIdentity.init();
                 }
 
-                console.log(netlifyIdentity);
-
                 const urlParams = new URLSearchParams(window.location.search);
-                const verificationToken = urlParams.get("confirmation_token");
+                const verificationToken = urlParams.get("token");
                 if (verificationToken) {
                     netlifyIdentity
                         .confirm(verificationToken)

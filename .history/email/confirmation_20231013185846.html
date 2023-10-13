@@ -1,0 +1,51 @@
+<div
+    style="
+        background-color: #f4f4f4;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    "
+>
+    <div
+        style="
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        "
+    >
+        <h1 style="color: #0b0431e0; text-align: center">
+            Bekräfta din registrering
+        </h1>
+        <p style="color: #0b0431e0; text-align: center">
+            Hej! För att slutföra din registrering, klicka på länken nedan:
+        </p>
+        <br />
+        <p style="text-align: center">
+            <a
+                href="{{ .SiteURL }}/registration-success?confirmation_token={{ .Token }}"
+                style="
+                    background-color: #10a37f;
+                    color: #ffffff;
+                    padding: 14px 20px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                "
+                >Bekräfta din e-post</a
+            >
+        </p>
+        <br />
+        <p style="color: #0b0431e0; text-align: center">
+            Om du inte har begärt denna bekräftelse, kan du ignorera detta mejl.
+        </p>
+        <p style="color: #0b0431e0; font-size: 12px; text-align: center">
+            © 2019-2023
+            <a
+                href="https://wowen.tech/"
+                style="color: #10a37f; text-decoration: underline"
+                >WOWEN</a
+            >. Alla rättigheter förbehållna.
+        </p>
+    </div>
+</div>
