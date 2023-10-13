@@ -140,7 +140,17 @@
       }
     });
   });
+
+  // Funktion för att logga ut användaren
+  function logoutUser() {
+    netlifyIdentity.logout();
+    netlifyIdentity.on('logout', () => {
+      console.log("Användaren har loggats ut, omdirigerar");
+      window.location.href = "/login";
+    });
+  }
 </script>
+
 
 
 
@@ -189,8 +199,9 @@
         <div class="flex-container" id="large-menu">
           <a class="menu-link primary" href="#info"><p>Vad är det här?</p></a>
           <a class="menu-link primary" href="#integritetspolicy"><p>Integritetspolicy</p></a>
-          <a class="button" href="https://github.com/WOWEN-DEV/fertilityawareness" target="_blank" rel="noopener">
-            <p>Visa källa</p>
+          <button class="button" onclick="logoutUser()">
+  <p>Logga ut</p>
+</button>
             <div class="arrow-container-parent">
               <div class="arrow-container-child">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
