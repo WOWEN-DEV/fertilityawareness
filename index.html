@@ -181,15 +181,17 @@ function logoutUser() {
 // Hantera klick på "Logga ut"-knappen
 document.addEventListener('DOMContentLoaded', function() {
   const logoutButton = document.querySelector('[data-logout="true"]');
-  console.log("Logga ut-knappen:", logoutButton);  // Lägg till denna rad för felsökning
+  console.log("Logga ut-knappen:", logoutButton);
+  
   if (logoutButton) {
+    console.log("Försöker lägga till event listener på Logga ut-knappen");
     logoutButton.addEventListener('click', function(event) {
-      console.log("Logga ut-knappen klickad");  // Lägg till denna rad för felsökning
+      console.log("Logga ut-knappen klickad");
       event.preventDefault();
       logoutUser();
     });
   } else {
-    console.log("Logga ut-knappen hittades inte");  // Lägg till denna rad för felsökning
+    console.log("Logga ut-knappen hittades inte");
   }
 });
 </script>
