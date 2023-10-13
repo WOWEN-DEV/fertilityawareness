@@ -283,6 +283,8 @@ window.onload = function() {
             chatMessage.innerHTML = `<p>${message}</p>`;
             chatBox.appendChild(chatMessage);
             chatInput.value = '';
+
+            console.log(netlifyIdentity.currentUser());
       
             // Send message to server
             fetch('https://fertilitet-wowen.de.aista.com/magic/system/openai/prompt?prompt=' + encodeURIComponent(message) + '&type=fertilai-v1', {
