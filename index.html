@@ -147,11 +147,17 @@ function handleUserStatus(user) {
 // Lyssna på 'ready' händelsen från Netlify Identity
 netlifyIdentity.on('ready', () => {
   console.log("Netlify Identity är redo");
-  setTimeout(() => handleUserStatus(netlifyIdentity.currentUser()), 500);
+  handleUserStatus(netlifyIdentity.currentUser());
 });
 
 // Lyssna på 'init' händelsen från Netlify Identity
 netlifyIdentity.on('init', handleUserStatus);
+
+// Lyssna på 'login' händelsen från Netlify Identity
+netlifyIdentity.on('login', (user) => {
+  console.log("Användaren har loggats in");
+  handleUserStatus(user);
+});
 
 // Lyssna på 'logout' händelsen från Netlify Identity
 netlifyIdentity.on('logout', () => {
