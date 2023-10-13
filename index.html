@@ -149,7 +149,17 @@
       window.location.href = "/login";
     });
   }
+
+  // Hantera klick på "Logga ut"-knappen
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      logoutUser();
+    });
+  });
 </script>
+
 
 
 
