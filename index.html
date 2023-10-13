@@ -467,12 +467,14 @@ window.onload = function() {
 
         const user = netlifyIdentity.currentUser();
         console.log(user);
-        if (user) {
+        const user1 = netlifyIdentity.gotrue.currentUser();
+        console.log(user1);
+        // if (user) {
 
-        } else {
-          // Redirect to login page
-          window.location.href = "/login";
-        }
+        // } else {
+        //   // Redirect to login page
+        //   window.location.href = "/login";
+        // }
       });
     </script>
 
