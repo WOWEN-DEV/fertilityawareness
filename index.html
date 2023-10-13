@@ -135,10 +135,11 @@ window.onload = function() {
   }
 
   if (typeof netlifyIdentity !== "undefined") {
-    console.log("Initialiserar Netlify Identity");
     netlifyIdentity.init();
   } else {
     console.log("Netlify Identity är inte definierad");
+    window.location.href = "/login";
+    return;
   }
 
   function handleUserStatus(user) {
@@ -154,32 +155,30 @@ window.onload = function() {
       resetLogoutTimer();
     } else {
       console.log("Användaren är inte inloggad, omdirigerar");
-      if (currentPath !== "/login" && !hasRedirected) {
-        localStorage.setItem('hasRedirected', 'true');
-        window.location.href = "/login";
-      }
+      localStorage.setItem('hasRedirected', 'true');
+      window.location.href = "/login";
     }
   }
 
   netlifyIdentity.on('ready', () => {
     const user = netlifyIdentity.currentUser();
-    console.log("Netlify Identity är redo");
-    handleUserStatus(user);
-    if (user) {
-      resetLogoutTimer();
+    if (!user) {
+      console.log("Ingen användare är inloggad, omdirigerar");
+      window.location.href = "/login";
+      return;
     }
+    handleUserStatus(user);
+    resetLogoutTimer();
   });
 
   netlifyIdentity.on('login', (user) => {
     localStorage.removeItem('hasRedirected');
-    console.log("Användaren har loggats in");
     handleUserStatus(user);
   });
 
   netlifyIdentity.on('logout', () => {
     localStorage.removeItem('hasRedirected');
-    console.log("Användaren har loggats ut, omdirigerar");
-    window.location.href = "/logout";
+    window.location.href = "/login";
   });
 
   document.addEventListener('mousemove', resetLogoutTimer);
