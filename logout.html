@@ -299,18 +299,20 @@
 
 <script>
 window.addEventListener('load', function() {
+  function handleUserStatus(user) {
+    if (user) {
+      netlifyIdentity.logout().then(() => {
+        console.log("Användaren har loggats ut från Netlify Identity");
+      }).catch((err) => {
+        console.log("Fel vid utloggning: ", err);
+      });
+    } else {
+      console.log("Ingen användare är inloggad");
+    }
+  }
+
   if (typeof netlifyIdentity !== "undefined") {
-    netlifyIdentity.on('init', function(user) {
-      if (user) {
-        netlifyIdentity.logout().then(() => {
-          console.log("Användaren har loggats ut från Netlify Identity");
-        }).catch((err) => {
-          console.log("Fel vid utloggning: ", err);
-        });
-      } else {
-        console.log("Ingen användare är inloggad");
-      }
-    });
+    netlifyIdentity.on('init', handleUserStatus);
     netlifyIdentity.init();
   } else {
     console.log("Netlify Identity är inte definierad");
