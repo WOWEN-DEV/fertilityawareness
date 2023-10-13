@@ -712,6 +712,7 @@ a.primary:hover::before {
 
   .button {
     width: 100%;
+    margin-top: 20px;
   }
 
   .guide-demo {
