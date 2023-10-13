@@ -124,6 +124,16 @@
 
 <script>
 window.onload = function() {
+  let logoutTimer;
+
+  function resetLogoutTimer() {
+    clearTimeout(logoutTimer);
+    logoutTimer = setTimeout(() => {
+      netlifyIdentity.logout();
+      console.log("Användaren har loggats ut pga inaktivitet");
+    }, 1800000); // 30 minuter
+  }
+
   if (typeof netlifyIdentity !== "undefined") {
     console.log("Initialiserar Netlify Identity");
     netlifyIdentity.init();
@@ -141,6 +151,7 @@ window.onload = function() {
         localStorage.setItem('hasRedirected', 'true');
         window.location.href = "https://app.fertilityawareness.wowen.tech/";
       }
+      resetLogoutTimer();
     } else {
       console.log("Användaren är inte inloggad, omdirigerar");
       if (currentPath !== "/login" && !hasRedirected) {
@@ -168,9 +179,10 @@ window.onload = function() {
     console.log("Användaren har loggats ut, omdirigerar");
     window.location.href = "/logout";
   });
+
+  document.addEventListener('mousemove', resetLogoutTimer);
+  document.addEventListener('keydown', resetLogoutTimer);
 };
-
-
 </script>
 
 
