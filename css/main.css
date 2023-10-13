@@ -384,10 +384,6 @@ a.primary:hover::before {
   margin-bottom: var(--spacing-1);
 }
 
-.button.menu-link-s {
-  margin-top: 0!important;
-}
-
 .menu-footer-s {
   align-self: flex-end;
   width: 100%;
