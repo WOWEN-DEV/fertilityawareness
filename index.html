@@ -118,68 +118,68 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-// Kontrollera om Netlify Identity är definierad
-if (typeof netlifyIdentity !== "undefined") {
-  console.log("Initialiserar Netlify Identity");
-  netlifyIdentity.init();
-} else {
-  console.log("Netlify Identity är inte definierad");
-}
-
-// Ensam funktion för att hantera användarstatus
-function handleUserStatus(user) {
-  const currentPath = window.location.pathname;
-  const hasRedirected = localStorage.getItem('hasRedirected');
-
-  console.log(`Aktuell sökväg: ${currentPath}, har omdirigerats: ${hasRedirected}`);
-
-  if (user) {
-    console.log("Användaren är inloggad");
-    if (currentPath === "/login" && !hasRedirected) {
-      localStorage.setItem('hasRedirected', 'true');
-      window.location.href = "https://app.fertilityawareness.wowen.tech/";
-    }
+window.onload = function() {
+  // Kontrollera om Netlify Identity är definierad
+  if (typeof netlifyIdentity !== "undefined") {
+    console.log("Initialiserar Netlify Identity");
+    netlifyIdentity.init();
   } else {
-    console.log("Användaren är inte inloggad, omdirigerar");
-    if (currentPath !== "/login" && !hasRedirected) {
-      localStorage.setItem('hasRedirected', 'true');
-      window.location.href = "/login";
+    console.log("Netlify Identity är inte definierad");
+  }
+
+  // Ensam funktion för att hantera användarstatus
+  function handleUserStatus(user) {
+    const currentPath = window.location.pathname;
+    const hasRedirected = localStorage.getItem('hasRedirected');
+
+    console.log(`Aktuell sökväg: ${currentPath}, har omdirigerats: ${hasRedirected}`);
+
+    if (user) {
+      console.log("Användaren är inloggad");
+      if (currentPath === "/login" && !hasRedirected) {
+        localStorage.setItem('hasRedirected', 'true');
+        window.location.href = "https://app.fertilityawareness.wowen.tech/";
+      }
+    } else {
+      console.log("Användaren är inte inloggad, omdirigerar");
+      if (currentPath !== "/login" && !hasRedirected) {
+        localStorage.setItem('hasRedirected', 'true');
+        window.location.href = "/login";
+      }
     }
   }
-}
 
-// Lyssna på 'ready' händelsen från Netlify Identity
-netlifyIdentity.on('ready', () => {
-  console.log("Netlify Identity är redo");
-  handleUserStatus(netlifyIdentity.currentUser());
-});
+  // Lyssna på 'ready' händelsen från Netlify Identity
+  netlifyIdentity.on('ready', () => {
+    console.log("Netlify Identity är redo");
+    handleUserStatus(netlifyIdentity.currentUser());
+  });
 
-// Lyssna på 'init' händelsen från Netlify Identity
-netlifyIdentity.on('init', handleUserStatus);
+  // Lyssna på 'init' händelsen från Netlify Identity
+  netlifyIdentity.on('init', handleUserStatus);
 
-// Lyssna på 'login' händelsen från Netlify Identity
-netlifyIdentity.on('login', (user) => {
-  localStorage.removeItem('hasRedirected');
-  console.log("Användaren har loggats in");
-  handleUserStatus(user);
-});
+  // Lyssna på 'login' händelsen från Netlify Identity
+  netlifyIdentity.on('login', (user) => {
+    localStorage.removeItem('hasRedirected');
+    console.log("Användaren har loggats in");
+    handleUserStatus(user);
+  });
 
-// Lyssna på 'logout' händelsen från Netlify Identity
-netlifyIdentity.on('logout', () => {
-  localStorage.removeItem('hasRedirected');
-  console.log("Användaren har loggats ut, omdirigerar");
-  window.location.href = "/logout";
-});
+  // Lyssna på 'logout' händelsen från Netlify Identity
+  netlifyIdentity.on('logout', () => {
+    localStorage.removeItem('hasRedirected');
+    console.log("Användaren har loggats ut, omdirigerar");
+    window.location.href = "/logout";
+  });
 
-// Funktion för att logga ut användaren
-function logoutUser() {
-  console.log("Försöker logga ut användaren");
-  netlifyIdentity.logout();
-  window.location.href = "/logout";
-}
+  // Funktion för att logga ut användaren
+  function logoutUser() {
+    console.log("Försöker logga ut användaren");
+    netlifyIdentity.logout();
+    window.location.href = "/logout";
+  }
 
-// Hantera klick på "Logga ut"-knappen
-document.addEventListener('DOMContentLoaded', function() {
+  // Hantera klick på "Logga ut"-knappen
   const logoutButton = document.querySelector('[data-logout="true"]');
   console.log("Logga ut-knappen:", logoutButton);
   
@@ -193,8 +193,9 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.log("Logga ut-knappen hittades inte");
   }
-});
+};
 </script>
+
 
 
     <div class="menu-s">
