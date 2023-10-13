@@ -283,8 +283,6 @@ window.onload = function() {
             chatMessage.innerHTML = `<p>${message}</p>`;
             chatBox.appendChild(chatMessage);
             chatInput.value = '';
-
-            console.log(netlifyIdentity.currentUser());
       
             // Send message to server
             fetch('https://fertilitet-wowen.de.aista.com/magic/system/openai/prompt?prompt=' + encodeURIComponent(message) + '&type=fertilai-v1', {
@@ -462,21 +460,15 @@ window.onload = function() {
     <!-- for authentication -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        netlifyIdentity.on('init', (user) => {
+          console.log(user);
+          console.log(netlifyIdentity.currentUser());
+        })
+
         // Initialisera Netlify Identity
         if (typeof netlifyIdentity !== "undefined") {
             netlifyIdentity.init();
         }
-
-        const user = netlifyIdentity.currentUser();
-        console.log(user);
-        const user1 = netlifyIdentity.gotrue.currentUser();
-        console.log(user1);
-        // if (user) {
-
-        // } else {
-        //   // Redirect to login page
-        //   window.location.href = "/login";
-        // }
       });
     </script>
 

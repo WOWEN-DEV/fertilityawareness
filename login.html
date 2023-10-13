@@ -374,20 +374,8 @@
                         .then((user) => {
                             console.log(user);
                             console.log("Före omdirigering"); // Felsökningslogg
-                            // window.location.href = "/"; // Ren URL
+                            window.location.href = "/"; // Ren URL
                             console.log("Efter omdirigering"); // Felsökningslogg
-
-                            // Wait for login event to be triggered
-                            netlifyIdentity.on("login", () => {
-                                // User logged in successfully
-                                // Get current user information using netlifyIdentity.currentUser()
-                                const currentUser =
-                                    netlifyIdentity.currentUser();
-                                console.log(currentUser);
-
-                                // Redirect to index.html or load content dynamically
-                                window.location.href = "/";
-                            });
                         })
                         .catch((err) => {
                             alert("Ogiltig mejladress eller lösenord.");
