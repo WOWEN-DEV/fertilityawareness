@@ -141,13 +141,15 @@
     });
   });
 
+  // Lyssna på 'logout' händelsen från Netlify Identity
+  netlifyIdentity.on('logout', () => {
+    console.log("Användaren har loggats ut, omdirigerar");
+    window.location.href = "https://app.fertilityawareness.wowen.tech/logout";
+  });
+
   // Funktion för att logga ut användaren
   function logoutUser() {
     netlifyIdentity.logout();
-    netlifyIdentity.on('logout', () => {
-      console.log("Användaren har loggats ut, omdirigerar");
-      window.location.href = "https://app.fertilityawareness.wowen.tech/logout";
-    });
   }
 
   // Hantera klick på "Logga ut"-knappen
@@ -161,6 +163,7 @@
     }
   });
 </script>
+
 
 
 
