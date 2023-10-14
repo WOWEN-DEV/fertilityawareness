@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutTimer = setTimeout(() => {
       logOut();
       console.log("Användaren har loggats ut pga inaktivitet");
-    }, 1800000); // 30 minuter
+    }, 5000); // 30 minuter
   }
 
   if (typeof netlifyIdentity !== "undefined") {
@@ -168,9 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   netlifyIdentity.on('init', () => {
     const userInfo = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
-    console.log(userInfo);
-    console.log(new Date().getTime());
-    console.log(netlifyIdentity.gotrue.currentUser());
 
     if (userInfo) {
       if (userInfo.expires_at > new Date().getTime()) {
