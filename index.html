@@ -461,9 +461,11 @@ window.onload = function() {
     <script>
       document.addEventListener("DOMContentLoaded", function () {        
         netlifyIdentity.on('init', (user) => {
-            console.log('init event', user);
-            console.log(netlifyIdentity.currentUser());
-            console.log(netlifyIdentity.gotrue.currentUser());
+            netlifyIdentity.refresh().then((user) => {
+              console.log('User refreshed', user);
+            }).catch((error) => {
+              console.error('Error refreshing user', error);
+            });
         });
 
         netlifyIdentity.gotrue.init();
