@@ -369,7 +369,7 @@
                     const email = document.getElementById("email").value;
                     const password = document.getElementById("password").value;
 
-                    netlifyIdentity
+                    netlifyIdentity.gotrue
                         .login(email, password)
                         .then((user) => {
                             console.log(user);
