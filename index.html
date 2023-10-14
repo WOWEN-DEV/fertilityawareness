@@ -161,7 +161,7 @@ window.onload = function() {
   }
 
   netlifyIdentity.on('init', () => {
-    const userState = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
+    const userInfo = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
 
     if (userInfo) {
       if (new Date(userInfo.expires_at) < new Date()) {
