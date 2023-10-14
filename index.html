@@ -125,13 +125,19 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   let logoutTimer;
+  
+  function logOut() {
+      netlifyIdentity.logout();
+      window.localStorage.removeItem("userInfo");
+      window.location.href = "/login";
+  }
 
   function resetLogoutTimer() {
     clearTimeout(logoutTimer);
     logoutTimer = setTimeout(() => {
-      netlifyIdentity.logout();
+      logOut();
       console.log("Användaren har loggats ut pga inaktivitet");
-    }, 5000); // 30 minuter
+    }, 1800000); // 30 minuter
   }
 
   if (typeof netlifyIdentity !== "undefined") {
@@ -175,12 +181,10 @@ document.addEventListener("DOMContentLoaded", function () {
           })
           .catch((err) => {
             console.log(err);
-            window.localStorage.removeItem("userInfo");
-            window.location.href = "/login";
+            logOut();
           })
       } else {
-        window.localStorage.removeItem("userInfo");
-        window.location.href = "/login";
+        logOut();
       }
     } else {
       window.location.href = "/login";
