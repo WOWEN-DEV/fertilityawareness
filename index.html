@@ -131,7 +131,7 @@ window.onload = function() {
     logoutTimer = setTimeout(() => {
       netlifyIdentity.logout();
       console.log("Användaren har loggats ut pga inaktivitet");
-    }, 1800000); // 30 minuter
+    }, 5000); // 30 minuter
   }
 
   if (typeof netlifyIdentity !== "undefined") {
@@ -160,16 +160,36 @@ window.onload = function() {
     }
   }
 
-  netlifyIdentity.on('ready', () => {
-    const user = netlifyIdentity.currentUser();
-    console.log(user);
-    if (!user) {
-      console.log("Ingen användare är inloggad, omdirigerar");
+  netlifyIdentity.on('init', () => {
+    const userState = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
+
+    if (userInfo) {
+      if (new Date(userInfo.expires_at) < new Date()) {
+        netlifyIdentity.gotrue
+          .login(userInfo.email, userInfo.password)
+          .then((user) => {
+            handleUserStatus(user);
+            resetLogoutTimer();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      } else {
+        window.localStorage.removeItem("userInfo");
+        window.location.href = "/login";
+      }
+    } else {
       window.location.href = "/login";
-      return;
     }
-    handleUserStatus(user);
-    resetLogoutTimer();
+    // const user = netlifyIdentity.currentUser();
+    // console.log(user);
+    // if (!user) {
+    //   console.log("Ingen användare är inloggad, omdirigerar");
+    //   window.location.href = "/login";
+    //   return;
+    // }
+    // handleUserStatus(user);
+    // resetLogoutTimer();
   });
 
   netlifyIdentity.on('login', (user) => {
@@ -187,7 +207,62 @@ window.onload = function() {
 };
 </script>
 
+<!-- for authentication -->
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {   
+    var userState;
+    var timer;
 
+    function logOut() {
+      netlifyIdentity.logout();
+      window.localStorage.removeItem("userInfo");
+      window.location.href = "/login";
+    }
+
+    function check() {
+      if (userState && new Date(userState.expires_at) < new Date()) {
+        logOut();
+      }
+    }
+
+    function update(expireTime) {
+      userState = {...userState, expires_at: expireTime};
+      window.localStorage.setItem("userInfo", userState);
+      clearTimeout(timer);
+      timer = setTimeout(check, 1800000);
+    }
+    
+    netlifyIdentity.on('init', (user) => {
+        userState = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
+
+        if (userInfo) {
+          if (new Date(userInfo.expires_at) < new Date()) {
+            netlifyIdentity.gotrue
+              .login(userInfo.email, userInfo.password)
+              .then((user) => {
+                userState = {
+                  ...userState,
+                  expires_at: user.token.expires_at,
+                };
+
+                update(userState);
+              })
+              .catch((err) => {
+                console.log(err);
+              })
+          } else {
+            logOut();
+          }
+        } else {
+          window.location.href = "/login";
+        }
+    });
+
+    netlifyIdentity.init({
+        token_lifetime: 1800,
+    });
+  });
+</script> -->
 
     <div class="menu-s">
       <div class="menu-content-s">
