@@ -459,15 +459,13 @@ window.onload = function() {
 
     <!-- for authentication -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Netlify Identity
-        netlifyIdentity.init().then((user) => {
-            console.log('init event', user);
-        });
-        
+      document.addEventListener("DOMContentLoaded", function () {        
         netlifyIdentity.on('init', (user) => {
             console.log('init event', user);
+            console.log(netlifyIdentity.currentUser());
         });
+
+        netlifyIdentity.init();
       });
     </script>
 
