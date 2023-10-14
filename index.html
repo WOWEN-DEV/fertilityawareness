@@ -162,6 +162,7 @@ window.onload = function() {
 
   netlifyIdentity.on('ready', () => {
     const user = netlifyIdentity.currentUser();
+    console.log(user);
     if (!user) {
       console.log("Ingen användare är inloggad, omdirigerar");
       window.location.href = "/login";
@@ -456,22 +457,6 @@ window.onload = function() {
       <p>Utvecklas av <a href="https://wowen.tech/" target="_blank" rel="noopener" class="secondary">WOWEN</a> © 2019-2023 WOWEN Tech.
       </p>
     </footer>
-
-    <!-- for authentication -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {        
-        netlifyIdentity.on('init', (user) => {
-            netlifyIdentity.refresh().then((user) => {
-              console.log('User refreshed', user);
-            }).catch((error) => {
-              console.error('Error refreshing user', error);
-            });
-        });
-
-        netlifyIdentity.init();
-      });
-    </script>
-
     
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"

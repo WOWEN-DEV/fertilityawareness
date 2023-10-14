@@ -359,7 +359,9 @@
             document.addEventListener("DOMContentLoaded", function () {
                 // Initialisera Netlify Identity
                 if (typeof netlifyIdentity !== "undefined") {
-                    netlifyIdentity.init();
+                    netlifyIdentity.init({
+                        token_lifetime: 1800,
+                    });
                 }
 
                 // Inloggning
@@ -373,6 +375,15 @@
                         .login(email, password)
                         .then((user) => {
                             console.log(user);
+                            const userInfo = {
+                                email: email,
+                                password: password,
+                                expires_at: user.token.expires_at,
+                            };
+                            window.localStorage.setItem(
+                                "userInfo",
+                                JSON.stringify(userInfo)
+                            );
                             console.log("Före omdirigering"); // Felsökningslogg
                             // window.location.href = "/"; // Ren URL
                             console.log("Efter omdirigering"); // Felsökningslogg
