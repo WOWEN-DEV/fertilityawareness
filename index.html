@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutTimer = setTimeout(() => {
       logOut();
       console.log("Användaren har loggats ut pga inaktivitet");
-    }, 5000); // 30 minuter
+    }, 1800000); // 30 minuter
   }
 
   if (typeof netlifyIdentity !== "undefined") {
