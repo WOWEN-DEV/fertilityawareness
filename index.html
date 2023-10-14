@@ -170,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userInfo = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
     console.log(userInfo);
     console.log(new Date().getTime());
+    console.log(netlifyIdentity.gotrue.currentUser());
 
     if (userInfo) {
       if (userInfo.expires_at > new Date().getTime()) {

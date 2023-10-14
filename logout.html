@@ -359,16 +359,16 @@
         <!-- End Google Tag Manager (noscript) -->
 
         <script>
-            window.addEventListener("load", function () {
+            window.addEventListener("DOMContentLoaded", function () {
                 if (typeof netlifyIdentity !== "undefined") {
                     netlifyIdentity.logout();
-                    window.localStorage.removeItem("userInfo");
                     console.log(
                         "Användaren har loggats ut från Netlify Identity"
                     );
                 } else {
                     console.log("Netlify Identity är inte definierad");
                 }
+                window.localStorage.removeItem("userInfo");
             });
         </script>
 
