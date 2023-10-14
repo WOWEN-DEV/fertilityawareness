@@ -163,9 +163,10 @@ document.addEventListener("DOMContentLoaded", function () {
   netlifyIdentity.on('init', () => {
     const userInfo = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
     console.log(userInfo);
+    console.log(new Date().getTime());
 
     if (userInfo) {
-      if (new Date(userInfo.expires_at) < new Date()) {
+      if (userInfo.expires_at < new Date().getTime()) {
         netlifyIdentity.gotrue
           .login(userInfo.email, userInfo.password)
           .then((user) => {
@@ -177,10 +178,12 @@ document.addEventListener("DOMContentLoaded", function () {
           })
       } else {
         window.localStorage.removeItem("userInfo");
-        window.location.href = "/login";
+        // window.location.href = "/login";
+        console.log("logout");
       }
     } else {
-      window.location.href = "/login";
+      // window.location.href = "/login";
+      console.log("logout");
     }
     // const user = netlifyIdentity.currentUser();
     // console.log(user);
