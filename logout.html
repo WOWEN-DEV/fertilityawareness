@@ -244,6 +244,10 @@
             }
             /* Mobil */
             @media only screen and (max-width: 1197px) {
+                body {
+                position: fixed;
+                width: 100%;
+                }
                 #left-side {
                     display: none;
                 }
@@ -263,12 +267,13 @@
                 }
                 h1 {
                     font-size: 2rem;
+                    font-weight: 550;
                 }
                 #footer-links a {
                     padding-right: 33px;
                 }
                 #footern {
-                    min-height: 25vh;
+                    display: none;
                 }
                 form,
                 button {

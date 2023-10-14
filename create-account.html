@@ -239,6 +239,10 @@
             }
             /* Mobil */
             @media only screen and (max-width: 1197px) {
+                body {
+                position: fixed;
+                width: 100%;
+                }
                 #left-side {
                     display: none;
                 }
@@ -254,16 +258,17 @@
                     padding: 16px;
                 }
                 button {
-                    padding: 17px 97px;
+                    padding: 17px 92px;
                 }
                 h1 {
                     font-size: 2rem;
+                    font-weight: 550;
                 }
                 #footer-links a {
                     padding-right: 33px;
                 }
                 #footern {
-                    min-height: 25vh;
+                    min-height: 8vh;
                 }
                 form,
                 button {
@@ -275,6 +280,16 @@
                     cursor: pointer;
                     margin-right: 0;
                     vertical-align: middle;
+                }
+                .checkbox-container {
+                    display: flex;
+                    align-items: center;
+                }
+                .checkbox-container label {
+                    margin-left: 8px; 
+                    display: inline; 
+                    white-space: nowrap;
+                    margin-top: -17px;
                 }
             }
             /* iPad */
@@ -404,6 +419,7 @@
                     Skapa konto
                 </button>
                 <div>
+                    <div class="checkbox-container">
                     <input type="checkbox" id="privacy-policy" required />
                     <label for="privacy-policy"
                         >Jag godkänner
@@ -411,8 +427,8 @@
                             href="https://wowen.tech/sv/integritetspolicy/"
                             target="_blank"
                             >integritetspolicyn</a
-                        >.</label
-                    >
+                        >.</label>
+                    </div>
                 </div>
             </form>
 
