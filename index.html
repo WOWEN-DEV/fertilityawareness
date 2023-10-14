@@ -463,6 +463,7 @@ window.onload = function() {
         netlifyIdentity.on('init', (user) => {
             console.log('init event', user);
             console.log(netlifyIdentity.currentUser());
+            console.log(netlifyIdentity.gotrue.currentUser());
         });
 
         netlifyIdentity.init();
