@@ -187,15 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       window.location.href = "/login";
     }
-    // const user = netlifyIdentity.currentUser();
-    // console.log(user);
-    // if (!user) {
-    //   console.log("Ingen användare är inloggad, omdirigerar");
-    //   window.location.href = "/login";
-    //   return;
-    // }
-    // handleUserStatus(user);
-    // resetLogoutTimer();
   });
 
   netlifyIdentity.on('login', (user) => {
