@@ -123,7 +123,7 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function () {
   let logoutTimer;
 
   function resetLogoutTimer() {
@@ -207,7 +207,7 @@ window.onload = function() {
 
   document.addEventListener('mousemove', resetLogoutTimer);
   document.addEventListener('keydown', resetLogoutTimer);
-};
+});
 </script>
 
 <!-- for authentication -->

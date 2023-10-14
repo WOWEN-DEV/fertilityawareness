@@ -359,9 +359,7 @@
             document.addEventListener("DOMContentLoaded", function () {
                 // Initialisera Netlify Identity
                 if (typeof netlifyIdentity !== "undefined") {
-                    netlifyIdentity.init({
-                        token_lifetime: 1800,
-                    });
+                    netlifyIdentity.init();
                 }
 
                 // Inloggning
