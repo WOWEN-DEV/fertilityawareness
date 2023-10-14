@@ -162,6 +162,7 @@ window.onload = function() {
 
   netlifyIdentity.on('init', () => {
     const userInfo = window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null;
+    console.log(userInfo);
 
     if (userInfo) {
       if (new Date(userInfo.expires_at) < new Date()) {
@@ -201,6 +202,8 @@ window.onload = function() {
     localStorage.removeItem('hasRedirected');
     window.location.href = "/login";
   });
+
+  netlifyIdentity.init();
 
   document.addEventListener('mousemove', resetLogoutTimer);
   document.addEventListener('keydown', resetLogoutTimer);
