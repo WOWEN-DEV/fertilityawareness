@@ -462,9 +462,19 @@ window.onload = function() {
       document.addEventListener("DOMContentLoaded", function () {
         // Wait for Netlify Identity to initialize
         netlifyIdentity.on('init', () => {
-          // Get current user information using netlifyIdentity.currentUser()
-          const currentUser = netlifyIdentity.currentUser();
-          console.log(currentUser);
+          // Retrieve user information from local storage
+          const userId = localStorage.getItem('userId');
+
+          // If user ID exists, fetch user data using API or other methods
+          if (userId) {
+            // Fetch user data using API or other methods
+            // Example:
+            fetchUserData(userId).then((userData) => {
+              console.log(userData);
+            }).catch((error) => {
+              console.error(error);
+            });
+          }
         });
 
         // Initialize Netlify Identity

@@ -372,11 +372,15 @@
                     netlifyIdentity.gotrue
                         .login(email, password)
                         .then((user) => {
-                            console.log(user);
+                            // User logged in successfully
+                            // Store user information in local storage
+                            localStorage.setItem(
+                                "userId",
+                                netlifyIdentity.currentUser().id
+                            );
                             console.log("Före omdirigering"); // Felsökningslogg
-                            // window.location.href = "/"; // Ren URL
+                            window.location.href = "/"; // Ren URL
                             console.log("Efter omdirigering"); // Felsökningslogg
-                            console.log(netlifyIdentity.currentUser());
                         })
                         .catch((err) => {
                             alert("Ogiltig mejladress eller lösenord.");
