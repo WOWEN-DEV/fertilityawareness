@@ -191,7 +191,7 @@
                 flex-direction: column;
                 min-height: 24vh;
             }
-            /* Mobil */
+            /* Mobile */
             @media only screen and (max-width: 1197px) {
                 body {
                 position: fixed;
@@ -247,7 +247,7 @@
                     font-size: 3rem;
                 }
             }
-            /* Mindre skärmar */
+            /* Smaller screens */
             @media only screen and (min-width: 950px) and (max-width: 1400px) {
                 button {
                     padding: 19px 103px;
@@ -264,11 +264,11 @@
                     border-radius: 3px;
                 }
             }
-            /* Gömmer logotypen som standard */
+            /* Hides the logo by default */
             #mobile-logo {
                 display: none;
             }
-            /* Visar logotypen endast på mobil */
+            /* Displays the logo on mobile only */
             @media only screen and (max-width: 1197px) {
                 #mobile-logo {
                     display: block;
@@ -297,7 +297,7 @@
         ></noscript>
         <!-- End Google Tag Manager (noscript) -->
 
-        <!-- Vänster sida -->
+        <!-- Left side -->
         <div id="left-side">
             <a href="https://wowen.tech/" target="_blank">
                 <img
@@ -312,7 +312,7 @@
                 alt="Fertilitetsförståelse"
             />
         </div>
-        <!-- Logotyp synlig endast på mobil -->
+        <!-- Logo visible on mobile only -->
         <div id="mobile-logo">
             <a href="https://wowen.tech/" target="_blank">
                 <img
@@ -321,9 +321,9 @@
                 />
             </a>
         </div>
-        <!-- Höger sida -->
+        <!-- Right side -->
         <div id="right-side">
-            <!-- Inloggningsformulär -->
+            <!-- Login form -->
             <h1>Logga in</h1>
             <form id="login-form">
                 <input type="email" id="email" placeholder="E-post" required />
@@ -360,15 +360,15 @@
             </div>
         </div>
 
-        <!-- JavaScript för inloggning och registrering -->
+        <!-- JavaScript for login and registration -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Initialisera Netlify Identity
+                // Initialize Netlify Identity
                 if (typeof netlifyIdentity !== "undefined") {
                     netlifyIdentity.init();
                 }
 
-                // Inloggning
+                // Login
                 const loginForm = document.getElementById("login-form");
                 loginForm.addEventListener("submit", function (event) {
                     event.preventDefault();
@@ -387,9 +387,9 @@
                                 "userInfo",
                                 JSON.stringify(userInfo)
                             );
-                            console.log("Före omdirigering"); // Felsökningslogg
-                            window.location.href = "/"; // Ren URL
-                            console.log("Efter omdirigering"); // Felsökningslogg
+                            console.log("Före omdirigering"); // Debugging log
+                            window.location.href = "/"; // Clean URL
+                            console.log("Efter omdirigering"); // Debugging log
                         })
                         .catch((err) => {
                             alert("Ogiltig mejladress eller lösenord.");

@@ -242,7 +242,7 @@
             *::after {
                 box-sizing: border-box;
             }
-            /* Mobil */
+            /* Mobile */
             @media only screen and (max-width: 1197px) {
                 body {
                 position: fixed;
@@ -307,7 +307,7 @@
                     font-size: 3rem;
                 }
             }
-            /* Mindre skärmar */
+            /* Smaller screens */
             @media only screen and (min-width: 950px) and (max-width: 1400px) {
                 button {
                     padding: 19px 103px;
@@ -324,11 +324,11 @@
                     border-radius: 3px;
                 }
             }
-            /* Gömmer logotypen som standard */
+            /* Hides the logo by default */
             #mobile-logo {
                 display: none;
             }
-            /* Visar logotypen endast på mobil */
+            /* Displays the logo on mobile only */
             @media only screen and (max-width: 1197px) {
                 #mobile-logo {
                     display: block;
@@ -357,7 +357,7 @@
         ></noscript>
         <!-- End Google Tag Manager (noscript) -->
 
-        <!-- Vänster sida -->
+        <!-- Left side -->
         <div id="left-side">
             <a href="https://wowen.tech/" target="_blank">
                 <img
@@ -372,7 +372,7 @@
                 alt="Fertilitetsförståelse"
             />
         </div>
-        <!-- Logotyp synlig endast på mobil -->
+        <!-- Logo visible on mobile only -->
         <div id="mobile-logo">
             <a href="https://wowen.tech/" target="_blank">
                 <img
@@ -381,7 +381,7 @@
                 />
             </a>
         </div>
-        <!-- Höger sida -->
+        <!-- Right side -->
         <div id="right-side">
             <a href="/login" id="back-to-login">
                 <svg
@@ -420,7 +420,7 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Initialisera Netlify Identity
+                // Initialize Netlify Identity
                 if (typeof netlifyIdentity !== "undefined") {
                     netlifyIdentity.init();
                 }
@@ -439,7 +439,7 @@
                         });
                 }
 
-                const registeredEmail = localStorage.getItem("registeredEmail"); // Hämta e-postadressen
+                const registeredEmail = localStorage.getItem("registeredEmail"); // Fetch email
                 if (registeredEmail) {
                     const h2Message = document.getElementById("h2-message");
                     h2Message.innerHTML = `<h2>Vi har skickat en verifieringslänk till:<br><span style="color: #10a37f; text-decoration: underline;">${registeredEmail}</span><br><br>Vänligen klicka på den för att slutföra din registrering.</h2>`;
