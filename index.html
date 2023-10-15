@@ -51,10 +51,37 @@ window.TallyConfig = {
     <meta content="summary_large_image" name="twitter:card">
     <link href="https://wowen.tech/assets/img/favicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://wowen.tech/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@8680887eb07db0511fe0b4eae2962cccc31b18ab/css/main.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@2f70b42cf56adc1379faa60b926a44b55ba95a06/css/prism.css" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css" /> -->
+
+    <script>
+      // JS code to dynamically load resources here
+      let resourceVersion = localStorage.getItem("resourceVersion") || 1;
+  
+      function loadResource(type, url) {
+        const element = document.createElement(type);
+        
+        if (type === "link") {
+          element.setAttribute("rel", "stylesheet");
+          element.setAttribute("href", `${url}?v=${resourceVersion}`);
+        } else if (type === "script") {
+          element.setAttribute("src", `${url}?v=${resourceVersion}`);
+        }
+        
+        document.head.appendChild(element);
+      }
+  
+      // Loading CSS
+      loadResource("link", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/main.css");
+      loadResource("link", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/prism.css");
+  
+      // Loading JS
+      loadResource("script", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/js/main.js");
+      
+      // Increase version with 1 and save it in localStorage
+      resourceVersion++;
+      localStorage.setItem("resourceVersion", resourceVersion);
+    </script>
     
     <script defer data-domain="wowen.tech" src="https://plausible.io/js/script.js"></script>
     
@@ -104,7 +131,7 @@ window.TallyConfig = {
     color: #0b0431c4;
   }
   .bot-message {
-    background-color: #10a37f61; /* new background color for bot's message */
+    background-color: #10a37f61; 
   }
   .bot-message p {
     color: #0b0431c4;
@@ -158,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutTimer = setTimeout(() => {
       logOut();
       console.log("Användaren har loggats ut pga inaktivitet");
-    }, 1800000); // 30 minuter
+    }, 1800000); // 30 minutes
   }
 
   if (typeof netlifyIdentity !== "undefined") {
@@ -510,7 +537,7 @@ document.addEventListener("DOMContentLoaded", function () {
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://www.unpkg.com/spltjs@1.1.0"></script>
-    <script src="https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/js/main.js"></script>
+
     
   </body>
 </html>
