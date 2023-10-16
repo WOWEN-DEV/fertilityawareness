@@ -184,14 +184,14 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(logoutTimer);
     logoutTimer = setTimeout(() => {
       logOut();
-      console.log("Användaren har loggats ut pga inaktivitet");
+      console.log("The user has been logged out due to inactivity");
     }, 1800000); // 30 minutes
   }
 
   if (typeof netlifyIdentity !== "undefined") {
     netlifyIdentity.init();
   } else {
-    console.log("Netlify Identity är inte definierad");
+    console.log("Netlify Identity is not defined");
     window.location.href = "/login";
     return;
   }
@@ -201,14 +201,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const hasRedirected = localStorage.getItem('hasRedirected');
 
     if (user) {
-      console.log("Användaren är inloggad");
+      console.log("The user is logged in");
       if (currentPath === "/login" && !hasRedirected) {
         localStorage.setItem('hasRedirected', 'true');
         window.location.href = "https://app.fertilityawareness.wowen.tech/";
       }
       resetLogoutTimer();
     } else {
-      console.log("Användaren är inte inloggad, omdirigerar");
+      console.log("The user is not logged in, redirecting");
       localStorage.setItem('hasRedirected', 'true');
       window.location.href = "/login";
     }
