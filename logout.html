@@ -368,10 +368,10 @@
                 if (typeof netlifyIdentity !== "undefined") {
                     netlifyIdentity.logout();
                     console.log(
-                        "Användaren har loggats ut från Netlify Identity"
+                        "The user has been logged out from Netlify Identity"
                     );
                 } else {
-                    console.log("Netlify Identity är inte definierad");
+                    console.log("Netlify Identity is not defined");
                 }
                 window.localStorage.removeItem("userInfo");
             });
