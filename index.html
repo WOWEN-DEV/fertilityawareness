@@ -54,8 +54,34 @@ window.TallyConfig = {
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css" /> -->
 
-    <link rel="stylesheet" href="https://app.fertilityawareness.wowen.tech/css/main.css">
-    <link rel="stylesheet" href="https://app.fertilityawareness.wowen.tech/css/prism.css">	  
+    <script>
+      // JS code to dynamically load resources here
+      let resourceVersion = localStorage.getItem("resourceVersion") || 1;
+
+      function loadResource(type, url) {
+        const element = document.createElement(type);
+
+        if (type === "link") {
+          element.setAttribute("rel", "stylesheet");
+          element.setAttribute("href", `${url}?v=${resourceVersion}`);
+        } else if (type === "script") {
+          element.setAttribute("src", `${url}?v=${resourceVersion}`);
+        }
+
+        document.head.appendChild(element);
+      }
+
+      // Loading CSS
+      loadResource("link", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/main.css");
+      loadResource("link", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/css/prism.css");
+
+      // Loading JS
+      loadResource("script", "https://cdn.jsdelivr.net/gh/WOWEN-DEV/fertilityawareness@main/js/main.js");
+
+      // Increase version with 1 and save it in localStorage
+      resourceVersion++;
+      localStorage.setItem("resourceVersion", resourceVersion);
+    </script>	  
     
     <script defer data-domain="wowen.tech" src="https://plausible.io/js/script.js"></script>
     
@@ -495,9 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <footer>
       <p>Utvecklas av <a href="https://wowen.tech/" target="_blank" rel="noopener" class="secondary">WOWEN</a> © 2019-2023 WOWEN Tech.
       </p>
-    </footer>
-
-    <script src="https://app.fertilityawareness.wowen.tech/js/main.js"></script>	  
+    </footer>  
     
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
