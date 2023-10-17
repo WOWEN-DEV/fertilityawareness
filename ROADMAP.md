@@ -1,3 +1,5 @@
+![WOWEN Tech Logo](https://github.com/WOWEN-DEV/wowen.tech/blob/main/assets/img/wowen-tech-repo-logo.svg)
+
 # FertilityAwarenessAI Roadmap
 
 This document outlines the upcoming releases and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly.
