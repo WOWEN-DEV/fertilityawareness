@@ -9,6 +9,9 @@ The Fertility Awareness App is a digital assistant designed to democratize acces
 ## Roadmap
 
 [This document](ROADMAP.md) outlines the upcoming releases and features planned for FertilityAwarenessAI.
+- **Version 1.0.0 (beta) – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **Version 2.0.0 (beta) – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **Version 3.0.0 (Cervix) – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 ## Contributing
 
