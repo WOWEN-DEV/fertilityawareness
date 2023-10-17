@@ -6,6 +6,10 @@
 
 The Fertility Awareness App is a digital assistant designed to democratize access to fertility understanding and women's health. Our aim is to provide reliable, quick, and easily accessible information to power women in taking control of their reproductive health.
 
+## Roadmap
+
+[This document](ROADMAP.md) outlines the upcoming releases and features planned for FertilityAwarenessAI.
+
 ## Contributing
 
 We welcome contributions from the FemTech Dev Community. If you'd like to contribute to our projects, please follow our [Contributing Guidelines](CONTRIBUTING.md).
