@@ -4,7 +4,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ---
 
-## Version 1.0.0 (beta) – Current Version
+## Version 1.0.0 (beta) – Current Version ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow) / ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
 - **Status**: In Development
 - **Expected Release Date**: [October 23, 2023]
 - **Features**:
@@ -13,7 +13,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ---
 
-## Version 2.0.0 (beta) – Beta Upgrade
+## Version 2.0.0 (beta) – Beta Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **Status**: Planned
 - **Expected Release Date**: [TBD]
 - **Features**:
@@ -22,7 +22,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ---
 
-## Version 3.0.0 (Cervix) – Release Version
+## Version 3.0.0 (Cervix) – Release Version ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **Status**: Planned
 - **Expected Release Date**: [TBD]
 - **Features**:
