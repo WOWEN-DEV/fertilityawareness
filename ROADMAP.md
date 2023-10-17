@@ -35,4 +35,4 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 **Note**: All features, versions and release dates are subject to change.
 
-For more detailed discussions and updates, please refer to [Discussions](https://github.com/[WOWEN-DEV]/[fertilityawareness]/discussions), [Milestones](https://github.com/[WOWEN-DEV]/[fertilityawareness]/milestones), and [Issues](https://github.com/[WOWEN-DEV]/[fertilityawareness]/issues)
+For more detailed discussions and updates, please refer to [Discussions](https://github.com/[WOWEN-DEV]/[fertilityawareness]/discussions), [Milestones](https://github.com/[WOWEN-DEV]/[fertilityawareness]/milestones), and [Issues](https://github.com/[WOWEN-DEV]/[fertilityawareness]/issues).
