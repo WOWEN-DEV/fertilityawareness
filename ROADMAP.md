@@ -14,7 +14,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 ---
 
 ## Version 2.0.0 (beta) – Beta Upgrade
-- **Status**: In Development
+- **Status**: Planned
 - **Expected Release Date**: [TBD]
 - **Features**:
   - **Image Upload**: Soon you will be able to upload images like menstrual cycle charts and blood tests directly onto the platform.
