@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b86ae6b4-7487-4cc1-b96a-0925766438c0/deploy-status)](https://app.netlify.com/sites/wowen/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8c207e4-671d-42e5-acaf-4ed3e27934f0/deploy-status)](https://app.netlify.com/sites/fertilityawareness/deploys)
 
 # Fertility Awareness [FertilityAwarenessAI]
 
