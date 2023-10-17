@@ -8,7 +8,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 - **Status**: In Development
 - **Expected Release Date**: [October 23, 2023]
 - **Features**:
-  - Initial access to FertilityAwarenessAI.
+  - Initial access to FertilityAwarenessAI, on a simple static set up.
   - Limited access to the main model for testing with a smaller group of users.
 
 ---
