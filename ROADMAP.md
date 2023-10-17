@@ -6,6 +6,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ## Version 1.0.0 (beta) – Current Version
 - **Status**: In Development
+- **Expected Release Date**: [2023-10-22]
 - **Features**:
   - Initial access to FertilityAwarenessAI.
   - Limited access to the main model for testing with a smaller group of users.
