@@ -6,7 +6,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ## Version 1.0.0 (beta) – Current Version
 - **Status**: In Development
-- **Expected Release Date**: [2023-10-22]
+- **Expected Release Date**: [October 23, 2023]
 - **Features**:
   - Initial access to FertilityAwarenessAI.
   - Limited access to the main model for testing with a smaller group of users.
@@ -15,7 +15,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ## Version 2.0.0 (beta) – Beta Upgrade
 - **Status**: In Development
-- **Expected Release Date**: [Insert Date]
+- **Expected Release Date**: [TBD]
 - **Features**:
   - **Image Upload**: Soon you will be able to upload images like menstrual cycle charts and blood tests directly onto the platform.
   - **Improved UI**: The new version will include history, presets, export and import functionalities, along with a bilingual user interface.
@@ -24,7 +24,7 @@ This document outlines the upcoming releases and features planned for FertilityA
 
 ## Version 3.0.0 (Cervix) – Release Version
 - **Status**: Planned
-- **Expected Release Date**: [Insert Date]
+- **Expected Release Date**: [TBD]
 - **Features**:
   - **Third-party App Integration**: Capability to integrate FertilityAwarenessAI with other tools such as Tempdrop.
   - **Web App, iPhone and Android Apps**: Plus a secret feature.
@@ -36,5 +36,3 @@ This document outlines the upcoming releases and features planned for FertilityA
 **Note**: All features, versions and release dates are subject to change.
 
 For more detailed discussions and updates, please refer to [Discussions](https://github.com/[WOWEN-DEV]/[fertilityawareness]/discussions), [Milestones](https://github.com/[WOWEN-DEV]/[fertilityawareness]/milestones), and [Issues](https://github.com/[WOWEN-DEV]/[fertilityawareness]/issues)
-
-
