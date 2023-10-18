@@ -4,7 +4,7 @@ const OpenAI = require("openai");
 exports.handler = async function(event, context) {
   
   // Creates a new instance of the API library with API key
-  const openai = new OpenAI(process.env.CERVIX_API_KEY);
+  const openai = new OpenAI(process.env.OPENAI_API_KEY);
   
   // Retrieves the users input from the query string
   const userInput = event.queryStringParameters.text;
