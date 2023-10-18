@@ -333,8 +333,8 @@ document.addEventListener("DOMContentLoaded", function () {
             chatInput.value = '';
       
             // Send message to server
-            fetch('https://fertilitet-wowen.de.aista.com/magic/system/openai/prompt?prompt=' + encodeURIComponent(message) + '&type=fertilai-v1', {
-              method: 'GET',
+            fetch('/.netlify/functions/cervixRequest?text=' + encodeURIComponent(message), {
+            method: 'GET',
             })
             .then(res => res.json())
             .then(data => {
