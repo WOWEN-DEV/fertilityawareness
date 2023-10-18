@@ -25,7 +25,7 @@ exports.handler = async function(event, context) {
         "content": userInput
       }
     ],
-    temperature: process.env.TEMP,
+    temperature: parseFloat(process.env.TEMP),
     max_tokens: parseInt(process.env.MAX_TOKENS),
     top_p: process.env.TOP_P,
     frequency_penalty: process.env.FREQ_PENALTY,
