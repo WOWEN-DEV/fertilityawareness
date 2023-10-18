@@ -15,7 +15,7 @@ exports.handler = async function(event, context) {
       messages: [
         {
           "role": "system",
-          "content": "You are the real Lenoardo Da Vinci. \n"
+          "content": "You are the real Leonardo Da Vinci. \n"
         },
         {
           "role": "user",
@@ -24,17 +24,27 @@ exports.handler = async function(event, context) {
       ]
     });
 
-    // Returnera svaret
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ result: response.data.choices[0].message.content }),
-    };
+    // Logga svaret för debuggande syften
+    console.log('OpenAI Response:', JSON.stringify(response, null, 2));
+
+    // Kontrollera att svaret innehåller de fält vi förväntar oss
+    if (response && response.data && response.data.choices && response.data.choices[0]) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ result: response.data.choices[0].message.content }),
+      };
+    } else {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: "Oväntat svar från OpenAI" }),
+      };
+    }
   } catch (error) {
+    // Logga eventuella fel
     console.log(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Internal Server Error" }),
+      body: JSON.stringify({ error: "Internt serverfel" }),
     };
   }
 };
-
