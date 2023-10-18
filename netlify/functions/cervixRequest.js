@@ -10,31 +10,43 @@ exports.handler = async function(event, context) {
   const userInput = event.queryStringParameters.text;
   
   // Concatenates the content from the two environment variables into a complete string
- const fullContent = process.env.CONTENT_PART1 + process.env.CONTENT_PART2;
+  const fullContent = process.env.CONTENT_PART1 + process.env.CONTENT_PART2;
 
   // Creates an API call to model with the specified parameters
-  const response = await openai.chat.completions.create({
-    model: process.env.MODEL_NAME,
-    messages: [
-      {
-        "role": process.env.ROLE,
-        "content": fullContent
-      },
-      {
-        "role": "user",
-        "content": userInput
-      }
-    ],
-    temperature: parseFloat(process.env.TEMP),
-    max_tokens: parseInt(process.env.MAX_TOKENS),
-    top_p: parseFloat(process.env.TOP_P),
-    frequency_penalty: parseFloat(process.env.FREQ_PENALTY),
-    presence_penalty: parseFloat(process.env.PRESENCE_PENALTY),
-  });
+  let response;
+  try {
+    response = await openai.chat.completions.create({
+      model: process.env.MODEL_NAME,
+      messages: [
+        {
+          "role": process.env.ROLE,
+          "content": fullContent
+        },
+        {
+          "role": "user",
+          "content": userInput
+        }
+      ],
+      temperature: parseFloat(process.env.TEMP),
+      max_tokens: parseInt(process.env.MAX_TOKENS),
+      top_p: parseFloat(process.env.TOP_P),
+      frequency_penalty: parseFloat(process.env.FREQ_PENALTY),
+      presence_penalty: parseFloat(process.env.PRESENCE_PENALTY),
+    });
+
+    // Log whole answer to see what it says
+    console.log("API Response:", JSON.stringify(response, null, 2));
+  } catch (error) {
+    console.log("API Error:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({error: "API Error"}),
+    };
+  }
   
   // Returns response to the client
   return {
     statusCode: 200,
-    body: JSON.stringify({result: response.choices[0].text.trim()}),
+    body: JSON.stringify({result: response.choices[0]?.text?.trim() || "Inget svar från modellen"}),
   };
 };
