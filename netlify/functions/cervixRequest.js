@@ -36,16 +36,6 @@ exports.handler = async function(event, context) {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-
-    // Loggar hela svaret för att se vad det säger
-    console.log("API Response:", JSON.stringify(response, null, 2));
-  } catch (error) {
-    console.log("API Error:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({error: "API Error"}),
-    };
-  }
   
   // Returnerar svaret till klienten
   return {
