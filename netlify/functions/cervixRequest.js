@@ -21,17 +21,22 @@ exports.handler = async function(event, context) {
           "role": "user",
           "content": inputText
         }
-      ]
+      ],
+      temperature: 0.76,
+      max_tokens: 1067,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
     });
 
     // Logga svaret för debuggande syften
     console.log('OpenAI Response:', JSON.stringify(response, null, 2));
 
     // Kontrollera att svaret innehåller de fält vi förväntar oss
-    if (response && response.data && response.data.choices && response.data.choices[0]) {
+    if (response && response.choices && response.choices[0]) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ result: response.data.choices[0].message.content }),
+        body: JSON.stringify({ result: response.choices[0].message.content }),
       };
     } else {
       return {
