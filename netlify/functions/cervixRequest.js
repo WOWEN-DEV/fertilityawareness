@@ -1,25 +1,28 @@
-const OpenAI = require("openai");
+// Använd nyare import-syntax för att matcha det OpenAI rekommenderar
+import OpenAI from "openai";
 
-// Function that handles serverless calls
+// Funktion som hanterar serverlösa anrop
 exports.handler = async function(event, context) {
   
-  // Creates a new instance of the API library with API key
-  const openai = new OpenAI(process.env.OPENAI_API_KEY);
+  // Skapar en ny instans av API-biblioteket med API-nyckeln
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
   
-  // Retrieves the users input from the query string
+  // Hämtar användarens inmatning från frågesträngen
   const userInput = event.queryStringParameters.text;
   
-  // Concatenates the content from the two environment variables into a complete string
+  // Sammansätter innehållet från de två miljövariablerna till en fullständig sträng
   const fullContent = process.env.CONTENT_PART1 + process.env.CONTENT_PART2;
 
-  // Creates an API call to model with the specified parameters
+  // Skapar ett API-anrop till modellen med de angivna parametrarna
   let response;
   try {
     response = await openai.chat.completions.create({
       model: process.env.MODEL_NAME,
       messages: [
         {
-          "role": process.env.ROLE,
+          "role": "system",
           "content": fullContent
         },
         {
@@ -27,14 +30,14 @@ exports.handler = async function(event, context) {
           "content": userInput
         }
       ],
-      temperature: parseFloat(process.env.TEMP),
-      max_tokens: parseInt(process.env.MAX_TOKENS),
-      top_p: parseFloat(process.env.TOP_P),
-      frequency_penalty: parseFloat(process.env.FREQ_PENALTY),
-      presence_penalty: parseFloat(process.env.PRESENCE_PENALTY),
+      temperature: 0.76,
+      max_tokens: 1067,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
     });
 
-    // Log whole answer to see what it says
+    // Loggar hela svaret för att se vad det säger
     console.log("API Response:", JSON.stringify(response, null, 2));
   } catch (error) {
     console.log("API Error:", error);
@@ -44,7 +47,7 @@ exports.handler = async function(event, context) {
     };
   }
   
-  // Returns response to the client
+  // Returnerar svaret till klienten
   return {
     statusCode: 200,
     body: JSON.stringify({result: response.choices[0]?.message?.content?.trim() || "Inget svar från modellen"}),
