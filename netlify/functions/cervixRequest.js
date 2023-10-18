@@ -27,7 +27,7 @@ exports.handler = async function(event, context) {
     ],
     temperature: parseFloat(process.env.TEMP),
     max_tokens: parseInt(process.env.MAX_TOKENS),
-    top_p: process.env.TOP_P,
+    top_p: parseFloat(process.env.TOP_P),
     frequency_penalty: process.env.FREQ_PENALTY,
     presence_penalty: process.env.PRESENCE_PENALTY,
   });
