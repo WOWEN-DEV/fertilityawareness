@@ -47,6 +47,6 @@ exports.handler = async function(event, context) {
   // Returns response to the client
   return {
     statusCode: 200,
-    body: JSON.stringify({result: response.choices[0]?.text?.trim() || "Inget svar från modellen"}),
+    body: JSON.stringify({result: response.choices[0]?.message?.content?.trim() || "Inget svar från modellen"}),
   };
 };
