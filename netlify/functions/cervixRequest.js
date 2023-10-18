@@ -31,7 +31,7 @@ exports.handler = async function(event, context) {
         }
       ],
       temperature: 0.76,
-      max_tokens: 1067,
+      max_tokens: 500,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
