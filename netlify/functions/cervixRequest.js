@@ -15,7 +15,7 @@ exports.handler = async function(event, context) {
       messages: [
         {
           "role": "system",
-          "content": "You are the real Leonardo Da Vinci. \n"
+          "content": process.env.CONTENT_PART1 + process.env.CONTENT_PART2 + " \n"
         },
         {
           "role": "user",
