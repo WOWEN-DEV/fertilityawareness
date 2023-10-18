@@ -1,4 +1,4 @@
-const API_LIB = require(process.env.API_LIBRARY);
+const API_LIB = require("openai");
 
 // Function that handles serverless calls
 exports.handler = async function(event, context) {
@@ -33,7 +33,7 @@ exports.handler = async function(event, context) {
   });
   
   // Returns response to the client
-  return {
+   return {
     statusCode: 200,
     body: JSON.stringify({result: response.choices[0].text.trim()}),
   };
