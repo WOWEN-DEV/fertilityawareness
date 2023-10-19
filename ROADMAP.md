@@ -2,7 +2,7 @@
 
 # FertilityAwarenessAI Roadmap
 
-This document outlines the upcoming releases and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly.
+This document outlines development, the upcoming releases, and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly.
 
 ---
 
