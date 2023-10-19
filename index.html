@@ -333,9 +333,9 @@ document.addEventListener("DOMContentLoaded", function () {
             chatInput.value = '';
       
             // Send message to server
-            fetch('/.netlify/functions/cervixRequest?text=' + encodeURIComponent(message), {
+            fetch('https://6qchbw3qg8.execute-api.eu-north-1.amazonaws.com/FertilityAwarenessAI?text=' + encodeURIComponent(message), {
             method: 'GET',
-            })
+             })
             .then(res => res.json())
             .then(data => {
               const chatMessage = document.createElement('div'); 
