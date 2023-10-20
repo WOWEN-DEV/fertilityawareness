@@ -78,6 +78,6 @@ This release version, dubbed "Cervix," is designed to be a comprehensive solutio
 
 ---
 
-**Note**: All features, versions and release dates are subject to change.
+**Note**: All features, versions, release dates, and information are subject to change.
 
 For more detailed discussions and updates, please refer to our [README.md](README.md), [Discussions](https://github.com/WOWEN-DEV/fertilityawareness/discussions), [Milestones](https://github.com/WOWEN-DEV/fertilityawareness/milestones), and [Issues](https://github.com/WOWEN-DEV/fertilityawareness/issues).
