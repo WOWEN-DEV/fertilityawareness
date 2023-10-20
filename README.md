@@ -27,14 +27,14 @@ The Fertility Awareness AI App is a digital assistant designed to democratize ac
 [The Roadmap Document](ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
 
 [Platform Fullstack Version](https://github.com/WOWEN-DEV/fertilityawareness/edit/main/ROADMAP.md#platform-fullstack-version)
-- **Version 1.0.0 (Alpha) – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
-- **Version 2.0.0 (Beta) – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
-- **Version 3.0.0 (Beta) – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
-- **Version 4.0.0 (Cervix) – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 2.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 4.0.0 (Cervix)` – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 [AI Model](https://github.com/WOWEN-DEV/fertilityawareness/edit/main/ROADMAP.md#ai-model--brief-roadmap)
-- **Iteration 1 – Base Model:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
-- **Iteration 2 and Subsequent Versions – fertilityawareness-v1, v2, v3, etc.:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **Iteration 1 – `Base Model`:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **Iteration 2 and Subsequent Versions – `fertilityawareness-v1, v2, v3`, etc.:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 ## Developer Documentation: Technical Architecture and Stack Overview
 Our technical infrastructure is designed to be robust and scalable, leveraging a variety of technologies and services. Below is a detailed breakdown of our current setup:
