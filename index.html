@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function logOut() {
       netlifyIdentity.logout();
       window.localStorage.removeItem("userInfo");
-      window.location.href = "/login";
+      window.location.href = "/login.html";
   }
 
   function resetLogoutTimer() {
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     netlifyIdentity.init();
   } else {
     console.log("Netlify Identity is not defined");
-    window.location.href = "/login";
+    window.location.href = "/login.html";
     return;
   }
 
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (user) {
       console.log("The user is logged in");
-      if (currentPath === "/login" && !hasRedirected) {
+      if (currentPath === "/login.html" && !hasRedirected) {
         localStorage.setItem('hasRedirected', 'true');
         window.location.href = "https://app.fertilityawareness.wowen.tech/";
       }
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("The user is not logged in, redirecting");
       localStorage.setItem('hasRedirected', 'true');
-      window.location.href = "/login";
+      window.location.href = "/login.html";
     }
   }
 
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         logOut();
       }
     } else {
-      window.location.href = "/login";
+      window.location.href = "/login.html";
     }
   });
 
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   netlifyIdentity.on('logout', () => {
     localStorage.removeItem('hasRedirected');
-    window.location.href = "/login";
+    window.location.href = "/login.html";
   });
 
   netlifyIdentity.init();
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="#info"><h3 class="menu-link-s">Vad är det här?</h3></a>
         <a href="#integritetspolicy"><h3 class="menu-link-s">Integritetspolicy</h3></a>
 	<a href="https://github.com/WOWEN-DEV/fertilityawareness" target="_blank"><h3 class="menu-link-s">Följ på GitHub</h3></a>    
- <a class="button" data-logout="true" href="/logout">
+ <a class="button" data-logout="true" href="/logout.html">
   <p>Logga ut</p>
           <div class="arrow-container-parent">
             <div class="arrow-container-child">
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <a class="menu-link primary" href="#info"><p>Vad är det här?</p></a>
           <a class="menu-link primary" href="#integritetspolicy"><p>Integritetspolicy</p></a>
           <a class="menu-link primary" href="https://github.com/WOWEN-DEV/fertilityawareness" target="_blank"><p>Följ på GitHub</p></a>
-          <a class="button" data-logout="true" href="/logout">
+          <a class="button" data-logout="true" href="/logout.html">
           <p>Logga ut</p> 
           <div class="arrow-container-parent">
             <div class="arrow-container-child">
