@@ -2,7 +2,7 @@
 
 # FertilityAwarenessAI Roadmap
 
-To get a grip on our technical architecture and tech stack, please refer to the [Developer Documentation: Technical Architecture and Stack Overview](https://github.com/WOWEN-DEV/fertilityawareness/edit/main/README.md#developer-documentation-technical-architecture-and-stack-overview) section in our [README.md](README.md) document. This document outlines development, the upcoming releases, and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly!
+To get a grip on our technical architecture and tech stack, please refer to the [Developer Documentation: Technical Architecture and Stack Overview](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/README.md#developer-documentation-technical-architecture-and-stack-overview) section in our [README.md](README.md) document. This document outlines development, the upcoming releases, and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly!
 
 # Explanation of Terms in the Roadmap
 
@@ -80,4 +80,4 @@ This release version, dubbed "Cervix," is designed to be a comprehensive solutio
 
 **Note**: All features, versions and release dates are subject to change.
 
-For more detailed discussions and updates, please refer to our [README.md](README.md), [Discussions](https://github.com/[WOWEN-DEV]/[fertilityawareness]/discussions), [Milestones](https://github.com/[WOWEN-DEV]/[fertilityawareness]/milestones), and [Issues](https://github.com/[WOWEN-DEV]/[fertilityawareness]/issues).
+For more detailed discussions and updates, please refer to our [README.md](README.md), [Discussions](https://github.com/WOWEN-DEV/fertilityawareness/discussions), [Milestones](https://github.com/WOWEN-DEV/fertilityawareness/milestones), and [Issues](https://github.com/WOWEN-DEV/fertilityawareness/issues).
