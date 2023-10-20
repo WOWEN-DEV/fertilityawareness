@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function logOut() {
       netlifyIdentity.logout();
       window.localStorage.removeItem("userInfo");
-      window.location.href = "/login.html";
+      window.location.href = "/login";
   }
 
   function resetLogoutTimer() {
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     netlifyIdentity.init();
   } else {
     console.log("Netlify Identity is not defined");
-    window.location.href = "/login.html";
+    window.location.href = "/login";
     return;
   }
 
