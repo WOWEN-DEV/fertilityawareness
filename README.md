@@ -100,6 +100,8 @@ For more information, visit [Creative Commons BY-NC-ND 4.0](https://creativecomm
 
 ---
 
+**Note**: All features, versions, release dates, and information are subject to change.
+
 Thank you for your interest in WOWEN. Together, we're making FemTech innovative, creative, and powering. 💪 
 
 Copyright © 2019-2023, WOWEN. All rights reserved.
