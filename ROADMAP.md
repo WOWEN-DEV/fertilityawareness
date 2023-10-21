@@ -33,13 +33,13 @@ To get a grip on our technical architecture and tech stack, please refer to the 
 
 # AI Model – Brief Roadmap
 
-## Iteration 1 – `Base Model` ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+## Iteration 1 – `Base Model` ![Released](https://img.shields.io/badge/Status-In%20Use/Released-brightgreen)
 - **Status**: In Development
 - **Expected Release Date**: [October 23, 2023]
 
-Foundational Model. In the first iteration, we focus on establishing a base model equipped with *robust* instructions. This serves as the foundation upon which subsequent iterations will build. The Base Model will be used in Version 1.0.0 (Alpha) for testing purposes.
+Foundational Model. In the first iteration, we focus on establishing a base model equipped with *robust* instructions. This serves as the foundation upon which subsequent iterations will build. The Base Model will be used in `Version 1.0.0 (Alpha)` for testing purposes.
 
-## Iteration 2 and Subsequent Versions – `fertilityawareness-v1, v2, v3`, etc. ![Planned](https://img.shields.io/badge/Status-Planned-red)
+## Iteration 2 and Subsequent Versions – `fertilityawareness-v1, v2, v3`, etc. ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **Status**: Planned
 - **Expected Release Date**: [TBD]
 
