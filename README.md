@@ -46,7 +46,7 @@
 
 ## About
 
-The Fertility Awareness AI App is a digital assistant designed to democratize access to fertility understanding and women's health. Our aim is to provide reliable, quick, and easily accessible information to power women in taking control of their reproductive health. Our initial development and market focus is on 🇸🇪 Sweden (Swedish), but we plan to expand into additional languages and market reach as the product evolves.
+The Fertility Awareness AI App is a digital assistant designed to democratize access to fertility understanding and women's health. Our aim is to provide reliable, quick, and easily accessible information to power women in taking control of their reproductive health. Our initial development and market focus is in 🇸🇪 Swedish, but we plan to expand into additional languages and market reach as the product evolves.
 
 ## Roadmap
 
@@ -67,7 +67,7 @@ Our technical infrastructure is designed to be robust and scalable, leveraging a
 
 **Domain Management**
 - **Registrar:** 
-We've registered our domain (`wowen.tech`) and all associated subdomains (e.g., `app.fertilityawareness`) with One.com. As of now, we intend to continue using One.com as domain registrar due to its other convenient features, such as PHP database support.
+We have our primary domain, `wowen.tech`, along with all related subdomains—such as `app.fertilityawareness`—registered through One.com. This also includes our API domain, `fertilityawareness.ai`. As of now, we intend to continue using One.com as domain registrar and management due to its other convenient features, such as cheap PHP database support.
 
 **Frontend:**
 - **Current Version:** Our `Alpha Version (1.0.0)`, accessible at https://app.fertilityawareness.wowen.tech, is built using simple static HTML files, which you can access from this repo and deploy with Netlify.
