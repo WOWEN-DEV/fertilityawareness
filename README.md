@@ -80,7 +80,7 @@ We've registered our domain (`wowen.tech`) and all associated subdomains (e.g., 
 
 **Notifications**
 - **Webhooks:** Events like "valid," "login," and "signup" from Netlify Identity trigger email notifications via a webhook connected between Netlify and Zapier. The Zap is named "Netlify Identity Notifications."
-- **Welcome Email:** When event "signup" is sent from Netlify to Zapier, new users receive a welcome email upon registration, that is sent from Zapier .
+- **Welcome Email:** When event "signup" is sent from Netlify to Zapier, new users receive a welcome email upon registration, that is sent from Zapier.
 
 **User Consent**
 - **Terms of Use:** Upon login for the first time, users are prompted to approve the Terms of Use via a form built with Tally. This form will pop up until users have consented. If user clears cookies, the consent form will show up again prompting users to consent.
