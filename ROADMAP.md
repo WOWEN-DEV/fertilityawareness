@@ -1,5 +1,22 @@
 ![WOWEN Tech Logo](https://github.com/WOWEN-DEV/wowen.tech/blob/main/assets/img/wowen-tech-repo-logo.svg)
 
+<h1 align="center">Fertility Awareness [Roadmap]</h1>
+
+![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration.svg)
+
+# Table of Contents
+
+- [FertilityAwarenessAI Roadmap](#fertilityawarenessai-roadmap)
+- [Explanation of Terms in the Roadmap](#explanation-of-terms-in-the-roadmap)
+- [AI Model – Brief Roadmap](#ai-model--brief-roadmap)
+  - [Iteration 1 – `Base Model`](#iteration-1--base-model)
+  - [Iteration 2 and Subsequent Versions – `fertilityawareness-v1, v2, v3`, etc.](#iteration-2-and-subsequent-versions--fertilityawareness-v1-v2-v3-etc)
+- [Platform Fullstack Version](#platform-fullstack-version)
+  - [`Version 1.0.0 (Alpha)` – Current Version](#version-100-alpha--current-version)
+  - [`Version 2.0.0 (Beta)` – Beta Upgrade](#version-200-beta--beta-upgrade)
+  - [`Version 3.0.0 (Beta)` – Beta Upgrade](#version-300-beta--beta-upgrade)
+  - [`Version 4.0.0 (Cervix)` – Release Version](#version-400-cervix--release-version)
+
 # FertilityAwarenessAI Roadmap
 
 To get a grip on our technical architecture and tech stack, please refer to the [Developer Documentation: Technical Architecture and Stack Overview](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/README.md#developer-documentation-technical-architecture-and-stack-overview) section in our [README.md](README.md) document. This document outlines development, the upcoming releases, and features planned for FertilityAwarenessAI. We appreciate your interest and support as we continue to make this platform more robust and user-friendly!
