@@ -4,10 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="robots"
-            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        />
+        <meta name="robots" content="noindex, nofollow" />
         <meta
             name="description"
             content="Din digitala fertilitetsförståelse-AI"
@@ -156,6 +153,14 @@
                 font-family: "Work Sans";
                 font-size: 3.5rem;
             }
+            h2 {
+                font-family: "Work Sans";
+                font-size: 1.5rem;
+                font-weight: 100;
+            }
+            #h2-message {
+                margin-right: 184px;
+            }
             .logo {
                 width: 150px;
                 margin-top: 18px;
@@ -258,7 +263,7 @@
                     padding: 16px;
                 }
                 button {
-                    padding: 17px 92px;
+                    padding: 17px 97px;
                 }
                 h1 {
                     font-size: 2rem;
@@ -268,7 +273,7 @@
                     padding-right: 33px;
                 }
                 #footern {
-                    min-height: 8vh;
+                    display: none;
                 }
                 form,
                 button {
@@ -281,15 +286,8 @@
                     margin-right: 0;
                     vertical-align: middle;
                 }
-                .checkbox-container {
-                    display: flex;
-                    align-items: center;
-                }
-                .checkbox-container label {
-                    margin-left: 8px; 
-                    display: inline; 
-                    white-space: nowrap;
-                    margin-top: -17px;
+                #h2-message {
+                    margin-right: 0;
                 }
             }
             /* iPad */
@@ -326,6 +324,12 @@
                     border-radius: 3px;
                 }
             }
+            @media screen and (min-width: 1197px) and (max-width: 1462px) {
+                #h2-message {
+                    margin-right: 66px;
+                }
+            }
+
             /* Hides the logo by default */
             #mobile-logo {
                 display: none;
@@ -358,6 +362,9 @@
             ></iframe
         ></noscript>
         <!-- End Google Tag Manager (noscript) -->
+
+        <script>
+        </script>
 
         <!-- Left side -->
         <div id="left-side">
@@ -400,37 +407,11 @@
                 </svg>
                 Gå tillbaka till inloggningssidan
             </a>
-            <!-- Registration form -->
-            <h1>Skapa konto</h1>
-            <form id="signup-form">
-                <input
-                    type="email"
-                    id="signup-email"
-                    placeholder="E-post"
-                    required
-                />
-                <input
-                    type="password"
-                    id="signup-password"
-                    placeholder="Lösenord"
-                    required
-                />
-                <button type="submit" id="create-account-button">
-                    Skapa konto
-                </button>
-                <div>
-                    <div class="checkbox-container">
-                    <input type="checkbox" id="privacy-policy" required />
-                    <label for="privacy-policy"
-                        >Jag godkänner
-                        <a
-                            href="https://wowen.tech/sv/integritetspolicy/"
-                            target="_blank"
-                            >integritetspolicyn</a
-                        >.</label>
-                    </div>
-                </div>
-            </form>
+
+            <h1>Hoppsan!</h1>
+            <div id="h2-message">
+                <h2>Registreringen misslyckades. En användare med denna e-postadress finns redan registrerad.</h2>
+            </div>
 
             <div id="footern">
                 <div id="footer-links">
@@ -447,38 +428,5 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Initialize Netlify Identity
-                if (typeof netlifyIdentity !== "undefined") {
-                    netlifyIdentity.init();
-                }
-
-                console.log(netlifyIdentity);
-
-                // Registration
-                const signupForm = document.getElementById("signup-form");
-                signupForm.addEventListener("submit", function (event) {
-                    event.preventDefault();
-                    const email = document.getElementById("signup-email").value;
-                    const password =
-                        document.getElementById("signup-password").value;
-
-                    netlifyIdentity.gotrue
-                        .signup(email, password)
-                        .then((user) => {
-                            console.log(user);
-                            localStorage.setItem("registeredEmail", email); // Save the email address in localStorage
-                            window.location.href = "/registration-success.html"; // Redirect to the registration-success page
-                        })
-                        .catch((err) => {
-                            // Log error in console
-                            console.error("Registrering misslyckades", err);
-                            window.location.href = "/registration-failure.html";
-                        });
-                });
-            });
-        </script>
     </body>
 </html>
