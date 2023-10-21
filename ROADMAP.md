@@ -43,7 +43,7 @@ Foundational Model. In the first iteration, we focus on establishing a base mode
 - **Status**: Planned
 - **Expected Release Date**: [TBD]
 
-Data-Driven Refinement. Building on the first iteration, the base model, the second phase involves fine-tuning and training the base model, starting with fertilityawareness-v1, using our project defined collected data. Each successive model version in the fertilityawareness series (v1, v2, v3, etc.) builds upon its predecessor. Specifically, we fine-tune each new version using the already optimized previous version as a starting point. This iterative process ensures that each new release is more accurate, powerful, and refined than the last. 
+Data-Driven Refinement. Building on the first iteration, the `base model`, the second phase involves fine-tuning and training the `base model`, starting with `fertilityawareness-v1`, using our project defined collected data. Each successive model version in the fertilityawareness series (v1, v2, v3, etc.) builds upon its predecessor. Specifically, we fine-tune each new version using the already optimized previous version as a starting point. This iterative process ensures that each new release is more accurate, powerful, and refined than the last. 
 
 # Platform Fullstack Version
 
