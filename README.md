@@ -20,7 +20,7 @@
 
 <h1 align="center">Fertility Awareness [Main Repo – Frontend]</h1>
 
-![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration.svg)
+![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
 # Table of Contents
 
