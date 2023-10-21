@@ -70,7 +70,7 @@ Our technical infrastructure is designed to be robust and scalable, leveraging a
 We've registered our domain (`wowen.tech`) and all associated subdomains (e.g., `app.fertilityawareness`) with One.com. As of now, we intend to continue using One.com as domain registrar due to its other convenient features, such as PHP database support.
 
 **Frontend:**
-- **Current Version:** Our ´Alpha Version (1.0.0)´, accessible at https://app.fertilityawareness.wowen.tech, is built using simple static HTML files, which you can access from this repo and deploy with Netlify.
+- **Current Version:** Our `Alpha Version (1.0.0)`, accessible at https://app.fertilityawareness.wowen.tech, is built using simple static HTML files, which you can access from this repo and deploy with Netlify.
 - **Hosting and Deployment:** We have set up the DNS settings on One.com to redirect to Netlify, which serves as the platform for both our frontend hosting and deployment, as well as certain user authentication features.
 - **Future Plans:** Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework.
 
