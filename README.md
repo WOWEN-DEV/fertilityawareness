@@ -7,16 +7,42 @@
   <a href="https://aws.amazon.com/">
     <img src="https://img.shields.io/badge/AWS-Services-orange?logo=amazon-aws" alt="AWS Services">
   </a>
-  <a href="https://vercel.com/wowen">
-    <img src="https://therealsujitk-vercel-badge.vercel.app/?app=your-vercel-project-name" alt="Vercel">
-  </a>
-  <a href="https://www.wowen.tech/">
+<a href="https://www.wowen.tech/platform-version-info">
+    <img src="https://img.shields.io/badge/Platform%20Version-1.0.0%20(Alpha)-yellow" alt="Platform Version: 1.0.0 (Alpha)">
+</a>
+<a href="https://www.wowen.tech/ai-model-base">
+    <img src="https://img.shields.io/badge/AI%20Model-Base%20Model-blue" alt="AI-Model: Base Model">
+</a>
+  <a href="https://github.com/WOWEN-DEV">
     <img src="https://img.shields.io/badge/WOWEN-FemTech%20Dev%20Community-blueviolet" alt="WOWEN">
   </a>
 </p>
 
+<h1 align="center">Fertility Awareness [Main Repo – Frontend]</h1>
 
-# Fertility Awareness [Main Repo – Frontend]
+![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration.svg)
+
+# Table of Contents
+
+- [Fertility Awareness [Main Repo – Frontend]](#fertility-awareness-main-repo--frontend)
+  - [About](#about)
+  - [Roadmap](#roadmap)
+    - [Platform Fullstack Version](#platform-fullstack-version)
+    - [AI Model](#ai-model)
+  - [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
+    - [Domain Management](#domain-management)
+    - [Frontend](#frontend)
+    - [User Authentication](#user-authentication)
+    - [Notifications](#notifications)
+    - [User Consent](#user-consent)
+    - [Backend](#backend)
+    - [Future Plans and Considerations](#future-plans-and-considerations)
+    - [Summary of Technologies](#summary-of-technologies)
+  - [Contributing](#contributing)
+  - [Feedback and Support](#feedback-and-support)
+  - [Connect with Us](#connect-with-us)
+  - [License](#license)
+
 
 ## About
 
