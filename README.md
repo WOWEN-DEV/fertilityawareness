@@ -54,7 +54,7 @@ The Fertility Awareness AI App is a digital assistant designed to democratize ac
 
 [Platform Fullstack Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#platform-fullstack-version)
 - **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
-- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 4.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 5.0.0 (Cervix)` – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
