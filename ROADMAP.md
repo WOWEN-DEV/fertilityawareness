@@ -58,7 +58,18 @@ Data-Driven Refinement. Building on the first iteration, the `base model`, the s
 
 This version serves as an introductory release, aimed at a smaller audience for initial testing and feedback. It lays the groundwork for future, more robust versions of FertilityAwarenessAI.
 
-## `Version 2.0.0 (Beta)` – Beta Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
+## `Version 2.0.0 (Alpha)` – Alpha Upgrade ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+
+> **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
+
+- **Status**: In Development
+- **Expected Release Date**: [December, 2023]
+- **Session Memory**: Now, the assistant can remember the full chat session, providing a more coherent and contextually aware user experience.
+- **Expanding Limited Testing**: We are expanding our limited access to include testing of the new session memory feature. This will allow us to gather more targeted feedback and make further improvements.
+
+This 2.0.0 Alpha version marks a pivotal upgrade, introducing session memory to enhance user interactions. It serves as a stepping stone for more advanced features and improvements in future releases.
+
+## `Version 3.0.0 (Beta)` – Beta Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 > **Beta**: This version is more developed, designed and stable than the Alpha. It is intended for a broader group of test users and includes additional features, and more robust frameworks. The goal is to identify and fix bugs, as well as to fine-tune the product, design, features and user experience based on feedback.
 
@@ -68,7 +79,7 @@ This version serves as an introductory release, aimed at a smaller audience for 
 
 Our focus is on redesigning the main interface, login portal, account registration, and password reset functionalities to a more robust and user friendly frontend, as of now, we're committed to using `Next.js` as our frontend framework. However, we're evaluating whether to continue with One.com for domain management and Netlify for hosting and deployment—including Netlify Functions and Identity—or to transition our identity management, domain management, hosting, and deployment to Vercel or AWS. As of now, AWS services like Lambda, API Gateway, AWS Amplify (the intermediate server), and One.com will remain part of our tech stack for the foreseeable future.
 
-## `Version 3.0.0 (Beta)` – Beta Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
+## `Version 4.0.0 (Beta)` – Beta Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 > **Beta**: This version is more developed, designed and stable than the Alpha. It is intended for a broader group of test users and includes additional features, and more robust frameworks. The goal is to identify and fix bugs, as well as to fine-tune the product, design, features and user experience based on feedback.
 
@@ -80,7 +91,7 @@ Our focus is on redesigning the main interface, login portal, account registrati
 
 This Beta upgrade is strategically designed to elevate the overall user experience and platform functionality to new heights. It will incorporate advanced, fine-tuned AI models for more accurate and personalized fertility insights. Additionally, the upgrade will introduce a range of new features, such as the ability to upload specific images like menstrual cycle charts and blood tests, as well as a bilingual interface to cater to a broader user base.
 
-## `Version 4.0.0 (Cervix)` – Release Version ![Planned](https://img.shields.io/badge/Status-Planned-red)
+## `Version 5.0.0 (Cervix)` – Release Version ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 > **Cervix**: This is the public MVP (Minimum Viable Product) version of the product. It includes all core features and is stable enough for general use. This version marks an important milestone where the product is ready for market launch.
 
