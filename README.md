@@ -35,7 +35,7 @@
     - [User Authentication](#user-authentication)
     - [Notifications](#notifications)
     - [User Consent](#user-consent)
-    - [Backend](#backend)
+    - [Backend/DevOps](#backend)
     - [Future Plans and Considerations](#future-plans-and-considerations)
     - [Summary of Technologies](#summary-of-technologies)
   - [Contributing](#contributing)
@@ -68,9 +68,9 @@ Our technical infrastructure is designed to be robust and scalable, leveraging a
 
 **Domain Management**
 - **Registrar:** 
-We have our primary domain, `wowen.tech`, along with all related subdomains—such as `app.fertilityawareness`—registered through One.com. This also includes our API domain, `fertilityawareness.ai`. As of now, we intend to continue using One.com as domain registrar and management due to its other convenient features, such as cheap PHP database support.
+We have our primary domain, `wowen.tech`, along with all related subdomains—such as `app.fertilityawareness`—registered through One.com. This also includes our API base URL, `fertilityawareness.ai` (see GitHub repo [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai)) for more information. As of now, we intend to continue using One.com as domain registrar and management due to its other convenient features, such as cheap PHP database support.
 
-**Frontend:**
+**Frontend**
 - **Current Version:** Our `Alpha Version (1.0.0)`, accessible at https://app.fertilityawareness.wowen.tech, is built using simple static HTML files, which you can access from this repo and deploy with Netlify.
 - **Hosting and Deployment:** We have set up the DNS settings on One.com to redirect to Netlify, which serves as the platform for both our frontend hosting and deployment, as well as certain user authentication features.
 - **Future Plans:** Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework.
@@ -87,16 +87,16 @@ We have our primary domain, `wowen.tech`, along with all related subdomains—su
 - **Terms of Use:** Upon login for the first time, users are prompted to approve the Terms of Use via a form built with Tally. This form will pop up until users have consented. If user clears cookies, the consent form will show up again prompting users to consent.
 - **Feedback Request:** After consenting to the terms, users receive an automated email, sent from Tally, asking for feedback.
 
-**Backend**
-We use an AWS Lambda function, accessed via Amazon API Gateway, to handle GET requests for our AI assistant; the AI model code is configured within AWS Lambda, and we also employ an [intermediate server](https://github.com/WOWEN-DEV/fertilityawareness-intermediate-server) with AWS Amplify to manage large headers and hefty function code, receiving long texts from user-side browsers via POST methods and forwarding them to the AI model server using GET methods, before ultimately relaying the server's response back to the frontend.
+**Backend/DevOps**
+This main/frontend repository is integrated with our AWS EC2 Server Instance (GitHub repo: [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai)). All files from [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo are cloned to the EC2 server. The frontend (this repo) is hosted at `app.fertilityawareness.wowen.tech` (trough Netlify) and communicates with the EC2 server via POST requests, here `https://fertilityawareness.ai` serves as the API endpoint to which the client is making a POST request, specifically, it is the `fertilityawareness.ai` URL of the server that will handle the API call to execute a query. For DNS, we use our domain registrar/manager One.com to `A Record`-point `fertilityawareness.ai` to our EC2 server's IP (16.171.241.12). To update the backend/EC2 server files and configurations, do a commit to [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo, and then manually execute a `git pull origin main` to the EC2 server in terminal. For full documentation, and updates, see our [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo. 
 
 **Future Plans and Considerations**
-Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for the Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework. We are also evaluating whether to continue with One.com for domain management and Netlify for hosting and deployment—including Netlify Functions and Identity—or to transition our identity management, domain management, hosting, and deployment to Vercel or AWS. As of now, AWS services like Lambda, API Gateway, AWS Amplify (the intermediate server), and One.com will remain part of our tech stack for the foreseeable future.
+Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for the Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework. We are also evaluating whether to continue with One.com for domain management and Netlify for hosting and deployment—including Netlify Functions and Identity—or to transition our identity management, domain management, hosting, and deployment to Vercel or AWS. As of now, AWS Services like EC2 Server Instance, and One.com will remain part of our tech stack for the foreseeable future.
 
 **Summary of Technologies**
 - One.com (Domain management + database possibilities)
 - Netlify (Hosting, frontend deployment, authentication)
-- AWS Services (Lambda, API Gateway, AWS Amplify)
+- AWS Services (EC2 Server Instance)
 - Zapier (Webhooks, email notifications)
 - Tally (Form builder, user consent)
 
