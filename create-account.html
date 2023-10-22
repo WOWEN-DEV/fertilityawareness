@@ -470,7 +470,7 @@
                         .then((user) => {
                             console.log(user);
                             localStorage.setItem("registeredEmail", email); // Save the email address in localStorage
-                            window.location.href = "/registration-success.html"; // Redirect to the registration-success page
+                            window.location.href = "/registration-success"; // Redirect to the registration-success page
                         })
                         .catch((err) => {
                             // Log error in console
