@@ -5,17 +5,21 @@
 ![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
 # Table of Contents
-
 - [FertilityAwarenessAI Roadmap](#fertilityawarenessai-roadmap)
 - [Explanation of Terms in the Roadmap](#explanation-of-terms-in-the-roadmap)
+  - [Alpha](#alpha)
+  - [Beta](#beta)
+  - [Cervix](#cervix)
+  - [Iteration](#iteration)
 - [AI Model – Brief Roadmap](#ai-model--brief-roadmap)
-  - [Iteration 1 – `Base Model`](#iteration-1--base-model)
-  - [Iteration 2 and Subsequent Versions – `fertilityawareness-v1, v2, v3`, etc.](#iteration-2-and-subsequent-versions--fertilityawareness-v1-v2-v3-etc)
+  - [Iteration 1 – Base Model](#iteration-1--base-model)
+  - [Iteration 2 and Subsequent Versions](#iteration-2-and-subsequent-versions)
 - [Platform Fullstack Version](#platform-fullstack-version)
   - [`Version 1.0.0 (Alpha)` – Current Version](#version-100-alpha--current-version)
-  - [`Version 2.0.0 (Beta)` – Beta Upgrade](#version-200-beta--beta-upgrade)
+  - [`Version 2.0.0 (Alpha)` – Alpha Upgrade](#version-200-alpha--alpha-upgrade)
   - [`Version 3.0.0 (Beta)` – Beta Upgrade](#version-300-beta--beta-upgrade)
-  - [`Version 4.0.0 (Cervix)` – Release Version](#version-400-cervix--release-version)
+  - [`Version 4.0.0 (Beta)` – Beta Upgrade](#version-400-beta--beta-upgrade)
+  - [`Version 5.0.0 (Cervix)` – Release Version](#version-500-cervix--release-version)
 
 # FertilityAwarenessAI Roadmap
 
