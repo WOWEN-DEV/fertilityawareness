@@ -26,7 +26,7 @@
 
 - [Fertility Awareness [Main Repo – Frontend]](#fertility-awareness-main-repo--frontend)
   - [About](#about)
-  - [Roadmap](#roadmap)
+  - [Roadmap and Releases](#roadmap-and-releases)
     - [Platform Fullstack Version](#platform-fullstack-version)
     - [AI Model](#ai-model)
   - [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
