@@ -142,6 +142,14 @@ window.TallyConfig = {
     font-family: 'Work Sans';
     font-weight: 500;
   }
+  .full-view {
+    width: 100vw; 
+    height: 100vh; 
+    max-width: 100%; 
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
 </style>
 
   </head>
@@ -309,6 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="hero-content">
         <h1 class="hero-text splt">Digital assistent</h1>
 
+        <button id="toggleChatSize">Växla storlek</button>
         <div class="chat-container">
           <div class="chat-box"></div>
           <form>
@@ -525,6 +534,22 @@ document.addEventListener("DOMContentLoaded", function () {
     ></script>
     <script src="https://www.unpkg.com/spltjs@1.1.0"></script>
 
+    <script>
+
+      const chatContainer = document.querySelector('.chat-container');
+      const toggleButton = document.getElementById('toggleChatSize');
+  
+      toggleButton.addEventListener('click', function() {
+          if (chatContainer.style.width === '100%') {
+              chatContainer.style.width = '1039px';
+              chatContainer.style.height = 'auto';
+          } else {
+              chatContainer.style.width = '100%';
+              chatContainer.style.height = '100vh';
+          }
+      });
+  </script>
+  
     
   </body>
 </html>
