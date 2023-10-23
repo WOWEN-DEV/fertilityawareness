@@ -1,12 +1,11 @@
 // netlify/functions/sendToCervix.js
-
-const fetch = require('node-fetch');  // Importing node-fetch for making HTTP requests
+import fetch from 'node-fetch';
 
 exports.handler = async function(event, context) {
   // Extracting data from POST request
   const { messageHtml, isBot } = JSON.parse(event.body);
 
-  console.log("Received data:", { messageHtml, isBot });  // Log received data
+  console.log("Received data:", { messageHtml, isBot });
 
   // The URL from Zapier's Webhook, replace with your URL
   const zapierWebhookURL = "https://hooks.zapier.com/hooks/catch/16772436/38mgz2h/";
@@ -20,13 +19,12 @@ exports.handler = async function(event, context) {
     });
 
     const zapierData = await zapierResponse.json();
-    console.log("Zapier responded with:", zapierData);  // Log Zapier's response
+    console.log("Zapier responded with:", zapierData);
 
   } catch (error) {
-    console.error("Error sending data to Zapier:", error);  // Log errors if any
+    console.error("Error sending data to Zapier:", error);
   }
 
-  // Sending an answer back to the client
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Data received on server" }),
