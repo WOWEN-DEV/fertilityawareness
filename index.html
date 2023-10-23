@@ -387,50 +387,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <script>
-// Funktion som skapar och visar en "Assistenten tänker..."-indikator
-function showThinkingIndicator() {
-  const chatBoxLocal = document.querySelector('.chat-box'); // Observera att jag ändrade namnet här
-  const thinkingMessage = document.createElement('div'); 
-  thinkingMessage.classList.add('chat-message', 'bot-message'); 
-  thinkingMessage.id = 'thinking-indicator';
-  thinkingMessage.innerHTML = `<p>Assistenten tänker<span class="dots"></span></p>`;
-  chatBoxLocal.appendChild(thinkingMessage); // Ändrat här också
-  
-  let i = 0;
-  const dots = document.querySelector('.dots');
-  setInterval(() => {
-    dots.textContent = '.'.repeat(i % 4);
-    i++;
-  }, 500);
-}
-
-// Funktion som tar bort "Assistenten tänker..."-indikatorn
-function removeThinkingIndicator() {
-  const thinkingIndicator = document.getElementById('thinking-indicator');
-  if (thinkingIndicator) {
-    thinkingIndicator.remove();
+(function() {
+  // Funktion som skapar och visar en "Assistenten tänker..."-indikator
+  function showThinkingIndicator() {
+    const chatBoxLocal = document.querySelector('.chat-box');
+    const thinkingMessage = document.createElement('div'); 
+    thinkingMessage.classList.add('chat-message', 'bot-message'); 
+    thinkingMessage.id = 'thinking-indicator';
+    thinkingMessage.innerHTML = `<p>Assistenten tänker<span class="dots"></span></p>`;
+    chatBoxLocal.appendChild(thinkingMessage);
+    
+    let i = 0;
+    const dots = document.querySelector('.dots');
+    setInterval(() => {
+      dots.textContent = '.'.repeat(i % 4);
+      i++;
+    }, 500);
   }
-}
 
-// Lägg till en ny eventlistener till det existerande chatForm-objektet
-document.querySelector('form').addEventListener('submit', () => {
-  showThinkingIndicator();
-});
-
-// MutationObserver för att observera när ett nytt bot-meddelande läggs till
-const chatBoxLocal = document.querySelector('.chat-box'); // Observera att jag ändrade namnet här
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.addedNodes.length > 0) {
-      const newNode = mutation.addedNodes[0];
-      if (newNode.classList && newNode.classList.contains('bot-message') && newNode.id !== 'thinking-indicator') {
-        removeThinkingIndicator();
-      }
+  // Funktion som tar bort "Assistenten tänker..."-indikatorn
+  function removeThinkingIndicator() {
+    const thinkingIndicator = document.getElementById('thinking-indicator');
+    if (thinkingIndicator) {
+      thinkingIndicator.remove();
     }
-  });
-});
+  }
 
-observer.observe(chatBoxLocal, { childList: true }); // Ändrat här också
+  // Lägg till en ny eventlistener till det existerande chatForm-objektet
+  document.querySelector('form').addEventListener('submit', () => {
+    showThinkingIndicator();
+  });
+
+  // MutationObserver för att observera när ett nytt bot-meddelande läggs till
+  const chatBoxLocal = document.querySelector('.chat-box');
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        const newNode = mutation.addedNodes[0];
+        if (newNode.classList && newNode.classList.contains('bot-message') && newNode.id !== 'thinking-indicator') {
+          removeThinkingIndicator();
+        }
+      }
+    });
+  });
+
+  observer.observe(chatBoxLocal, { childList: true });
+})();
+
 
 </script>
 
