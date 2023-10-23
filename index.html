@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- Send to Cervix -->       
 <script>
-  // Sends message to Netlify Function sendToCervix
+  // Send message to Netlify Function sendToCervix
   function sendToNetlifyFunction(messageHtml, isBot) {
     console.log("Calling Netlify Function sendToCervix");  // Log for debugging
     fetch('/.netlify/functions/sendToCervix', {
@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // MutationObserver to observe when a new chat message is added
   const chatBoxObserver = document.querySelector('.chat-box'); 
-  const observer = new MutationObserver((mutations) => {
+  const chatObserver = new MutationObserver((mutations) => { 
     mutations.forEach((mutation) => {
       if (mutation.addedNodes.length > 0) {
         const newNode = mutation.addedNodes[0];
@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  observer.observe(chatBoxObserver, { childList: true });
+  chatObserver.observe(chatBoxObserver, { childList: true });
 </script>
 <!-- End Send to Cervix -->
    
