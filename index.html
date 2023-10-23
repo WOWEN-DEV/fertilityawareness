@@ -385,13 +385,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 (function() {
-  // Function that creates and displays a "The assistant is thinking..." indicator
+  // Function that creates and displays a "Handledaren tänker och formulerar sitt svar..." indicator
   function showThinkingIndicator() {
     const chatBoxLocal = document.querySelector('.chat-box');
     const thinkingMessage = document.createElement('div'); 
     thinkingMessage.classList.add('chat-message', 'bot-message'); 
     thinkingMessage.id = 'thinking-indicator';
-    thinkingMessage.innerHTML = `<p>🤔 Assistenten tänker<span class="dots"></span></p>`;
+    thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
     chatBoxLocal.appendChild(thinkingMessage);
     
     let i = 0;
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
-  // Function that removes the "Assistenten tänker..." indicator
+  // Function that removes the "Handledaren tänker och formulerar sitt svar..." indicator
   function removeThinkingIndicator() {
     const thinkingIndicator = document.getElementById('thinking-indicator');
     if (thinkingIndicator) {
