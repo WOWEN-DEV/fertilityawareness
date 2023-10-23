@@ -1,26 +1,15 @@
-// Send message to Netlify Function sendToCervix
-function sendToNetlifyFunction(messageHtml, isBot) {
-  // Log to confirm that the function is running
-  console.log("sendToNetlifyFunction körs med meddelande:", messageHtml.outerHTML, "och isBot:", isBot);
+// netlify/functions/sendToCervix.js
 
-  // Do a POST request to Netlify Function
-  fetch('/.netlify/functions/sendToCervix', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      messageHtml: messageHtml.outerHTML,
-      isBot: isBot
-    }),
-  })
-  .then(response => response.json()) // Add this to log server answer
-  .then(data => {
-    // Log answer from server
-    console.log('Server answered with:', data);
-  })
-  .catch(error => {
-    // Log eventual errors
-    console.error('Error:', error);
-  });
-}
+exports.handler = async function(event, context) {
+  // Extracting data from POST request
+  const { messageHtml, isBot } = JSON.parse(event.body);
+
+  // Here you can do something with the data, e.g., forward it to another service
+  // ...
+
+  // Sending an answer back to the client
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Data received on server" }),
+  };
+};
