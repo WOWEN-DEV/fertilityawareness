@@ -33,25 +33,24 @@
 
 # Table of Contents
 
-- [Fertility Awareness [Web App Frontend Repo]](#fertility-awareness-web-app-frontend-repo)
-  - [About](#about)
-  - [Roadmap](#roadmap)
+1. [About](#about)
+2. [Roadmap](#roadmap)
     - [Web App Version](#roadmap)
     - [Mobile App Version](#roadmap)
     - [AI Model](#roadmap)
-  - [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
+3. [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
     - [Domain Management](#domain-management)
     - [Frontend](#frontend)
     - [User Authentication](#user-authentication)
     - [Notifications](#notifications)
     - [User Consent](#user-consent)
-    - [Backend/DevOps](#backend)
+    - [Backend/DevOps](#backenddevops)
     - [Future Plans and Considerations](#future-plans-and-considerations)
     - [Summary of Technologies](#summary-of-technologies)
-  - [Contributing](#contributing)
-  - [Feedback and Support](#feedback-and-support)
-  - [Connect with Us](#connect-with-us)
-  - [License](#license)
+4. [Contributing](#contributing)
+5. [Feedback and Support](#feedback-and-support)
+6. [Connect with Us](#connect-with-us)
+7. [License](#license)
 
 
 ## About
