@@ -1,16 +1,13 @@
 ![WOWEN Tech Logo](https://github.com/WOWEN-DEV/wowen.tech/blob/main/assets/img/wowen-tech-repo-logo.svg)
 
 <p align="center">
-  <a href="https://app.netlify.com/sites/fertilityawareness/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/e8c207e4-671d-42e5-acaf-4ed3e27934f0/deploy-status" alt="Netlify Status">
-  </a>
   <a href="https://aws.amazon.com/">
     <img src="https://img.shields.io/badge/AWS-Services-orange?logo=amazon-aws" alt="AWS Services">
   </a>
-<a href="https://www.wowen.tech/platform-version-info">
-    <img src="https://img.shields.io/badge/Platform%20Version-1.0.0%20(Alpha)-yellow" alt="Platform Version: 1.0.0 (Alpha)">
+<a href="https://app.fertilityawareness.wowen.tech/">
+    <img src="https://img.shields.io/badge/Web%20App%20Version-1.0.0%20(Alpha)-yellow" alt="Web App Version: 1.0.0 (Alpha)">
 </a>
-<a href="https://www.wowen.tech/ai-model-base">
+<a href="https://github.com/WOWEN-DEV/fertilityawareness-ai">
     <img src="https://img.shields.io/badge/AI%20Model-Base%20Model-blue" alt="AI-Model: Base Model">
 </a>
   <a href="https://github.com/WOWEN-DEV">
@@ -52,7 +49,7 @@ The Fertility Awareness AI App is a digital assistant designed to democratize ac
 
 [The Roadmap Document](ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Browse our [release history](https://github.com/WOWEN-DEV/fertilityawareness/releases) to explore the versions we've launched and the features they include. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
 
-[Platform Fullstack Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#platform-fullstack-version)
+[Web App Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#platform-fullstack-version)
 - **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
