@@ -4,6 +4,9 @@ exports.handler = async function(event, context) {
   // Extracting data from POST request
   const { messageHtml, isBot } = JSON.parse(event.body);
 
+  // Log the received data for debugging
+  console.log("Received data:", { messageHtml, isBot });
+
   // Here you can do something with the data, e.g., forward it to another service
   // ...
 
