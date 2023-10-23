@@ -443,10 +443,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <script>
+// Omedelbart anropad funktion för att undvika variabelkonflikter
 (function() {
   // Funktion för att ladda sparade meddelanden från localStorage
   function laddaSparadeMeddelanden() {
-    const lokalChatBox = document.querySelector('.chat-box'); 
+    const lokalChatBox = document.querySelector('.chat-box'); // Notera att vi här använder en lokal variabel för att undvika konflikter
     const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
 
     sparadeMeddelanden.forEach((meddelandeObj) => {
@@ -457,31 +458,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Funktion för att spara nya meddelanden till localStorage
-  function sparaNyttMeddelande(meddelande, avsandare) {
+  // Funktion för att spara meddelanden i localStorage
+  function sparaMeddelande(meddelande, avsandare) {
     const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
     sparadeMeddelanden.push({message: meddelande, sender: avsandare});
     localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
   }
 
-  // Lyssnare för att fånga upp nya meddelanden och spara dem
-  const observeraChatBox = new MutationObserver((mutationer) => {
+  const lokalChatBox = document.querySelector('.chat-box'); // Lokal variabel för att undvika konflikter
+  const observer = new MutationObserver((mutationer) => {
     mutationer.forEach((mutation) => {
       if (mutation.addedNodes.length > 0) {
         const nyttNod = mutation.addedNodes[0];
         if (nyttNod.classList && nyttNod.classList.contains('chat-message')) {
-          const meddelandeText = nyttNod.querySelector('p').textContent;
+          const meddelandeText = nyttNod.textContent;
           const avsandare = nyttNod.classList.contains('bot-message') ? 'bot-message' : '';
-          sparaNyttMeddelande(meddelandeText, avsandare);
+          sparaMeddelande(meddelandeText, avsandare);
         }
       }
     });
   });
 
-  const lokalChatBox = document.querySelector('.chat-box');
-  observeraChatBox.observe(lokalChatBox, { childList: true });
+  observer.observe(lokalChatBox, { childList: true });
 
-  // Ladda in sparade meddelanden när sidan laddas
+  // Kör funktionen direkt när scriptet laddas
   laddaSparadeMeddelanden();
 })();
 </script>
