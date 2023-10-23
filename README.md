@@ -16,6 +16,15 @@
 </p>
 
 <h1 align="center">Fertility Awareness [Web App Frontend Repo]</h1>
+<h3 align="center">Fertility Awareness Project Repos:</h3>
+<p align="center">
+<p align="center">
+😀 You are here: Web App
+  <br>
+👉 <a href="https://github.com/WOWEN-DEV/fertilityawareness-app">Mobile App</a>
+   <br>
+👉 <a href="https://github.com/WOWEN-DEV/fertilityawareness-ai">Server and Model</a>
+</p>
 
 ![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
@@ -24,7 +33,8 @@
 - [Fertility Awareness [Web App Frontend Repo]](#fertility-awareness-web-app-frontend-repo)
   - [About](#about)
   - [Roadmap and Releases](#roadmap-and-releases)
-    - [Platform Fullstack Version](#platform-fullstack-version)
+    - [Web App Version](#webb-app-version)
+    - [Mobile App Version](#mobile-app-version)
     - [AI Model](#ai-model)
   - [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
     - [Domain Management](#domain-management)
@@ -47,9 +57,16 @@ The Fertility Awareness AI App is a digital assistant designed to democratize ac
 
 ## Roadmap and Releases
 
-[The Roadmap Document](ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Browse our [release history](https://github.com/WOWEN-DEV/fertilityawareness/releases) to explore the versions we've launched and the features they include. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
+[The Roadmap Document](ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
 
-[Web App Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#platform-fullstack-version)
+[Web App Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#web-app-version)
+- **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 4.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+- **`Version 5.0.0 (Cervix)` – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
+
+[Mobile App Version](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md#mobile-app-version)
 - **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
@@ -85,7 +102,7 @@ We have our primary domain, `wowen.tech`, along with all related subdomains—su
 - **Feedback Request:** After consenting to the terms, users receive an automated email, sent from Tally, asking for feedback.
 
 **Backend/DevOps**
-This main/frontend repository is integrated with our AWS EC2 Server Instance (GitHub repo: [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai)). All files from [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo are cloned to the EC2 server. The frontend (this repo) is hosted at `app.fertilityawareness.wowen.tech` (trough Netlify) and communicates with the EC2 server via POST requests, here `https://fertilityawareness.ai` serves as the API endpoint to which the client is making a POST request, specifically, it is the `fertilityawareness.ai` URL of the server that will handle the API call to execute a query. For DNS, we use our domain registrar/manager One.com to `A Record`-point `fertilityawareness.ai` to our EC2 server's IP (16.171.241.12). To update the backend/EC2 server files and configurations, do a commit to [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo, and then manually execute a `git pull origin main` to the EC2 server in terminal. For full documentation, and updates, see our [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo. 
+The Web App repository is integrated with our AWS EC2 Server Instance (GitHub repo: [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai)). All files from [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo are cloned to the EC2 server. The frontend (this repo) is hosted at `app.fertilityawareness.wowen.tech` (trough Netlify) and communicates with the EC2 server via POST requests, here `https://fertilityawareness.ai` serves as the API endpoint to which the client is making a POST request, specifically, it is the `fertilityawareness.ai` URL of the server that will handle the API call to execute a query. For DNS, we use our domain registrar/manager One.com to `A Record`-point `fertilityawareness.ai` to our EC2 server's IP (16.171.241.12). To update the backend/EC2 server files and configurations, do a commit to [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo, and then manually execute a `git pull origin main` to the EC2 server in terminal. For full documentation, and updates, see our [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo. 
 
 **Future Plans and Considerations**
 Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for the Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework. We are also evaluating whether to continue with One.com for domain management and Netlify for hosting and deployment—including Netlify Functions and Identity—or to transition our identity management, domain management, hosting, and deployment to Vercel or AWS. As of now, AWS Services like EC2 Server Instance, and One.com will remain part of our tech stack for the foreseeable future.
