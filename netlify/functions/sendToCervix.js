@@ -1,6 +1,9 @@
 // netlify/functions/sendToCervix.js
 
 exports.handler = async function(event, context) {
+  // Log the received data
+  console.log("Received data:", JSON.parse(event.body));
+
   // Extracting data from POST request
   const { messageHtml, isBot } = JSON.parse(event.body);
 
