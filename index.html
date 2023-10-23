@@ -447,12 +447,15 @@ document.addEventListener("DOMContentLoaded", function () {
 (function() {
   // Funktion för att ladda sparade meddelanden från localStorage
   function laddaSparadeMeddelanden() {
-    const lokalChatBox = document.querySelector('.chat-box'); // Notera att vi här använder en lokal variabel för att undvika konflikter
+    const lokalChatBox = document.querySelector('.chat-box');
     const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
 
     sparadeMeddelanden.forEach((meddelandeObj) => {
       const nyttMeddelande = document.createElement('div');
-      nyttMeddelande.classList.add('chat-message', meddelandeObj.sender);
+      nyttMeddelande.classList.add('chat-message');
+      if (meddelandeObj.sender) { // Lägg till avsändarklassen endast om den finns
+        nyttMeddelande.classList.add(meddelandeObj.sender);
+      }
       nyttMeddelande.innerHTML = `<p>${meddelandeObj.message}</p>`;
       lokalChatBox.appendChild(nyttMeddelande);
     });
@@ -465,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
   }
 
-  const lokalChatBox = document.querySelector('.chat-box'); // Lokal variabel för att undvika konflikter
+  const lokalChatBox = document.querySelector('.chat-box');
   const observer = new MutationObserver((mutationer) => {
     mutationer.forEach((mutation) => {
       if (mutation.addedNodes.length > 0) {
@@ -480,8 +483,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   observer.observe(lokalChatBox, { childList: true });
-
-  // Kör funktionen direkt när scriptet laddas
   laddaSparadeMeddelanden();
 })();
 </script>
