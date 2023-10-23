@@ -1,26 +1,26 @@
-const fetch = require('node-fetch');
+// Send message to Netlify Function sendToCervix
+function sendToNetlifyFunction(messageHtml, isBot) {
+  // Logga för att bekräfta att funktionen körs
+  console.log("sendToNetlifyFunction körs med meddelande:", messageHtml.outerHTML, "och isBot:", isBot);
 
-exports.handler = async function(event, context) {
-  console.log("Received event: ", event);  // Logga inkommande event
-  const { messageHtml, isBot } = JSON.parse(event.body);
-
-  const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL;
-  
-  const response = await fetch(zapierWebhookUrl, {
+  // Gör POST-request till Netlify Function
+  fetch('/.netlify/functions/sendToCervix', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      messageHtml: messageHtml,
+      messageHtml: messageHtml.outerHTML,
       isBot: isBot
     }),
+  })
+  .then(response => response.json()) // Lägg till detta för att logga serverns svar
+  .then(data => {
+    // Logga serverns svar
+    console.log('Servern svarade med:', data);
+  })
+  .catch(error => {
+    // Logga eventuella fel
+    console.error('Error:', error);
   });
-
-  console.log("Zapier response: ", response);  // Logga respons från Zapier
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ status: 'Message sent' }),
-  };
-};
+}
