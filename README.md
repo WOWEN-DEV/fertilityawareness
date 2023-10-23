@@ -31,7 +31,7 @@
 
 ![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
-# Table of Contents
+## Table of Contents
 
 1. [About](#about)
 2. [Roadmap](#roadmap)
