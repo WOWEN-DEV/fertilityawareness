@@ -88,7 +88,20 @@ window.TallyConfig = {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
   }
+ .chat-message::before {
+  content: "";  /* Tomt innehåll för att skapa ett virtuellt element */
+  background-image: url('https://cdn-icons-png.flaticon.com/512/6596/6596121.png');  /* Länk till bilden */
+  background-size: cover;  /* Skala bilden för att fylla elementet */
+  background-repeat: no-repeat;  /* Inget upprepande av bilden */
+  width: 40px;  /* Bredd på bilden */
+  height: 40px;  /* Höjd på bilden */
+  position: absolute;  /* Absolut positionering inom .bot-message */
+  left: 0;  /* Positionerad till vänster i .bot-message */
+  top: 0;  /* Positionerad längst upp i .bot-message */
+  border-radius: 50%;  /* Gör bilden rund */
+}
   .chat-message p {
     color: #0b0431c4;
   }
