@@ -14,7 +14,33 @@ window.TallyConfig = {
     "doNotShowAfterSubmit": true
   }
 };
-</script>	  
+</script>
+
+<script>
+// Funktion för att kolla om popupen är aktiv och då förhindra stängning
+function checkForPopup() {
+  const interval = setInterval(function() {
+    const popupElement = document.querySelector('[id="__next"]'); // Använder ID:t "__next" istället för en klass
+
+    if (popupElement) {
+      // Lägg till en lyssnare som förhindrar stängning av popupen
+      document.addEventListener('click', function(event) {
+        if (!(popupElement.contains(event.target))) {
+          event.stopPropagation();
+          event.preventDefault();
+        }
+      });
+
+      clearInterval(interval);  // Stoppa intervallkollen om popupen hittats
+    }
+  }, 100); // Kontrollera varje 100 ms
+}
+
+// Kör funktionen när sidan är färdigladdad
+document.addEventListener('DOMContentLoaded', function() {
+  checkForPopup();
+});
+</script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
