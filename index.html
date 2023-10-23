@@ -440,23 +440,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- Send to Cervix -->       
 <script>
-// Send message to Netlify Function sendToCervix
-function sendToNetlifyFunction(messageHtml, isBot) {
-  console.log("Calling Netlify Function sendToCervix");  // Log for debugging
-  fetch('/.netlify/functions/sendToCervix', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      messageHtml: messageHtml.outerHTML,
-      isBot: isBot
-    }),
-  })
-  .then(response => response.json())  // Add this to see server answer
-  .then(data => console.log('Data from server:', data))  // Log server answer
-  .catch(error => console.error('Error:', error));
-}
+  // Send message to Netlify Function sendToCervix
+  function sendToNetlifyFunction(messageHtml, isBot) {
+    console.log("Calling Netlify Function sendToCervix");  // Log for debugging
+    fetch('/.netlify/functions/sendToCervix', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messageHtml: messageHtml.outerHTML,
+        isBot: isBot
+      }),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Data from server:', data))
+    .catch(error => console.error('Error:', error));
+  }
+
+  // MutationObserver to observe when a new message is added
+  const chatBox = document.querySelector('.chat-box');
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        const newNode = mutation.addedNodes[0];
+        if (newNode.classList && newNode.classList.contains('chat-message')) {
+          const isBot = newNode.classList.contains('bot-message');
+          sendToNetlifyFunction(newNode, isBot);
+        }
+      }
+    });
+  });
+
+  observer.observe(chatBox, { childList: true });
 </script>
 <!-- End Send to Cervix -->
    
