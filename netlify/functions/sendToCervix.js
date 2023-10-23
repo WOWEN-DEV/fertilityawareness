@@ -1,9 +1,9 @@
 // Send message to Netlify Function sendToCervix
 function sendToNetlifyFunction(messageHtml, isBot) {
-  // Logga för att bekräfta att funktionen körs
+  // Log to confirm that the function is running
   console.log("sendToNetlifyFunction körs med meddelande:", messageHtml.outerHTML, "och isBot:", isBot);
 
-  // Gör POST-request till Netlify Function
+  // Do a POST request to Netlify Function
   fetch('/.netlify/functions/sendToCervix', {
     method: 'POST',
     headers: {
@@ -14,13 +14,13 @@ function sendToNetlifyFunction(messageHtml, isBot) {
       isBot: isBot
     }),
   })
-  .then(response => response.json()) // Lägg till detta för att logga serverns svar
+  .then(response => response.json()) // Add this to log server answer
   .then(data => {
-    // Logga serverns svar
-    console.log('Servern svarade med:', data);
+    // Log answer from server
+    console.log('Server answered with:', data);
   })
   .catch(error => {
-    // Logga eventuella fel
+    // Log eventual errors
     console.error('Error:', error);
   });
 }
