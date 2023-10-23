@@ -437,7 +437,25 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 <!-- End Assistant typing answer indicator -->
-	      
+
+<!-- Send to Cervix -->	      
+<script>
+// Send message to Netlify Function sendToCervix
+function sendToNetlifyFunction(messageHtml, isBot) {
+  fetch('/.netlify/functions/sendToCervix', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messageHtml: messageHtml.outerHTML,
+      isBot: isBot
+    }),
+  })
+  .catch(error => console.error('Error:', error));
+}
+</script>
+<!-- End Send to Cervix -->	   
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
 
