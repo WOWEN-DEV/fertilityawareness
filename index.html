@@ -387,16 +387,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <script>
-// Ingen ny deklaration av chatForm eftersom den redan deklarerats i tidigare script
-
 // Funktion som skapar och visar en "Assistenten tänker..."-indikator
 function showThinkingIndicator() {
-  const chatBox = document.querySelector('.chat-box');
+  const chatBoxLocal = document.querySelector('.chat-box'); // Observera att jag ändrade namnet här
   const thinkingMessage = document.createElement('div'); 
   thinkingMessage.classList.add('chat-message', 'bot-message'); 
   thinkingMessage.id = 'thinking-indicator';
   thinkingMessage.innerHTML = `<p>Assistenten tänker<span class="dots"></span></p>`;
-  chatBox.appendChild(thinkingMessage);
+  chatBoxLocal.appendChild(thinkingMessage); // Ändrat här också
   
   let i = 0;
   const dots = document.querySelector('.dots');
@@ -420,7 +418,7 @@ document.querySelector('form').addEventListener('submit', () => {
 });
 
 // MutationObserver för att observera när ett nytt bot-meddelande läggs till
-const chatBox = document.querySelector('.chat-box');
+const chatBoxLocal = document.querySelector('.chat-box'); // Observera att jag ändrade namnet här
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.addedNodes.length > 0) {
@@ -432,7 +430,7 @@ const observer = new MutationObserver((mutations) => {
   });
 });
 
-observer.observe(chatBox, { childList: true });
+observer.observe(chatBoxLocal, { childList: true }); // Ändrat här också
 
 </script>
 
