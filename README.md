@@ -18,13 +18,13 @@
   </a>
 </p>
 
-<h1 align="center">Fertility Awareness [Main Repo – Frontend]</h1>
+<h1 align="center">Fertility Awareness [Web App Frontend Repo]</h1>
 
 ![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
 # Table of Contents
 
-- [Fertility Awareness [Web App Frontend Repo]](#fertility-awareness-main-repo--frontend)
+- [Fertility Awareness [Web App Frontend Repo]](#fertility-awareness-web-app-frontend-repo)
   - [About](#about)
   - [Roadmap and Releases](#roadmap-and-releases)
     - [Platform Fullstack Version](#platform-fullstack-version)
