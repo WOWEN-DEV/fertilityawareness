@@ -1,10 +1,11 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
+  console.log("Received event: ", event);  // Logga inkommande event
   const { messageHtml, isBot } = JSON.parse(event.body);
 
-  const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL; // Här läser vi in miljövariabeln
-
+  const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL;
+  
   const response = await fetch(zapierWebhookUrl, {
     method: 'POST',
     headers: {
@@ -15,6 +16,8 @@ exports.handler = async function(event, context) {
       isBot: isBot
     }),
   });
+
+  console.log("Zapier response: ", response);  // Logga respons från Zapier
 
   return {
     statusCode: 200,
