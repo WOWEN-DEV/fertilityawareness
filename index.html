@@ -436,7 +436,47 @@ document.addEventListener("DOMContentLoaded", function () {
   observer.observe(chatBoxLocal, { childList: true });
 })();
 </script>
-<!-- End Assistant typing answer indicator -->	      
+<!-- End Assistant typing answer indicator -->
+
+
+
+
+
+<script>
+// Läser sparade meddelanden från localStorage och visar dem i chattrutan
+function loadChatMessages() {
+  const savedMessages = JSON.parse(localStorage.getItem('chatMessages'));
+  if (savedMessages && savedMessages.length > 0) {
+    savedMessages.forEach(messageObj => {
+      const chatMessage = document.createElement('div');
+      chatMessage.classList.add('chat-message', messageObj.sender); // 'bot-message' eller tomt för användare
+      chatMessage.innerHTML = `<p>${messageObj.message}</p>`;
+      chatBox.appendChild(chatMessage);
+    });
+  }
+}
+
+// Sparar meddelanden till localStorage
+function saveChatMessage(message, sender) {
+  let savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+  savedMessages.push({ message, sender });
+  localStorage.setItem('chatMessages', JSON.stringify(savedMessages));
+}
+
+const chatBox = document.querySelector('.chat-box');
+
+// Laddar tidigare sparade meddelanden när sidan laddas
+loadChatMessages();
+
+// Använd denna funktion för att spara meddelanden när de skapas
+// Exempel:
+// saveChatMessage('Hej!', ''); // För användarmeddelanden
+// saveChatMessage('Hur kan jag hjälpa?', 'bot-message'); // För bot-meddelanden	
+</script>
+
+
+
+	      
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
 
