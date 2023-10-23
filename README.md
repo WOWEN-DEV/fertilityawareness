@@ -24,7 +24,7 @@
 
 # Table of Contents
 
-- [Fertility Awareness [Main Repo – Frontend]](#fertility-awareness-main-repo--frontend)
+- [Fertility Awareness [Web App Frontend Repo]](#fertility-awareness-main-repo--frontend)
   - [About](#about)
   - [Roadmap and Releases](#roadmap-and-releases)
     - [Platform Fullstack Version](#platform-fullstack-version)
