@@ -383,18 +383,15 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         </script>
 
-
-
-
 <script>
 (function() {
-  // Funktion som skapar och visar en "Assistenten tänker..."-indikator
+  // Function that creates and displays a "The assistant is thinking..." indicator
   function showThinkingIndicator() {
     const chatBoxLocal = document.querySelector('.chat-box');
     const thinkingMessage = document.createElement('div'); 
     thinkingMessage.classList.add('chat-message', 'bot-message'); 
     thinkingMessage.id = 'thinking-indicator';
-    thinkingMessage.innerHTML = `<p>Assistenten tänker<span class="dots"></span></p>`;
+    thinkingMessage.innerHTML = `<p>🤔 Assistenten tänker<span class="dots"></span></p>`;
     chatBoxLocal.appendChild(thinkingMessage);
     
     let i = 0;
@@ -405,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
-  // Funktion som tar bort "Assistenten tänker..."-indikatorn
+  // Function that removes the "Assistenten tänker..." indicator
   function removeThinkingIndicator() {
     const thinkingIndicator = document.getElementById('thinking-indicator');
     if (thinkingIndicator) {
@@ -413,12 +410,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Lägg till en ny eventlistener till det existerande chatForm-objektet
+  // Add a new event listener to the existing chatForm object
   document.querySelector('form').addEventListener('submit', () => {
     showThinkingIndicator();
   });
 
-  // MutationObserver för att observera när ett nytt bot-meddelande läggs till
+  // MutationObserver to observe when a new bot message is added
   const chatBoxLocal = document.querySelector('.chat-box');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -433,14 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(chatBoxLocal, { childList: true });
 })();
-
-
 </script>
-
-
-
-
-
 	      
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
