@@ -722,7 +722,7 @@ a.primary:hover::before {
 
 @media only screen and (max-width: 428px) {
   .hero-content {
-    width: 325px;
+    width: 370px;
   }
 
   .demo {
