@@ -444,34 +444,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 // Läser sparade meddelanden från localStorage och visar dem i chattrutan
-function loadChatMessages() {
-  const savedMessages = JSON.parse(localStorage.getItem('chatMessages'));
-  if (savedMessages && savedMessages.length > 0) {
-    savedMessages.forEach(messageObj => {
-      const chatMessage = document.createElement('div');
-      chatMessage.classList.add('chat-message', messageObj.sender); // 'bot-message' eller tomt för användare
-      chatMessage.innerHTML = `<p>${messageObj.message}</p>`;
-      chatBox.appendChild(chatMessage);
+function laddaSparadeMeddelanden() {
+  const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden'));
+  const lokalChatBox = document.querySelector('.chat-box'); // Ny variabelnamn här
+  if (sparadeMeddelanden && sparadeMeddelanden.length > 0) {
+    sparadeMeddelanden.forEach(meddelandeObj => {
+      const chatMeddelande = document.createElement('div');
+      chatMeddelande.classList.add('chat-message', meddelandeObj.sender);
+      chatMeddelande.innerHTML = `<p>${meddelandeObj.message}</p>`;
+      lokalChatBox.appendChild(chatMeddelande); // Ändrad till den nya variabeln här
     });
   }
 }
 
 // Sparar meddelanden till localStorage
-function saveChatMessage(message, sender) {
-  let savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-  savedMessages.push({ message, sender });
-  localStorage.setItem('chatMessages', JSON.stringify(savedMessages));
+function sparaChatMeddelande(meddelande, avsandare) {
+  let sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
+  sparadeMeddelanden.push({ message: meddelande, sender: avsandare });
+  localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
 }
 
-const chatBox = document.querySelector('.chat-box');
-
 // Laddar tidigare sparade meddelanden när sidan laddas
-loadChatMessages();
+laddaSparadeMeddelanden();
 
 // Använd denna funktion för att spara meddelanden när de skapas
 // Exempel:
-// saveChatMessage('Hej!', ''); // För användarmeddelanden
-// saveChatMessage('Hur kan jag hjälpa?', 'bot-message'); // För bot-meddelanden	
+// sparaChatMeddelande('Hej!', ''); // För användarmeddelanden
+// sparaChatMeddelande('Hur kan jag hjälpa?', 'bot-message'); // För bot-meddelanden
+
 </script>
 
 
