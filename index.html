@@ -437,58 +437,6 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 <!-- End Assistant typing answer indicator -->
-
-
-
-
-
-<script>
-// Omedelbart anropad funktion för att undvika variabelkonflikter
-(function() {
-  // Funktion för att ladda sparade meddelanden från localStorage
-  function laddaSparadeMeddelanden() {
-    const lokalChatBox = document.querySelector('.chat-box');
-    const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
-
-    sparadeMeddelanden.forEach((meddelandeObj) => {
-      const nyttMeddelande = document.createElement('div');
-      nyttMeddelande.classList.add('chat-message');
-      if (meddelandeObj.sender) { // Lägg till avsändarklassen endast om den finns
-        nyttMeddelande.classList.add(meddelandeObj.sender);
-      }
-      nyttMeddelande.innerHTML = `<p>${meddelandeObj.message}</p>`;
-      lokalChatBox.appendChild(nyttMeddelande);
-    });
-  }
-
-  // Funktion för att spara meddelanden i localStorage
-  function sparaMeddelande(meddelande, avsandare) {
-    const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
-    sparadeMeddelanden.push({message: meddelande, sender: avsandare});
-    localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
-  }
-
-  const lokalChatBox = document.querySelector('.chat-box');
-  const observer = new MutationObserver((mutationer) => {
-    mutationer.forEach((mutation) => {
-      if (mutation.addedNodes.length > 0) {
-        const nyttNod = mutation.addedNodes[0];
-        if (nyttNod.classList && nyttNod.classList.contains('chat-message')) {
-          const meddelandeText = nyttNod.textContent;
-          const avsandare = nyttNod.classList.contains('bot-message') ? 'bot-message' : '';
-          sparaMeddelande(meddelandeText, avsandare);
-        }
-      }
-    });
-  });
-
-  observer.observe(lokalChatBox, { childList: true });
-  laddaSparadeMeddelanden();
-})();
-</script>
-
-
-
 	      
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
