@@ -18,7 +18,7 @@
   </a>
 </p>
 
-<h1 align="center">Fertility Awareness [Web App Frontend Repo]</h1>
+<h1 align="center">Fertility Awareness [Web App Frontend]</h1>
 <h3 align="center">Fertility Awareness Project Repos:</h3>
 <p align="center">
 <p align="center">
