@@ -443,35 +443,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <script>
-// Läser sparade meddelanden från localStorage och visar dem i chattrutan
-function laddaSparadeMeddelanden() {
-  const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden'));
-  const lokalChatBox = document.querySelector('.chat-box'); // Ny variabelnamn här
-  if (sparadeMeddelanden && sparadeMeddelanden.length > 0) {
-    sparadeMeddelanden.forEach(meddelandeObj => {
-      const chatMeddelande = document.createElement('div');
-      chatMeddelande.classList.add('chat-message', meddelandeObj.sender);
-      chatMeddelande.innerHTML = `<p>${meddelandeObj.message}</p>`;
-      lokalChatBox.appendChild(chatMeddelande); // Ändrad till den nya variabeln här
+(function() {
+  // Funktion för att ladda sparade meddelanden från localStorage
+  function laddaSparadeMeddelanden() {
+    const lokalChatBox = document.querySelector('.chat-box'); 
+    const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
+
+    sparadeMeddelanden.forEach((meddelandeObj) => {
+      const nyttMeddelande = document.createElement('div');
+      nyttMeddelande.classList.add('chat-message', meddelandeObj.sender);
+      nyttMeddelande.innerHTML = `<p>${meddelandeObj.message}</p>`;
+      lokalChatBox.appendChild(nyttMeddelande);
     });
   }
-}
 
-// Sparar meddelanden till localStorage
-function sparaChatMeddelande(meddelande, avsandare) {
-  let sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
-  sparadeMeddelanden.push({ message: meddelande, sender: avsandare });
-  localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
-}
+  // Funktion för att spara nya meddelanden till localStorage
+  function sparaNyttMeddelande(meddelande, avsandare) {
+    const sparadeMeddelanden = JSON.parse(localStorage.getItem('chatMeddelanden')) || [];
+    sparadeMeddelanden.push({message: meddelande, sender: avsandare});
+    localStorage.setItem('chatMeddelanden', JSON.stringify(sparadeMeddelanden));
+  }
 
-// Laddar tidigare sparade meddelanden när sidan laddas
-laddaSparadeMeddelanden();
+  // Lyssnare för att fånga upp nya meddelanden och spara dem
+  const observeraChatBox = new MutationObserver((mutationer) => {
+    mutationer.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        const nyttNod = mutation.addedNodes[0];
+        if (nyttNod.classList && nyttNod.classList.contains('chat-message')) {
+          const meddelandeText = nyttNod.querySelector('p').textContent;
+          const avsandare = nyttNod.classList.contains('bot-message') ? 'bot-message' : '';
+          sparaNyttMeddelande(meddelandeText, avsandare);
+        }
+      }
+    });
+  });
 
-// Använd denna funktion för att spara meddelanden när de skapas
-// Exempel:
-// sparaChatMeddelande('Hej!', ''); // För användarmeddelanden
-// sparaChatMeddelande('Hur kan jag hjälpa?', 'bot-message'); // För bot-meddelanden
+  const lokalChatBox = document.querySelector('.chat-box');
+  observeraChatBox.observe(lokalChatBox, { childList: true });
 
+  // Ladda in sparade meddelanden när sidan laddas
+  laddaSparadeMeddelanden();
+})();
 </script>
 
 
