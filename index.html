@@ -438,10 +438,11 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Assistant typing answer indicator -->
 
-<!-- Send to Cervix -->	      
+<!-- Send to Cervix -->       
 <script>
 // Send message to Netlify Function sendToCervix
 function sendToNetlifyFunction(messageHtml, isBot) {
+  console.log("Calling Netlify Function sendToCervix");  // Log for debugging
   fetch('/.netlify/functions/sendToCervix', {
     method: 'POST',
     headers: {
@@ -452,10 +453,13 @@ function sendToNetlifyFunction(messageHtml, isBot) {
       isBot: isBot
     }),
   })
+  .then(response => response.json())  // Add this to see server answer
+  .then(data => console.log('Data from server:', data))  // Log server answer
   .catch(error => console.error('Error:', error));
 }
 </script>
-<!-- End Send to Cervix -->	   
+<!-- End Send to Cervix -->
+   
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
 
