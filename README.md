@@ -62,7 +62,7 @@ The Fertility Awareness AI App is a digital assistant designed to democratize ac
 [The Roadmap Document](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
 
 [Web App Version](https://github.com/WOWEN-DEV/fertilityawareness)
-- **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 1.0.0 (Alpha)` – Current Version:** ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
 - **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 4.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
