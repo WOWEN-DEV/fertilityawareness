@@ -1,18 +1,20 @@
-// netlify/functions/sendToCervix.js
+const axios = require('axios');
 
 exports.handler = async function(event, context) {
-  // Extracting data from POST request
   const { messageHtml, isBot } = JSON.parse(event.body);
+  
+  console.log(`Sending the following data to Google Sheets: messageHtml=${messageHtml}, isBot=${isBot}`);
 
-  // Log the received data for debugging
-  console.log("Received data:", { messageHtml, isBot });
+  // Send en POST request to Google Sheet web app
+  try {
+    const response = await axios.post('https://script.google.com/a/macros/wowen.tech/s/AKfycbwy9IuEv1efzuZMOWEzMMUeRDgqIZCe6fjWt4C_VaDsQRXgEsQjUvui43rcLzJGmfw/exec', { messageHtml, isBot });
+    console.log('Successfully sent data to Google Sheets:', response.data);
+  } catch (error) {
+    console.error('Failed to send data to Google Sheets:', error);
+  }
 
-  // Here you can do something with the data, e.g., forward it to another service
-  // ...
-
-  // Sending an answer back to the client
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: "Data received on server" }),
+    body: JSON.stringify({ message: "Data received on server and sent to Google Sheets" }),
   };
 };
