@@ -57,7 +57,7 @@ Data-Driven Refinement. Building on the first iteration, the `base model`, the s
 
 # [Web App Version](https://github.com/WOWEN-DEV/fertilityawareness)
 
-## `Version 1.0.0 (Alpha)` – Current Version ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow) / ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
+## `Version 1.0.0 (Alpha)` – Current Version ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
 
 > **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
 
