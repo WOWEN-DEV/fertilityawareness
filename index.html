@@ -438,11 +438,11 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Assistant typing answer indicator -->
 
-<!-- Send to Cervix -->       
+<!-- Send to Cervix -->
 <script>
-  // Send message to Netlify Function sendToCervix
+  // Send message to the Netlify function sendToCervix
   function sendToNetlifyFunction(messageHtml, isBot) {
-    console.log("Calling Netlify Function sendToCervix");  // Log for debugging
+    console.log("Calling the Netlify function sendToCervix");  // Log for debugging
     fetch('/.netlify/functions/sendToCervix', {
       method: 'POST',
       headers: {
@@ -450,15 +450,16 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: JSON.stringify({
         messageHtml: messageHtml.outerHTML,
-        isBot: isBot
+        isBot: isBot,
+        userEmail: getUserEmail() 
       }),
     })
     .then(response => response.json())
-    .then(data => console.log('Data from server:', data))
+    .then(data => console.log('Data from the server:', data))
     .catch(error => console.error('Error:', error));
   }
 
-  // MutationObserver to observe when a new chat message is added
+  // Observe when a new chat message is added
   const chatBoxObserver = document.querySelector('.chat-box'); 
   const chatObserver = new MutationObserver((mutations) => { 
     mutations.forEach((mutation) => {
@@ -473,8 +474,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   chatObserver.observe(chatBoxObserver, { childList: true });
+
+  // Function to retrieve the user's email
+  function getUserEmail() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo && userInfo.email) {
+      return userInfo.email;
+    }
+    return ''; // Return an empty string if user information is not available
+  }
 </script>
 <!-- End Send to Cervix -->
+
    
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
