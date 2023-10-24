@@ -7,7 +7,7 @@ exports.handler = async function(event, context) {
 
   // Send en POST request to Google Sheet web app
   try {
-    const response = await axios.post('https://script.google.com/a/macros/wowen.tech/s/AKfycbwy9IuEv1efzuZMOWEzMMUeRDgqIZCe6fjWt4C_VaDsQRXgEsQjUvui43rcLzJGmfw/exec', { messageHtml, isBot });
+    const response = await axios.post('https://script.google.com/macros/s/AKfycbwy9IuEv1efzuZMOWEzMMUeRDgqIZCe6fjWt4C_VaDsQRXgEsQjUvui43rcLzJGmfw/exec', { messageHtml, isBot });
     console.log('Successfully sent data to Google Sheets:', response.data);
   } catch (error) {
     console.error('Failed to send data to Google Sheets:', error);
