@@ -345,137 +345,85 @@ document.addEventListener("DOMContentLoaded", function () {
         <h1 class="hero-text splt">Digital handledare</h1>
 
         <div class="chat-container">
-          <div class="chat-box"></div>
-          <form>
-            <input type="text" class="chat-input" placeholder="Kan man bota PMS?">
-            <button type="submit" class="chat-submit">Skicka (eller tryck ENTER)</button>
-          </form>
-        </div>
-        <script>
-          const chatInput = document.querySelector('.chat-input'); 
-          const chatBox = document.querySelector('.chat-box'); 
-          const chatForm = document.querySelector('form');
-      
-          chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const message = chatInput.value;
-            const chatMessage = document.createElement('div'); 
-            chatMessage.classList.add('chat-message'); 
-            chatMessage.innerHTML = `<p>${message}</p>`;
-            chatBox.appendChild(chatMessage);
-            chatInput.value = '';
-      
-            // Send message to server            
-            fetch('https://fertilityawareness.ai/api/executeQuery', {
-              method: 'POST',
-	headers: {
-   "Content-Type": "application/json",                                                                                                
-   "Access-Control-Origin": "*"
-},
-              body: JSON.stringify({
-                "text": message
-              })
-             })
-            .then(res => res.json())
-            .then(data => {
-              const chatMessage = document.createElement('div'); 
-              chatMessage.classList.add('chat-message', 'bot-message'); // add bot-message class here
-              chatMessage.innerHTML = `<p>${data.result}</p>`;
-              chatBox.appendChild(chatMessage);
-            })
-            .catch(err => console.log(err));
-          });
-        </script>
+  <div class="chat-box"></div>
+  <form>
+    <input type="text" class="chat-input" placeholder="Kan man bota PMS?">
+    <button type="submit" class="chat-submit">Skicka (eller tryck ENTER)</button>
+  </form>
+</div>
 
-<!-- Add stop function -->
 <script>
-/**
- * Handles the submission of a chat message form and allows the user to stop the response,
- * with a blinking "..." animation while waiting for the response.
- * 
- * @param {HTMLElement} formElement - The form element
- * @param {HTMLElement} inputElement - The input element for chat messages
- * @param {HTMLElement} submitElement - The submit button element
- * @param {string} apiUrl - The URL for the chat API
- */
-function handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl) {
-  let abortController = null;  // To hold an AbortController instance for aborting fetch
-  let dotsInterval = null;  // To hold the interval for the "..." animation
+// Fetch elements
+const chatInput = document.querySelector('.chat-input');
+const chatBox = document.querySelector('.chat-box');
+const chatForm = document.querySelector('form');
+const chatSubmit = document.querySelector('.chat-submit');
+
+let abortController = null;  // For aborting fetch
+let dotsInterval = null;  // For the "..." animation
+
+// Main function for handling chat submission
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // Reset if needed
+  if (dotsInterval) clearInterval(dotsInterval);
+  if (abortController) abortController.abort();
+
+  // Setup for this request
+  abortController = new AbortController();
+  chatSubmit.textContent = 'Stoppa svar';
   
-  formElement.addEventListener('submit', function(e) {
-    e.preventDefault();
+  // Animation setup
+  let i = 0;
+  dotsInterval = setInterval(() => {
+    chatSubmit.textContent = `Stoppa svar${'.'.repeat(i % 4)} 🛑`;
+    i++;
+  }, 500);
 
-    // Clear the "..." animation if one is already ongoing
-    if (dotsInterval) {
-      clearInterval(dotsInterval);
-      dotsInterval = null;
+  // User message handling
+  const message = chatInput.value;
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('chat-message');
+  userMessage.innerHTML = `<p>${message}</p>`;
+  chatBox.appendChild(userMessage);
+  chatInput.value = '';
+
+  // API call
+  fetch('https://fertilityawareness.ai/api/executeQuery', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Origin": "*"
+    },
+    body: JSON.stringify({ "text": message }),
+    signal: abortController.signal
+  })
+  .then(res => res.json())
+  .then(data => {
+    // Bot message handling
+    const botMessage = document.createElement('div');
+    botMessage.classList.add('chat-message', 'bot-message');
+    botMessage.innerHTML = `<p>${data.result}</p>`;
+    chatBox.appendChild(botMessage);
+
+    // Reset abort and animation
+    clearInterval(dotsInterval);
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    abortController = null;
+  })
+  .catch(err => {
+    // Error handling
+    if (err.name === 'AbortError') {
+      console.log('Fetch aborted');
+    } else {
+      console.error(err);
     }
-
-    // If an API call is already ongoing, abort it
-    if (abortController) {
-      abortController.abort();
-      return;
-    }
-
-    // Initialize AbortController and set the submit button to "Stoppa svar"
-    abortController = new AbortController();
-    submitElement.textContent = 'Stoppa svar';
-  
-    // Add the "..." animation
-    let i = 0;
-    dotsInterval = setInterval(() => {
-      submitElement.textContent = `Stoppa svar${'.'.repeat(i % 4)} 🛑`;
-      i++;
-    }, 500);
-
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Origin": "*"
-      },
-      body: JSON.stringify({
-        "text": inputElement.value
-      }),
-      signal: abortController.signal  // Associate fetch with AbortController
-    })
-    .then(res => res.json())
-    .then(data => {
-      // Handle server response here, e.g., appending a bot message to chatBox
-
-      // Reset submit button, clear "..." animation and clear AbortController
-      clearInterval(dotsInterval);
-      submitElement.textContent = 'Skicka (eller tryck ENTER)';
-      abortController = null;
-    })
-    .catch(err => {
-      if (err.name === 'AbortError') {
-        console.log('Fetch aborted');
-      } else {
-        console.error(err);
-      }
-
-      // Reset submit button, clear "..." animation and clear AbortController
-      clearInterval(dotsInterval);
-      submitElement.textContent = 'Skicka (eller tryck ENTER)';
-      abortController = null;
-    });
+    clearInterval(dotsInterval);
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    abortController = null;
   });
-}
+});
 
-// Usage example:
-const formElement = document.querySelector('form');
-const inputElement = document.querySelector('.chat-input');
-const submitElement = document.querySelector('.chat-submit');
-const apiUrl = 'https://fertilityawareness.ai/api/executeQuery';
-
-handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl);	
-</script>
-<!-- End Add stop function -->
-
-
-<!-- Assistant typing answer indicator -->	      
-<script>
 (function() {
   // Function that creates and displays a "Handledaren tänker och formulerar sitt svar..." indicator
   function showThinkingIndicator() {
@@ -522,12 +470,8 @@ handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl);
 
   observer.observe(chatBoxLocal, { childList: true });
 })();
-</script>
-<!-- End Assistant typing answer indicator -->
 
-<!-- Send to Cervix -->
-<script>
-  // Send message to the Netlify function sendToCervix
+ // Send message to the Netlify function sendToCervix
   function sendToNetlifyFunction(messageHtml, isBot) {
     console.log("Calling the Netlify function sendToCervix");  // Log for debugging
     fetch('/.netlify/functions/sendToCervix', {
@@ -569,10 +513,8 @@ handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl);
       return userInfo.email;
     }
     return ''; // Return an empty string if user information is not available
-  }
+  }	
 </script>
-<!-- End Send to Cervix -->
-
    
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
