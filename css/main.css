@@ -396,7 +396,7 @@ a.primary:hover::before {
 /* support card */
 
 .support-card {
-  display: none;
+  display: none!important;
   justify-content: space-between;
   align-items: center;
   position: fixed;
