@@ -10,12 +10,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Updated frontend stylings for improved visual aesthetics.
+- Enhanced desktop user experience by expanding the chat container height.
 
 ### Deprecated
 - None.
 
 ### Removed
-- None.
+- Removed the "Digital Handledare" hero text from the frontend to provide additional space for the chat container.
 
 ### Fixed
 - Optimized the JavaScript code for better readability and maintainability.
