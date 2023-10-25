@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 - The input field is now disabled while waiting for the bot's response.
 
 ### Changed
-- None.
+- Updated frontend stylings for improved visual aesthetics.
 
 ### Deprecated
 - None.
