@@ -1,0 +1,47 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## Version 1.1.0 (Alpha) - YYYY-MM-DD
+
+### Added
+- Introduced a 'Stop Response' button to abort ongoing API fetch requests.
+- The input field is now disabled while waiting for the bot's response.
+- Enhanced the thinking indicator with a 'Waiting for your answer...' animated placeholder.
+
+### Changed
+- None.
+
+### Deprecated
+- None.
+
+### Removed
+- None.
+
+### Fixed
+- Optimized the JavaScript code for better readability and maintainability.
+
+### Security
+- None.
+
+## Version 1.0.0 (Alpha) - 2023-10-24
+
+### Added
+- Initial Access: This alpha release serves as the first public introduction.
+- Limited Testing: At this stage, we are providing limited access to the base AI model for gathering initial feedback.
+
+### Changed
+- None.
+
+### Deprecated
+- None.
+
+### Removed
+- None.
+
+### Fixed
+- None.
+
+### Security
+- None.
+
