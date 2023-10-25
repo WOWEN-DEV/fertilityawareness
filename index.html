@@ -361,6 +361,7 @@ const chatForm = document.querySelector('form');
 const chatSubmit = document.querySelector('.chat-submit');
 let abortController = null;
 let dotsInterval = null;
+let placeholderDotsInterval = null;  // New variable for placeholder dots animation
 
 // Show thinking indicator
 function showThinkingIndicator() {
@@ -373,16 +374,19 @@ function showThinkingIndicator() {
   thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
   chatBox.appendChild(thinkingMessage);
   
-  // Lock chat input and change its placeholder
-  chatInput.placeholder = 'Vänta på ditt svar...';
-  chatInput.disabled = true;
-
-  // Animate dots
+  // Animate dots for the thinking indicator
   let i = 0;
   dotsInterval = setInterval(() => {
     const dots = thinkingMessage.querySelector('.dots');
     dots.textContent = '.'.repeat(i % 4);
     i++;
+  }, 500);
+
+  // Animate dots for the placeholder
+  let j = 0;
+  placeholderDotsInterval = setInterval(() => {
+    chatInput.placeholder = 'Vänta på ditt svar' + '.'.repeat(j % 4);
+    j++;
   }, 500);
 }
 
@@ -392,6 +396,12 @@ function removeThinkingIndicator() {
   if (thinkingIndicator) {
     thinkingIndicator.remove();
   }
+  
+  // Clear both intervals
+  clearInterval(dotsInterval);
+  clearInterval(placeholderDotsInterval);
+
+  // Reset placeholder
   chatInput.placeholder = 'Kan man bota PMS?';
   chatInput.disabled = false;
 }
@@ -427,21 +437,20 @@ function getUserEmail() {
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   
-  // Validate input to prevent empty div creation
-  const message = chatInput.value.trim();
-  if (message === '') {
+  // Stop any ongoing fetch request and animation
+  if (abortController) {
+    abortController.abort();
+    removeThinkingIndicator();
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
     return;
   }
-  
-  // Stop any ongoing fetch request and animation
-  if (abortController) abortController.abort();
-  if (dotsInterval) clearInterval(dotsInterval);
   
   // Reset button and show thinking indicator
   chatSubmit.textContent = 'Stoppa svar';
   showThinkingIndicator();
   
   // Show user's message
+  const message = chatInput.value;
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message');
   userMessage.innerHTML = `<p>${message}</p>`;
@@ -496,9 +505,6 @@ chatForm.addEventListener('submit', (e) => {
 });
 </script>
 
-
-
-   
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
 
