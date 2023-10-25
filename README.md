@@ -34,11 +34,12 @@
 ## Table of Contents
 
 1. [About](#about)
-2. [Roadmap](#roadmap)
+2. [Changelog](#changelog)
+3. [Roadmap](#roadmap)
     - [Web App Version](#roadmap)
     - [Mobile App Version](#roadmap)
     - [AI Model](#roadmap)
-3. [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
+4. [Developer Documentation: Technical Architecture and Stack Overview](#developer-documentation-technical-architecture-and-stack-overview)
     - [Domain Management](#domain-management)
     - [Frontend](#frontend)
     - [User Authentication](#user-authentication)
@@ -47,30 +48,33 @@
     - [Backend/DevOps](#backenddevops)
     - [Future Plans and Considerations](#future-plans-and-considerations)
     - [Summary of Technologies](#summary-of-technologies)
-4. [Contributing](#contributing)
-5. [Feedback and Support](#feedback-and-support)
-6. [Connect with Us](#connect-with-us)
-7. [License](#license)
+5. [Contributing](#contributing)
+6. [Feedback and Support](#feedback-and-support)
+7. [Connect with Us](#connect-with-us)
+8. [License](#license)
 
 
 ## About
 
 The Fertility Awareness AI App is a digital assistant designed to democratize access to fertility understanding and women's health. Our aim is to provide reliable, quick, and easily accessible information to power women in taking control of their reproductive health. Our initial development and market focus is in 🇸🇪 Swedish, but we plan to expand into additional languages and market reach as the product evolves.
 
+## Changelog
+The [changelog](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/CHANGELOG.md) provides a high-level overview of the changes made in each version of the software.
+
 ## Roadmap
 
 [The Roadmap Document](https://github.com/WOWEN-DEV/fertilityawareness/blob/main/ROADMAP.md) provides a comprehensive overview, detailing the development trajectory, upcoming releases, and features that are in the pipeline for FertilityAwarenessAI. Below, you'll find a succinct summary highlighting key vitals and the current status of the project.
 
 [Web App Version](https://github.com/WOWEN-DEV/fertilityawareness)
-- **`Version 1.0.0 (Alpha)` – Current Version:** ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
-- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 1.0.0 (Alpha)` > `Version 1.1.0 (Alpha)` – Current Version:** ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
+- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 4.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 5.0.0 (Cervix)` – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 [Mobile App Version](https://github.com/WOWEN-DEV/fertilityawareness-app)
 - **`Version 1.0.0 (Alpha)` – Current Version:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
-- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+- **`Version 2.0.0 (Alpha)` – Alpha Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 3.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 4.0.0 (Beta)` – Beta Upgrade:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
 - **`Version 5.0.0 (Cervix)` – Release Version:** ![Planned](https://img.shields.io/badge/Status-Planned-red)
