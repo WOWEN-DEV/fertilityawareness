@@ -347,64 +347,54 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="chat-container">
   <div class="chat-box"></div>
   <form>
-    <input type="text" class="chat-input" placeholder="Kan man bota PMS?" data-gtm-form-interact-field-id="0">
+    <input type="text" class="chat-input" placeholder="Kan man bota PMS?">
     <button type="submit" class="chat-submit">Skicka (eller tryck ENTER)</button>
   </form>
 </div>
 
 <script>
-// Fetch elements
+// Initialize variables
 const chatInput = document.querySelector('.chat-input');
 const chatBox = document.querySelector('.chat-box');
 const chatForm = document.querySelector('form');
 const chatSubmit = document.querySelector('.chat-submit');
+let abortController = null;
+let dotsInterval = null;
 
-let abortController = null;  // For aborting fetch
-let dotsInterval = null;  // For the "..." animation in placeholder
-
-// Function to lock input and set placeholder text
-function lockInput() {
-  chatInput.disabled = true;
-  chatInput.placeholder = "Vänta på ditt svar";
+// Function to show "thinking" indicator
+function showThinkingIndicator() {
+  const thinkingMessage = document.createElement('div'); 
+  thinkingMessage.classList.add('chat-message', 'bot-message', 'thinking-indicator'); 
+  thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
+  chatBox.appendChild(thinkingMessage);
   
-  // Animate placeholder text
   let i = 0;
-  dotsInterval = setInterval(() => {
-    chatInput.placeholder = `Vänta på ditt svar${'.'.repeat(i % 4)}`;
+  const dots = document.querySelector('.dots');
+  setInterval(() => {
+    dots.textContent = '.'.repeat(i % 4);
     i++;
   }, 500);
-
-  // Change submit button to "Stoppa svar 🛑"
-  chatSubmit.textContent = 'Stoppa svar 🛑';
 }
 
-// Function to unlock input and reset placeholder text
-function unlockInput() {
-  chatInput.disabled = false;
-  chatInput.placeholder = "Kan man bota PMS?";
-  if (dotsInterval) clearInterval(dotsInterval);  // Stop the animation
-
-  // Change submit button back to "Skicka (eller tryck ENTER)"
-  chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+// Function to remove "thinking" indicator
+function removeThinkingIndicator() {
+  const thinkingIndicator = document.querySelector('.thinking-indicator');
+  if (thinkingIndicator) {
+    thinkingIndicator.remove();
+  }
 }
 
-// Main function for handling chat submission
+// Main chat submission function
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  if (dotsInterval) clearInterval(dotsInterval);
+  if (abortController) abortController.abort();
 
-  if (chatSubmit.textContent.includes("Stoppa")) {
-    // Abort ongoing fetch request
-    if (abortController) abortController.abort();
-    unlockInput(); // Unlock the input
-    return;
-  }
-
-  lockInput();  // Lock the input
-
-  // Setup for this request
   abortController = new AbortController();
+  chatSubmit.textContent = 'Stoppa svar';
+  
+  showThinkingIndicator(); // Show "thinking" indicator
 
-  // User message handling
   const message = chatInput.value;
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message');
@@ -412,7 +402,7 @@ chatForm.addEventListener('submit', (e) => {
   chatBox.appendChild(userMessage);
   chatInput.value = '';
 
-  // API call
+  // Call the API
   fetch('https://fertilityawareness.ai/api/executeQuery', {
     method: 'POST',
     headers: {
@@ -424,123 +414,70 @@ chatForm.addEventListener('submit', (e) => {
   })
   .then(res => res.json())
   .then(data => {
-    unlockInput();  // Unlock the input
-    
-    // Bot message handling
+    removeThinkingIndicator(); // Remove "thinking" indicator
     const botMessage = document.createElement('div');
     botMessage.classList.add('chat-message', 'bot-message');
     botMessage.innerHTML = `<p>${data.result}</p>`;
     chatBox.appendChild(botMessage);
-
-    abortController = null;  // Reset abort
+    clearInterval(dotsInterval);
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    abortController = null;
   })
   .catch(err => {
-    unlockInput();  // Unlock the input
-    
     if (err.name === 'AbortError') {
       console.log('Fetch aborted');
     } else {
       console.error(err);
     }
-
-    abortController = null;  // Reset abort
+    clearInterval(dotsInterval);
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    abortController = null;
   });
 });
 
- // Thinking indicator
-(function() {
-  // Function that creates and displays a "Handledaren tänker och formulerar sitt svar..." indicator
-  function showThinkingIndicator() {
-    const chatBoxLocal = document.querySelector('.chat-box');
-    const thinkingMessage = document.createElement('div'); 
-    thinkingMessage.classList.add('chat-message', 'bot-message'); 
-    thinkingMessage.id = 'thinking-indicator';
-    thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
-    chatBoxLocal.appendChild(thinkingMessage);
-    
-    let i = 0;
-    const dots = document.querySelector('.dots');
-    setInterval(() => {
-      dots.textContent = '.'.repeat(i % 4);
-      i++;
-    }, 500);
+// Function to send messages to the Netlify function
+function sendToNetlifyFunction(messageHtml, isBot) {
+  fetch('/.netlify/functions/sendToCervix', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messageHtml: messageHtml.outerHTML,
+      isBot: isBot,
+      userEmail: getUserEmail() 
+    }),
+  })
+  .then(response => response.json())
+  .then(data => console.log('Data from the server:', data))
+  .catch(error => console.error('Error:', error));
+}
+
+// Function to retrieve the user's email
+function getUserEmail() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  if (userInfo && userInfo.email) {
+    return userInfo.email;
   }
+  return '';
+}
 
-  // Function that removes the "Handledaren tänker och formulerar sitt svar..." indicator
-  function removeThinkingIndicator() {
-    const thinkingIndicator = document.getElementById('thinking-indicator');
-    if (thinkingIndicator) {
-      thinkingIndicator.remove();
-    }
-  }
-
-  // Add a new event listener to the existing chatForm object
-  document.querySelector('form').addEventListener('submit', () => {
-    showThinkingIndicator();
-  });
-
-  // MutationObserver to observe when a new bot message is added
-  const chatBoxLocal = document.querySelector('.chat-box');
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.addedNodes.length > 0) {
-        const newNode = mutation.addedNodes[0];
-        if (newNode.classList && newNode.classList.contains('bot-message') && newNode.id !== 'thinking-indicator') {
-          removeThinkingIndicator();
-        }
+// MutationObserver to detect new chat messages
+const chatObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes.length > 0) {
+      const newNode = mutation.addedNodes[0];
+      if (newNode.classList && newNode.classList.contains('chat-message')) {
+        const isBot = newNode.classList.contains('bot-message');
+        sendToNetlifyFunction(newNode, isBot);
       }
-    });
-  });
-
-  observer.observe(chatBoxLocal, { childList: true });
-})();
-// End Thinking indicator
-	
- // Send message to the Netlify function sendToCervix
-  function sendToNetlifyFunction(messageHtml, isBot) {
-    console.log("Calling the Netlify function sendToCervix");  // Log for debugging
-    fetch('/.netlify/functions/sendToCervix', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        messageHtml: messageHtml.outerHTML,
-        isBot: isBot,
-        userEmail: getUserEmail() 
-      }),
-    })
-    .then(response => response.json())
-    .then(data => console.log('Data from the server:', data))
-    .catch(error => console.error('Error:', error));
-  }
-
-  // Observe when a new chat message is added
-  const chatBoxObserver = document.querySelector('.chat-box'); 
-  const chatObserver = new MutationObserver((mutations) => { 
-    mutations.forEach((mutation) => {
-      if (mutation.addedNodes.length > 0) {
-        const newNode = mutation.addedNodes[0];
-        if (newNode.classList && newNode.classList.contains('chat-message')) {
-          const isBot = newNode.classList.contains('bot-message');
-          sendToNetlifyFunction(newNode, isBot);
-        }
-      }
-    });
-  });
-
-  chatObserver.observe(chatBoxObserver, { childList: true });
-
-  // Function to retrieve the user's email
-  function getUserEmail() {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    if (userInfo && userInfo.email) {
-      return userInfo.email;
     }
-    return ''; // Return an empty string if user information is not available
-  }	
-// End Send message to the Netlify function sendToCervix
+  });
+});
+
+chatObserver.observe(chatBox, { childList: true });
 </script>
+
    
 
 <pre class="flex-container" id="copy-npm"><code class="language-javascript margin-right-1 general" >git clone</code><div class="npm-icon-container"><div class="npm-icon"></div></div></pre>
