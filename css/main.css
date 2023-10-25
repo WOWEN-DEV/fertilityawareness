@@ -562,7 +562,7 @@ a.primary:hover::before {
   padding-left: var(--spacing-6);
   padding-right: var(--spacing-6);
   padding-bottom: var(--spacing-8);
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 /* features section */
