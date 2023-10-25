@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Optimized the JavaScript code for better readability and maintainability.
+- CORS Policy blocking requests from https://app.fertilityawareness.wowen.tech to https://fertilityawareness.ai/api/executeQuery
 
 ### Security
 - None.
