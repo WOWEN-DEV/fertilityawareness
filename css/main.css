@@ -420,12 +420,15 @@ a.primary:hover::before {
   height: 24px;
   width: 24px;
   cursor: pointer;
+  position: relative;
+  top: -28px;
+  left: 10px;
 }
 
 .x-line-1 {
   position: absolute;
   top: 50%;
-  width: 24px;
+  width: 19px;
   height: 1px;
   transform: rotate(45deg);
   background: var(--black);
@@ -434,7 +437,7 @@ a.primary:hover::before {
 .x-line-2 {
   position: absolute;
   top: 50%;
-  width: 24px;
+  width: 19px;
   height: 1px;
   transform: rotate(-45deg);
   background: var(--black);
