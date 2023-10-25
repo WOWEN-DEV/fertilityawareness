@@ -445,10 +445,6 @@ chatForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Reset button and show thinking indicator
-  chatSubmit.textContent = 'Stoppa svar';
-  showThinkingIndicator();
-  
   // Display user's message in the chat box
   const message = chatInput.value;
   const userMessage = document.createElement('div');
