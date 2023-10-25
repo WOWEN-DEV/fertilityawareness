@@ -387,6 +387,93 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         </script>
 
+<!-- Add stop function -->
+<script>
+/**
+ * Handles the submission of a chat message form and allows the user to stop the response,
+ * with a blinking "..." animation while waiting for the response.
+ * 
+ * @param {HTMLElement} formElement - The form element
+ * @param {HTMLElement} inputElement - The input element for chat messages
+ * @param {HTMLElement} submitElement - The submit button element
+ * @param {string} apiUrl - The URL for the chat API
+ */
+function handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl) {
+  let abortController = null;  // To hold an AbortController instance for aborting fetch
+  let dotsInterval = null;  // To hold the interval for the "..." animation
+  
+  formElement.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Clear the "..." animation if one is already ongoing
+    if (dotsInterval) {
+      clearInterval(dotsInterval);
+      dotsInterval = null;
+    }
+
+    // If an API call is already ongoing, abort it
+    if (abortController) {
+      abortController.abort();
+      return;
+    }
+
+    // Initialize AbortController and set the submit button to "Stoppa svar"
+    abortController = new AbortController();
+    submitElement.textContent = 'Stoppa svar';
+  
+    // Add the "..." animation
+    let i = 0;
+    dotsInterval = setInterval(() => {
+      submitElement.textContent = `Stoppa svar${'.'.repeat(i % 4)} 🛑`;
+      i++;
+    }, 500);
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify({
+        "text": inputElement.value
+      }),
+      signal: abortController.signal  // Associate fetch with AbortController
+    })
+    .then(res => res.json())
+    .then(data => {
+      // Handle server response here, e.g., appending a bot message to chatBox
+
+      // Reset submit button, clear "..." animation and clear AbortController
+      clearInterval(dotsInterval);
+      submitElement.textContent = 'Skicka (eller tryck ENTER)';
+      abortController = null;
+    })
+    .catch(err => {
+      if (err.name === 'AbortError') {
+        console.log('Fetch aborted');
+      } else {
+        console.error(err);
+      }
+
+      // Reset submit button, clear "..." animation and clear AbortController
+      clearInterval(dotsInterval);
+      submitElement.textContent = 'Skicka (eller tryck ENTER)';
+      abortController = null;
+    });
+  });
+}
+
+// Usage example:
+const formElement = document.querySelector('form');
+const inputElement = document.querySelector('.chat-input');
+const submitElement = document.querySelector('.chat-submit');
+const apiUrl = 'https://fertilityawareness.ai/api/executeQuery';
+
+handleChatSubmissionWithStop(formElement, inputElement, submitElement, apiUrl);	
+</script>
+<!-- End Add stop function -->
+
+
 <!-- Assistant typing answer indicator -->	      
 <script>
 (function() {
