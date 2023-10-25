@@ -373,6 +373,10 @@ function showThinkingIndicator() {
   thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
   chatBox.appendChild(thinkingMessage);
   
+  // Lock chat input and change its placeholder
+  chatInput.placeholder = 'Vänta på ditt svar...';
+  chatInput.disabled = true;
+
   // Animate dots
   let i = 0;
   dotsInterval = setInterval(() => {
@@ -388,6 +392,8 @@ function removeThinkingIndicator() {
   if (thinkingIndicator) {
     thinkingIndicator.remove();
   }
+  chatInput.placeholder = 'Kan man bota PMS?';
+  chatInput.disabled = false;
 }
 
 // Function to send messages to the Netlify function
@@ -421,6 +427,12 @@ function getUserEmail() {
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   
+  // Validate input to prevent empty div creation
+  const message = chatInput.value.trim();
+  if (message === '') {
+    return;
+  }
+  
   // Stop any ongoing fetch request and animation
   if (abortController) abortController.abort();
   if (dotsInterval) clearInterval(dotsInterval);
@@ -430,7 +442,6 @@ chatForm.addEventListener('submit', (e) => {
   showThinkingIndicator();
   
   // Show user's message
-  const message = chatInput.value;
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message');
   userMessage.innerHTML = `<p>${message}</p>`;
@@ -484,6 +495,7 @@ chatForm.addEventListener('submit', (e) => {
   });
 });
 </script>
+
 
 
    
