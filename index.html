@@ -363,7 +363,7 @@ let abortController = null;
 let dotsInterval = null;
 let placeholderDotsInterval = null;  // New variable for placeholder dots animation
 
-// Show thinking indicator
+// Function to show a thinking indicator
 function showThinkingIndicator() {
   // Create and append new thinking indicator
   const thinkingMessage = document.createElement('div');
@@ -385,23 +385,25 @@ function showThinkingIndicator() {
     chatInput.placeholder = 'Vänta på ditt svar' + '.'.repeat(j % 4);
     j++;
   }, 500);
-  chatInput.disabled = true;  // Disable chat input
+  
+  // Disable chat input during animation
+  chatInput.disabled = true;  
 }
 
-// Remove thinking indicator
+// Function to remove the thinking indicator
 function removeThinkingIndicator() {
   const thinkingIndicator = chatBox.querySelector('.thinking-indicator');
   if (thinkingIndicator) {
     thinkingIndicator.remove();
   }
   
-  // Clear both intervals
+  // Clear intervals for thinking indicator and placeholder
   clearInterval(dotsInterval);
   clearInterval(placeholderDotsInterval);
 
-  // Reset placeholder
+  // Reset placeholder and enable chat input
   chatInput.placeholder = 'Kan man bota PMS?';
-  chatInput.disabled = false;  // Enable chat input
+  chatInput.disabled = false;  
 }
 
 // Function to send messages to the Netlify function
@@ -422,7 +424,7 @@ function sendToNetlifyFunction(messageHtml, isBot) {
   .catch(error => console.error('Error:', error));
 }
 
-// Function to retrieve the user's email
+// Function to retrieve user's email
 function getUserEmail() {
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   if (userInfo && userInfo.email) {
@@ -435,7 +437,7 @@ function getUserEmail() {
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  // Stop any ongoing fetch request and animation
+  // Stop any ongoing fetch request and animations
   if (abortController) {
     abortController.abort();
     removeThinkingIndicator();
@@ -447,7 +449,7 @@ chatForm.addEventListener('submit', (e) => {
   chatSubmit.textContent = 'Stoppa svar';
   showThinkingIndicator();
   
-  // Display user's message first
+  // Display user's message in the chat box
   const message = chatInput.value;
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message');
@@ -455,13 +457,10 @@ chatForm.addEventListener('submit', (e) => {
   chatBox.appendChild(userMessage);
   chatInput.value = '';
   
-  // Send user's message to Netlify
+  // Send user's message to Netlify function
   sendToNetlifyFunction(userMessage, false);
-  
-  // Show thinking indicator
-  showThinkingIndicator();
 
-  // Initialize abort controller for the new fetch
+  // Initialize abort controller for the new fetch request
   abortController = new AbortController();
 
   // Fetch data from the API
@@ -483,9 +482,9 @@ chatForm.addEventListener('submit', (e) => {
     botMessage.innerHTML = `<p>${data.result}</p>`;
     chatBox.appendChild(botMessage);
     
-    // Send bot's message to Netlify
+    // Send bot's message to Netlify function
     sendToNetlifyFunction(botMessage, true);
-    
+
     // Reset button text
     chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
     abortController = null;
@@ -496,13 +495,12 @@ chatForm.addEventListener('submit', (e) => {
     } else {
       console.error(err);
     }
-    
-    // Reset button text
     chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
     abortController = null;
   });
 });
 </script>
+
 
 
 
