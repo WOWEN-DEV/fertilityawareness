@@ -465,6 +465,7 @@ a.primary:hover::before {
 
 .hero-text {
   opacity: 0;
+  display: none;
 }
 
 #copy-npm {
