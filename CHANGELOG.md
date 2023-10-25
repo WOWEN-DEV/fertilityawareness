@@ -7,7 +7,6 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Introduced a 'Stop Response' button to abort ongoing API fetch requests.
 - The input field is now disabled while waiting for the bot's response.
-- Enhanced the thinking indicator with a 'Waiting for your answer...' animated placeholder.
 
 ### Changed
 - None.
