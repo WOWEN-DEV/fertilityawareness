@@ -434,6 +434,18 @@ function getUserEmail() {
 // Main function to handle chat form submission
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  // Stop any ongoing fetch request and animation
+  if (abortController) {
+    abortController.abort();
+    removeThinkingIndicator();
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    return;
+  }
+
+  // Reset button and show thinking indicator
+  chatSubmit.textContent = 'Stoppa svar';
+  showThinkingIndicator();
   
   // Display user's message first
   const message = chatInput.value;
