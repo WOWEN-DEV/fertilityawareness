@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/AWS-Services-orange?logo=amazon-aws" alt="AWS Services">
   </a>
 <a href="https://app.fertilityawareness.wowen.tech/">
-    <img src="https://img.shields.io/badge/Web%20App%20Version-1.0.0%20(Alpha)-yellow" alt="Web App Version: 1.0.0 (Alpha)">
+    <img src="https://img.shields.io/badge/Web%20App%20Version-1.1.0%20(Alpha)-yellow" alt="Web App Version: 1.1.0 (Alpha)">
 </a>
 <a href="https://github.com/WOWEN-DEV/fertilityawareness-ai">
     <img src="https://img.shields.io/badge/AI%20Model-Base%20Model-blue" alt="AI-Model: Base Model">
