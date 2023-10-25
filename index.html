@@ -344,16 +344,17 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="hero-content">
         <h1 class="hero-text splt">Digital handledare</h1>
 
+<!-- HTML for chat interface -->
 <div class="chat-container">
   <div class="chat-box"></div>
   <form>
-    <input type="text" class="chat-input" placeholder="Kan man bota PMS?">
+    <input type="text" class="chat-input" placeholder="Kan man bota PMS?" data-gtm-form-interact-field-id="0">
     <button type="submit" class="chat-submit">Skicka (eller tryck ENTER)</button>
   </form>
 </div>
 
 <script>
-// Initialize variables
+// Initialize elements and variables
 const chatInput = document.querySelector('.chat-input');
 const chatBox = document.querySelector('.chat-box');
 const chatForm = document.querySelector('form');
@@ -361,79 +362,33 @@ const chatSubmit = document.querySelector('.chat-submit');
 let abortController = null;
 let dotsInterval = null;
 
-// Function to show "thinking" indicator
+// Show thinking indicator
 function showThinkingIndicator() {
-  const thinkingMessage = document.createElement('div'); 
-  thinkingMessage.classList.add('chat-message', 'bot-message', 'thinking-indicator'); 
+  // Remove any existing thinking indicator first
+  removeThinkingIndicator();
+  
+  // Create and append new thinking indicator
+  const thinkingMessage = document.createElement('div');
+  thinkingMessage.classList.add('chat-message', 'bot-message', 'thinking-indicator');
   thinkingMessage.innerHTML = `<p>🤔 Handledaren tänker och formulerar sitt svar<span class="dots"></span></p>`;
   chatBox.appendChild(thinkingMessage);
   
+  // Animate dots
   let i = 0;
-  const dots = document.querySelector('.dots');
-  setInterval(() => {
+  dotsInterval = setInterval(() => {
+    const dots = thinkingMessage.querySelector('.dots');
     dots.textContent = '.'.repeat(i % 4);
     i++;
   }, 500);
 }
 
-// Function to remove "thinking" indicator
+// Remove thinking indicator
 function removeThinkingIndicator() {
-  const thinkingIndicator = document.querySelector('.thinking-indicator');
+  const thinkingIndicator = chatBox.querySelector('.thinking-indicator');
   if (thinkingIndicator) {
     thinkingIndicator.remove();
   }
 }
-
-// Main chat submission function
-chatForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (dotsInterval) clearInterval(dotsInterval);
-  if (abortController) abortController.abort();
-
-  abortController = new AbortController();
-  chatSubmit.textContent = 'Stoppa svar';
-  
-  showThinkingIndicator(); // Show "thinking" indicator
-
-  const message = chatInput.value;
-  const userMessage = document.createElement('div');
-  userMessage.classList.add('chat-message');
-  userMessage.innerHTML = `<p>${message}</p>`;
-  chatBox.appendChild(userMessage);
-  chatInput.value = '';
-
-  // Call the API
-  fetch('https://fertilityawareness.ai/api/executeQuery', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Origin": "*"
-    },
-    body: JSON.stringify({ "text": message }),
-    signal: abortController.signal
-  })
-  .then(res => res.json())
-  .then(data => {
-    removeThinkingIndicator(); // Remove "thinking" indicator
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('chat-message', 'bot-message');
-    botMessage.innerHTML = `<p>${data.result}</p>`;
-    chatBox.appendChild(botMessage);
-    clearInterval(dotsInterval);
-    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
-    abortController = null;
-  })
-  .catch(err => {
-    if (err.name === 'AbortError') {
-      console.log('Fetch aborted');
-    } else {
-      console.error(err);
-    }
-    clearInterval(dotsInterval);
-    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
-    abortController = null;
-  });
-});
 
 // Function to send messages to the Netlify function
 function sendToNetlifyFunction(messageHtml, isBot) {
@@ -462,20 +417,72 @@ function getUserEmail() {
   return '';
 }
 
-// MutationObserver to detect new chat messages
-const chatObserver = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.addedNodes.length > 0) {
-      const newNode = mutation.addedNodes[0];
-      if (newNode.classList && newNode.classList.contains('chat-message')) {
-        const isBot = newNode.classList.contains('bot-message');
-        sendToNetlifyFunction(newNode, isBot);
-      }
-    }
-  });
-});
+// Main function to handle chat form submission
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // Stop any ongoing fetch request and animation
+  if (abortController) abortController.abort();
+  if (dotsInterval) clearInterval(dotsInterval);
+  
+  // Reset button and show thinking indicator
+  chatSubmit.textContent = 'Stoppa svar';
+  showThinkingIndicator();
+  
+  // Show user's message
+  const message = chatInput.value;
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('chat-message');
+  userMessage.innerHTML = `<p>${message}</p>`;
+  chatBox.appendChild(userMessage);
+  chatInput.value = '';
+  
+  // Send user's message to Netlify
+  sendToNetlifyFunction(userMessage, false);
+  
+  // Initialize abort controller for the new fetch
+  abortController = new AbortController();
 
-chatObserver.observe(chatBox, { childList: true });
+  // Fetch data from the API
+  fetch('https://fertilityawareness.ai/api/executeQuery', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Origin": "*"
+    },
+    body: JSON.stringify({ "text": message }),
+    signal: abortController.signal
+  })
+  .then(res => res.json())
+  .then(data => {
+    // Remove thinking indicator and show bot's message
+    removeThinkingIndicator();
+    const botMessage = document.createElement('div');
+    botMessage.classList.add('chat-message', 'bot-message');
+    botMessage.innerHTML = `<p>${data.result}</p>`;
+    chatBox.appendChild(botMessage);
+    
+    // Send bot's message to Netlify
+    sendToNetlifyFunction(botMessage, true);
+    
+    // Reset button text and clear intervals
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    if (dotsInterval) clearInterval(dotsInterval);
+    abortController = null;
+  })
+  .catch(err => {
+    if (err.name === 'AbortError') {
+      console.log('Fetch aborted');
+    } else {
+      console.error(err);
+    }
+    
+    // Reset button text and clear intervals
+    chatSubmit.textContent = 'Skicka (eller tryck ENTER)';
+    if (dotsInterval) clearInterval(dotsInterval);
+    abortController = null;
+  });
+}
 </script>
 
    
