@@ -15,7 +15,7 @@
   - [Iteration 1 – `Base Model`](#iteration-1--base-model)
   - [Iteration 2 and Subsequent Versions](#iteration-2-and-subsequent-versions)
 - [Web App Version](#web-app-version)
-  - [`Version 1.0.0 (Alpha)` – Current Version](#version-100-alpha--current-version)
+  - [`Version 1.0.0 (Alpha)` > [`Version 1.1.0 (Alpha)` – Current Version](#version-100-alpha--current-version)
   - [`Version 2.0.0 (Alpha)` – Alpha Upgrade](#version-200-alpha--alpha-upgrade)
   - [`Version 3.0.0 (Beta)` – Beta Upgrade](#version-300-beta--beta-upgrade)
   - [`Version 4.0.0 (Beta)` – Beta Upgrade](#version-400-beta--beta-upgrade)
@@ -29,7 +29,7 @@
 
 # FertilityAwarenessAI Roadmap
 
-This resource offers a detailed look into our development roadmap, upcoming releases, and the features we have in the pipeline for FertilityAwarenessAI ([Web App](https://github.com/WOWEN-DEV/fertilityawareness), [Mobile App](https://github.com/WOWEN-DEV/fertilityawareness-app), and [Model](https://github.com/WOWEN-DEV/fertilityawareness-ai])). To review the versions we've rolled out and their respective features, visit our release history in each repo. Your interest and support are invaluable as we strive to make the platform increasingly robust and user-friendly!
+This resource offers a detailed look into our development roadmap, upcoming releases, and the features we have in the pipeline for FertilityAwarenessAI ([Web App](https://github.com/WOWEN-DEV/fertilityawareness), [Mobile App](https://github.com/WOWEN-DEV/fertilityawareness-app), and [Model](https://github.com/WOWEN-DEV/fertilityawareness-ai])). Note, this document only outlines the bigger milestones, to review the versions we've rolled out and their respective features, visit our release history and changelogs in each repo. 
 
 # Explanation of Terms in the Roadmap
 
@@ -57,7 +57,7 @@ Data-Driven Refinement. Building on the first iteration, the `base model`, the s
 
 # [Web App Version](https://github.com/WOWEN-DEV/fertilityawareness)
 
-## `Version 1.0.0 (Alpha)` – Current Version ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
+## `Version 1.0.0 (Alpha)` > `Version 1.1.0 (Alpha)` – Current Version ![Released](https://img.shields.io/badge/Status-Released-brightgreen)
 
 > **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
 
@@ -68,7 +68,7 @@ Data-Driven Refinement. Building on the first iteration, the `base model`, the s
 
 This version serves as an introductory release, aimed at a smaller audience for initial testing and feedback. It lays the groundwork for future, more robust versions of FertilityAwarenessAI.
 
-## `Version 2.0.0 (Alpha)` – Alpha Upgrade ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+## `Version 2.0.0 (Alpha)` – Alpha Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 > **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
 
@@ -128,7 +128,7 @@ This release version, dubbed "Cervix," is designed to be a comprehensive solutio
 
 This version serves as an introductory release, aimed at a smaller audience for initial testing and feedback. It lays the groundwork for future, more robust versions of FertilityAwarenessAI.
 
-## `Version 2.0.0 (Alpha)` – Alpha Upgrade ![In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
+## `Version 2.0.0 (Alpha)` – Alpha Upgrade ![Planned](https://img.shields.io/badge/Status-Planned-red)
 
 > **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
 
