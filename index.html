@@ -436,8 +436,8 @@ function getUserEmail() {
 // Main function to handle chat form submission
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  // Stop any ongoing fetch request and animations
+  
+  // If a fetch request is ongoing, abort it and remove any animations
   if (abortController) {
     abortController.abort();
     removeThinkingIndicator();
@@ -445,20 +445,20 @@ chatForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Reset button and show thinking indicator
-  chatSubmit.textContent = 'Stoppa svar';
-  showThinkingIndicator();
-  
-  // Display user's message in the chat box
+  // Add the user's message to the chat box first
   const message = chatInput.value;
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message');
   userMessage.innerHTML = `<p>${message}</p>`;
-  chatBox.appendChild(userMessage);
+  chatBox.appendChild(userMessage);  // Append the user's message
   chatInput.value = '';
-  
-  // Send user's message to Netlify function
+
+  // Send the user's message to the Netlify function
   sendToNetlifyFunction(userMessage, false);
+  
+  // Show the thinking indicator after displaying the user's message
+  chatSubmit.textContent = 'Stoppa svar';
+  showThinkingIndicator();  // Show thinking indicator
 
   // Initialize abort controller for the new fetch request
   abortController = new AbortController();
