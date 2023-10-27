@@ -1,6 +1,6 @@
 ![WOWEN Tech Logo](https://github.com/WOWEN-DEV/wowen.tech/blob/main/assets/img/wowen-tech-repo-logo.svg)
 
-<h1 align="center">Fertility Awareness [Roadmap]</h1>
+<h1 align="center">Fertility Awareness [Radmap]</h1>
 
 ![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
