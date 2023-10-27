@@ -1,2 +1,6 @@
 [build]
   functions = "netlify/functions"
+
+[[ignore]]
+  name = "app"
+  paths = ["app/**"]
