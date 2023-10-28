@@ -2,7 +2,7 @@
 
 <h1 align="center">Fertility Awareness Web App [Roadmap]</h1>
 
-![Fertility Awareness Illustration](https://app.fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
+![Fertility Awareness Illustration](https://fertilityawareness.wowen.tech/img/fertilityawareness-illustration-colored.svg)
 
 # Table of Contents
 
