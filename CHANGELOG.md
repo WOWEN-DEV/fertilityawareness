@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## v1.1.0-alpha – YYYY-MM-DD
+## v1.1.0-alpha – 2023-10-29
 
 ### Added
 - Introduced a 'Stop Response' button to abort ongoing API fetch requests.
@@ -20,7 +20,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Optimized the JavaScript code for better readability and maintainability.
-- CORS Policy blocking requests from https://fertilityawareness.wowen.tech to https://fertilityawareness.ai/api/executeQuery
 - No error message for attempted duplicate email registration
 
 ### Security
