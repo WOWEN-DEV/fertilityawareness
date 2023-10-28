@@ -81,7 +81,7 @@ For those who are new with the terms:
 - **Merging:** Merging is the process of taking the changes from one branch (version) of our code and combining them with another branch, usually the `main` one. This allows us to update the official version of our project with new features, fixes, or improvements that we've been working on separately on staging. Once merged, those changes become part of the `main` or target branch and are reflected on [https://fertilityawareness.wowen.tech](https://fertilityawareness.wowen.tech).
 - **Deploy Contexts:** Are settings that tell Netlify how to handle our different branches when turning them into live websites.
 - **Deploy Previews:** Are temporary websites that Netlify creates to show you what these changes will look like if they go live. When someone suggests changes to our code, they often make a "pull request." With this setting, Netlify will automatically create a temporary, live version of our site incorporating those suggested changes. This is called a "Deploy Preview." This allows you to preview changes before they go live on our main site (`main` branch).
-- **Branch Deploys:** The `main`branch is our production branch, branch deploys are all other branches we create here and say should be included as "Branch Deploys".
+- **Branch Deploys:** The `main` branch serves as our production branch, while branch deploys encompass all other branches created here that we designate to be included as "Branch Deploys."
 
 ## Current settings and deploy contexts in Netlify
 - **Production Branch:** `main`
