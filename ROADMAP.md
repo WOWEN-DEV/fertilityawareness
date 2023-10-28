@@ -23,6 +23,7 @@ This resource offers a detailed look into our development roadmap, upcoming rele
 **Alpha**: This is the first, very early version of the product intended for internal testing or a very limited user group. The Alpha version is often *unstable* and contains basic functionality to test ideas and gather initial impressions.
 
 **Beta**: This version is more developed, designed and stable than the Alpha. It is intended for a broader group of test users and includes additional features, and more robust frameworks. The goal is to identify and fix bugs, as well as to fine-tune the product, design, features and user experience based on feedback.
+
 **Cervix**: This is the public MVP (Minimum Viable Product) version of the product. It includes all core features and is stable enough for general use. This version marks an important milestone where the product is ready for market launch.
 
 **Iteration**: An iteration is a development cycle where the product undergoes improvements, refinements, or additions. It's a repeatable phase in the software lifecycle aimed at enhancing the product's features, performance, or design. Each iteration brings the product closer to its final version, incorporating feedback and lessons learned from previous cycles.
