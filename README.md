@@ -48,7 +48,8 @@
     - [User Authentication](#user-authentication)
     - [Notifications](#notifications)
     - [User Consent](#user-consent)
-    - [Backend/DevOps](#backend-devops)
+    - [Backend/DevOps](#backenddevops)
+    - [Analytics](#analytics)
     - [Future Plans and Considerations](#future-plans-and-considerations)
     - [Summary of Technologies](#summary-of-technologies)
 6. [Contributing](#contributing)
@@ -135,6 +136,12 @@ We have our primary domain, `wowen.tech`, along with all related subdomains such
 
 ## Backend/DevOps
 The Web App repository is integrated with our AWS EC2 Server Instance (GitHub repo: [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai)). All files from [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo are cloned to the EC2 server. The frontend (this repo) is hosted at `app.fertilityawareness.wowen.tech` (trough Netlify) and communicates with the EC2 server via POST requests, here `https://fertilityawareness.ai` serves as the API endpoint to which the client is making a POST request, specifically, it is the `fertilityawareness.ai` URL of the server that will handle the API call to execute a query. For DNS, we use our domain registrar/manager One.com to `A Record`-point `fertilityawareness.ai` to our EC2 server's IP (16.171.241.12). To update the backend/EC2 server files and configurations, do a commit to [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo, and then manually execute a `git pull origin main` to the EC2 server in terminal. For full documentation, and updates, see our [fertilityawareness_ai](https://github.com/WOWEN-DEV/fertilityawareness-ai) repo. 
+
+## Analytics
+
+- **Google Analytics**: Used for web traffic analysis – (`WOWEN – wowen.tech – GA4`).
+- **Plausible**: An additional tool for web traffic analysis – (`WOWEN – wowen.tech`).
+- **Google Tag Manager**: Used for managing pixels and tags on the website, current implemented tags: *Google Analytics*, *Facebook Pixel*, *LinkedIn Insight Tag* – (`WOWEN – www.wowen.tech`)
 
 ## Future Plans and Considerations
 Refering to our [Roadmap](ROADMAP.md), we plan to transition to a more robust frontend framework for the Beta Version, we're currently committed to adopting `Next.js` as a new robust frontend framework. We are also evaluating whether to continue with One.com for domain management and Netlify for hosting and deployment—including Netlify Functions and Identity—or to transition our identity management, domain management, hosting, and deployment to Vercel or AWS. As of now, AWS Services like EC2 Server Instance, and One.com will remain part of our tech stack for the foreseeable future.
