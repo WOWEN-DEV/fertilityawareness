@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Optimized the JavaScript code for better readability and maintainability.
-- No error message for attempted duplicate email registration
+- No error message for attempted duplicate email registration.
 
 ### Security
 - None.
