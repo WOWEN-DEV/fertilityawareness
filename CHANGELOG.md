@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## v1.1.0-alpha - YYYY-MM-DD
+## v1.1.0-alpha – YYYY-MM-DD
 
 ### Added
 - Introduced a 'Stop Response' button to abort ongoing API fetch requests.
@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 - None.
 
-## v1.0.0-alpha - 2023-10-24
+## v1.0.0-alpha – 2023-10-24
 
 ### Added
 - Initial Access: This alpha release serves as the first public introduction.
