@@ -194,5 +194,5 @@ For more information, visit [Creative Commons BY-NC-ND 4.0](https://creativecomm
 
 Thank you for your interest in WOWEN. Together, we're making FemTech innovative, creative, and powering. 💪 
 
-Copyright © 2019-2023, WOWEN. All rights reserved.
+Copyright © 2019-2024, WOWEN. All rights reserved.
 
